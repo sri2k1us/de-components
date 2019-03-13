@@ -1,5 +1,6 @@
 #!groovy
 milestone 0
+def repo = "de-components"
 
 timestamps {
   node('docker') {
@@ -14,7 +15,7 @@ timestamps {
           stage "Create Test Image"
           milestone 20
 
-          dockerRepoTest = "test-de-components-${env.BUILD_TAG}"
+          dockerRepoTest = "test-${repo}-${env.BUILD_TAG}"
           dockerTestRunner = "test-${repo}-${env.BUILD_TAG}"
 
           sh "docker build --pull --rm -t ${dockerRepoBuild} ."
