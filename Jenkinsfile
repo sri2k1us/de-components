@@ -18,13 +18,13 @@ timestamps {
           dockerRepoTest = "test-${repo}-${env.BUILD_TAG}"
           dockerTestRunner = "test-${repo}-${env.BUILD_TAG}"
 
-          sh "docker build --pull --rm -t ${dockerRepoBuild} ."
+          sh "docker build --pull --rm -t ${dockerRepoTest} ."
 
           try {
               stage "Test"
               milestone 30
 
-              sh "docker run ${dockerCacheVolumes} --name ${dockerTestRunner} ${dockerRepoBuild}"
+              sh "docker run ${dockerCacheVolumes} --name ${dockerTestRunner} ${dockerRepoTest}"
               sh "docker cp ${dockerTestRunner}:/src/de-components/test-report.xml ./test-report.xml"
 
               junit "test-report.xml"
