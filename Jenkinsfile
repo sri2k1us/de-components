@@ -24,6 +24,7 @@ timestamps {
               stage "Test"
               milestone 30
 
+              sh "docker run ${dockerCacheVolumes} --rm ${dockerRepoTest} npm install"
               sh "docker run ${dockerCacheVolumes} --name ${dockerTestRunner} ${dockerRepoTest}"
               sh "docker cp ${dockerTestRunner}:/src/de-components/test-report.xml ./test-report.xml"
 
