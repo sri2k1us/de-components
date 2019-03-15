@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CyverseAnnouncer, {
-    announce,
     BOTTOM,
     ERROR,
     LEFT,
@@ -8,7 +7,6 @@ import CyverseAnnouncer, {
     TOP,
     WARNING
 } from "../src/components/announcer/CyverseAnnouncer";
-
 
 class AnnouncerTest extends Component {
     render() {
@@ -31,12 +29,12 @@ class AnnouncerTest extends Component {
                 vertical: BOTTOM,
 
             }];
-        for (let i = 0; i < msgs.length; i++) {
-            announce(msgs[i]);
-        }
 
         return (
-            <CyverseAnnouncer/>
+            <React.Fragment>
+                <CyverseAnnouncer />
+
+            </React.Fragment>
         )
     }
 }
