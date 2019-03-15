@@ -7,11 +7,11 @@
     "@material-ui/icons": "^3.0.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-rating": "^1.6.2",
     "react-scripts": "2.1.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:ci": "CI=true react-scripts test --env=jsdom --ci --testResultsProcessor ./node_modules/jest-junit-reporter",
@@ -29,15 +29,24 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^5.0.1",
     "@storybook/addon-links": "^5.0.1",
     "@storybook/addons": "^5.0.1",
     "@storybook/react": "^5.0.1",
     "@storybook/storybook-deployer": "^2.8.1",
-    "jest-junit-reporter": "^1.1.0"
+    "babel-loader": "^8.0.5",
+    "css-loader": "^1.0.1",
+    "jest-junit-reporter": "^1.1.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.3"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "dist/lib.js",
+  "module": "dist/lib.js",
   "author": "discoenv",
   "license": "ISC"
 }

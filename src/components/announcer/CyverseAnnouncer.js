@@ -3,7 +3,6 @@ import Announcer from "./Announcer";
 import PropTypes from "prop-types";
 
 
-let msgQueue = [];
 const timeout = 6000;
 
 export const TOP = "top";
@@ -18,6 +17,7 @@ export const ERROR = "error";
 export const WARNING = "warning";
 export const SUCCESS = "success";
 
+
 class CyverseAnnouncer extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +31,10 @@ class CyverseAnnouncer extends Component {
   componentDidMount() {
     let timer = setInterval(this.tickCallback, timeout);
     this.setState({timer});
+  }
+
+  componentDidUpdate(prevProps) {
+    msgQueue.push(this.props.message);
   }
 
   componentWillUnmount() {
@@ -69,12 +73,4 @@ export default CyverseAnnouncer;
 
 CyverseAnnouncer.propTypes = {
   message: PropTypes.string,
-  variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
-  duration: PropTypes.number,
-  vertical: PropTypes.oneOf(['top', 'bottom']),
-  horizontal: PropTypes.oneOf(['center', 'right', 'left']),
 };
-
-export function announce(msg) {
-  msgQueue.push(msg);
-}
