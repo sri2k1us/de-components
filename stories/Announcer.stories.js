@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CyverseAnnouncer, {
+    announce,
     BOTTOM,
     ERROR,
     LEFT,
@@ -10,7 +11,7 @@ import CyverseAnnouncer, {
 
 class AnnouncerTest extends Component {
     render() {
-        let msgs = [
+        [
             {
                 text: "this is an Information",
                 duration: 3000,
@@ -27,14 +28,11 @@ class AnnouncerTest extends Component {
                 duration: 10000,
                 horizontal: LEFT,
                 vertical: BOTTOM,
-
-            }];
+            },
+        ].forEach(msg => announce(msg));
 
         return (
-            <React.Fragment>
-                <CyverseAnnouncer />
-
-            </React.Fragment>
+            <CyverseAnnouncer/>
         )
     }
 }
