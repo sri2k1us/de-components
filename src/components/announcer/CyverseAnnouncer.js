@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Announcer from "./Announcer";
-import PropTypes from "prop-types";
 
 
 let msgQueue = [];
-const timeout = 6000;
+const TIMEOUT = 6000;
 
 export const TOP = "top";
 export const BOTTOM = "bottom";
@@ -29,13 +28,21 @@ class CyverseAnnouncer extends Component {
   }
 
   componentDidMount() {
-    let timer = setInterval(this.tickCallback, timeout);
+    let timer = setInterval(this.tickCallback, TIMEOUT);
+    //display first message right away
+    this.dequeue();
     this.setState({timer});
   }
 
   componentWillUnmount() {
     clearInterval(this.state.timer);
   }
+
+  dequeue = () => {
+    if (msgQueue.length > 0) {
+      this.setState({msg: msgQueue.shift(), open: true});
+    }
+  };
 
   handleClose = () => {
     this.setState({open: false}, () => {
@@ -44,9 +51,7 @@ class CyverseAnnouncer extends Component {
   };
 
   tickCallback = () => {
-    if (msgQueue.length > 0) {
-      this.setState({msg: msgQueue.shift(), open: true});
-    }
+    this.dequeue();
   };
 
   render() {
@@ -55,22 +60,25 @@ class CyverseAnnouncer extends Component {
         <Announcer message={text}
                    variant={variant ? variant : INFO}
                    open={open}
-                   duration={duration? duration : timeout}
+                   duration={duration ? duration : TIMEOUT}
                    onClose={this.handleClose}
                    horizontal={horizontal? horizontal: CENTER}
-                   vertical={vertical? vertical : TOP}
+                   vertical={vertical ? vertical : TOP}
                    />
     );
   }
 
 }
 
+
 export default CyverseAnnouncer;
 
-CyverseAnnouncer.propTypes = {
-  message: PropTypes.string,
-};
-
+/**
+ *  Queue messages needed to be announced using CyverseAnnouncer
+ *  @param {{text: string, variant: string, duration: number, horizontal: string, vertical: string}} msg
+ *  - A message with configuration.
+ *
+ */
 const announce = (msg) => {
   msgQueue.push(msg);
 };

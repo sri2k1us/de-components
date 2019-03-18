@@ -39,8 +39,7 @@
     "@storybook/react": "^5.0.1",
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-loader": "^8.0.5",
-    "css-loader": "^1.0.1",
-    "webpack": "^4.28.3"
+    "css-loader": "^1.0.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "dist/lib.js",
