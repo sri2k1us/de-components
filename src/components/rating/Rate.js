@@ -27,7 +27,7 @@ class Rate extends Component {
                 />
                 <span style={{paddingLeft: 3}}>
                                 ({total})
-                        </span>
+                </span>
             </React.Fragment>
         );
     }

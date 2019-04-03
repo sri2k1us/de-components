@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CyverseAnnouncer, {
+import CyVerseAnnouncer, {
     announce,
     BOTTOM,
     ERROR,
@@ -7,7 +7,7 @@ import CyverseAnnouncer, {
     RIGHT,
     TOP,
     WARNING
-} from "../src/components/announcer/CyverseAnnouncer";
+} from "../src/components/announcer/CyVerseAnnouncer";
 
 class AnnouncerTest extends Component {
     render() {
@@ -32,7 +32,7 @@ class AnnouncerTest extends Component {
         ].forEach(msg => announce(msg));
 
         return (
-            <CyverseAnnouncer/>
+            <CyVerseAnnouncer/>
         )
     }
 }

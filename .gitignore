@@ -26,6 +26,7 @@ yarn-error.log*
 
 test-report.xml
 *.tgz
-dist/lib.js
+
+
 
 

@@ -1,8 +1,8 @@
-import CyverseAnnouncer, { announce } from "./announcer/CyverseAnnouncer";
+import CyVerseAnnouncer, { announce } from "./announcer/CyVerseAnnouncer";
 import Rate from "./rating/Rate";
 
 export {
-    CyverseAnnouncer,
+    CyVerseAnnouncer,
     announce,
     Rate,
 };
