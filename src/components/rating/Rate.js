@@ -32,7 +32,7 @@ class Rate extends Component {
                         <img src={redstar} className="icon" alt="red star" />
                     }
                     fractions={2}
-                    readonly={true}
+                    readonly={readOnly}
                 />
                 <span style={{ paddingLeft: 3 }}>({total})</span>
             </React.Fragment>
