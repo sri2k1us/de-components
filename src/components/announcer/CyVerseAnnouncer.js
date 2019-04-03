@@ -4,9 +4,8 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Announcer from "./Announcer";
-
 
 let msgQueue = [];
 const TIMEOUT = 6000;
@@ -66,58 +65,60 @@ export const WARNING = "warning";
 export const SUCCESS = "success";
 
 class CyVerseAnnouncer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      timer: null,
-      msg: "",
-      open: false,
-    };
-  }
-
-  componentDidMount() {
-    let timer = setInterval(this.tickCallback, TIMEOUT);
-    //display first message right away
-    this.dequeue();
-    this.setState({timer});
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.timer);
-  }
-
-  dequeue = () => {
-    if (msgQueue.length > 0) {
-      this.setState({msg: msgQueue.shift(), open: true});
+    constructor(props) {
+        super(props);
+        this.state = {
+            timer: null,
+            msg: "",
+            open: false,
+        };
     }
-  };
 
-  handleClose = () => {
-    this.setState({open: false}, () => {
-      this.tickCallback();
-    });
-  };
+    componentDidMount() {
+        let timer = setInterval(this.tickCallback, TIMEOUT);
+        //display first message right away
+        this.dequeue();
+        this.setState({ timer });
+    }
 
-  tickCallback = () => {
-    this.dequeue();
-  };
+    componentWillUnmount() {
+        clearInterval(this.state.timer);
+    }
 
-  render() {
-    const {msg: {text, variant, duration, horizontal, vertical}, open} = this.state;
-    return (
-        <Announcer message={text}
-                   variant={variant ? variant : INFO}
-                   open={open}
-                   duration={duration ? duration : TIMEOUT}
-                   onClose={this.handleClose}
-                   horizontal={horizontal? horizontal: CENTER}
-                   vertical={vertical ? vertical : TOP}
-                   />
-    );
-  }
+    dequeue = () => {
+        if (msgQueue.length > 0) {
+            this.setState({ msg: msgQueue.shift(), open: true });
+        }
+    };
 
+    handleClose = () => {
+        this.setState({ open: false }, () => {
+            this.tickCallback();
+        });
+    };
+
+    tickCallback = () => {
+        this.dequeue();
+    };
+
+    render() {
+        const {
+            msg: { text, variant, duration, horizontal, vertical },
+            open,
+        } = this.state;
+        return (
+            <Announcer
+                message={text}
+                variant={variant ? variant : INFO}
+                open={open}
+                duration={duration ? duration : TIMEOUT}
+                onClose={this.handleClose}
+                horizontal={horizontal ? horizontal : CENTER}
+                vertical={vertical ? vertical : TOP}
+            />
+        );
+    }
 }
-
 
 export default CyVerseAnnouncer;
 
@@ -147,8 +148,7 @@ export default CyVerseAnnouncer;
  *  @param {QueueMessage} msg - A message with configuration.
  */
 const announce = (msg) => {
-  msgQueue.push(msg);
+    msgQueue.push(msg);
 };
 
 export { announce };
-

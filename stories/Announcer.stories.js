@@ -6,7 +6,7 @@ import CyVerseAnnouncer, {
     LEFT,
     RIGHT,
     TOP,
-    WARNING
+    WARNING,
 } from "../src/components/announcer/CyVerseAnnouncer";
 
 class AnnouncerTest extends Component {
@@ -15,12 +15,12 @@ class AnnouncerTest extends Component {
             {
                 text: "this is an Information",
                 duration: 3000,
-                vertical: TOP
+                vertical: TOP,
             },
             {
                 text: "this is Error Message",
                 variant: ERROR,
-                horizontal: RIGHT
+                horizontal: RIGHT,
             },
             {
                 text: "this is a Warning",
@@ -29,11 +29,9 @@ class AnnouncerTest extends Component {
                 horizontal: LEFT,
                 vertical: BOTTOM,
             },
-        ].forEach(msg => announce(msg));
+        ].forEach((msg) => announce(msg));
 
-        return (
-            <CyVerseAnnouncer/>
-        )
+        return <CyVerseAnnouncer />;
     }
 }
 
