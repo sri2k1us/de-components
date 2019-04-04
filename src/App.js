@@ -13,8 +13,7 @@ class App extends Component {
                             rel="noopener noreferrer"
                             href="https://cyverse-de.github.io/de-components/"
                         >
-                            {" "}
-                            DE Components{" "}
+                            DE Components
                         </a>
                     </p>
                 </header>
