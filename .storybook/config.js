@@ -1,10 +1,14 @@
 import { addDecorator, configure } from "@storybook/react";
+import { withConsole } from "@storybook/addon-console";
 import { withKnobs } from "@storybook/addon-knobs";
-import { theme, MuiThemeProvider } from "../src/components/lib";
+import { getMuiTheme, MuiThemeProvider } from "../src/components/lib";
+
+//redirect console error / logs / warns to action logger
+addDecorator((storyFn, context) => withConsole()(storyFn)(context));
 
 //wrap with mui theme
 const themeDecorator = (storyFn) => (
-    <MuiThemeProvider theme={theme}>{storyFn()}</MuiThemeProvider>
+    <MuiThemeProvider theme={getMuiTheme()}>{storyFn()}</MuiThemeProvider>
 );
 
 // automatically import all files ending in *.stories.js
