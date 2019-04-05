@@ -1,6 +1,6 @@
 {
     "name": "@cyverse-de/de-components",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "private": false,
     "dependencies": {
         "@material-ui/core": "^3.9.2",
@@ -49,10 +49,11 @@
         "@babel/plugin-proposal-class-properties": "^7.3.4",
         "@babel/preset-env": "^7.3.4",
         "@babel/preset-react": "^7.0.0",
-        "@storybook/addon-actions": "^5.0.1",
-        "@storybook/addon-links": "^5.0.1",
-        "@storybook/addons": "^5.0.1",
-        "@storybook/react": "^5.0.1",
+        "@storybook/addon-actions": "^5.0.6",
+        "@storybook/addon-knobs": "^5.0.6",
+        "@storybook/addon-links": "^5.0.6",
+        "@storybook/addons": "^5.0.6",
+        "@storybook/react": "^5.0.6",
         "@storybook/storybook-deployer": "^2.8.1",
         "babel-loader": "^8.0.5",
         "css-loader": "^1.0.1",
