@@ -1,27 +1,26 @@
 import React, { Component } from "react";
-import CyverseAnnouncer, {
+import CyVerseAnnouncer, {
     announce,
     BOTTOM,
     ERROR,
     LEFT,
     RIGHT,
     TOP,
-    WARNING
-} from "../src/components/announcer/CyverseAnnouncer";
-
+    WARNING,
+} from "../src/components/announcer/CyVerseAnnouncer";
 
 class AnnouncerTest extends Component {
     render() {
-        let msgs = [
+        [
             {
                 text: "this is an Information",
                 duration: 3000,
-                vertical: TOP
+                vertical: TOP,
             },
             {
                 text: "this is Error Message",
                 variant: ERROR,
-                horizontal: RIGHT
+                horizontal: RIGHT,
             },
             {
                 text: "this is a Warning",
@@ -29,15 +28,10 @@ class AnnouncerTest extends Component {
                 duration: 10000,
                 horizontal: LEFT,
                 vertical: BOTTOM,
+            },
+        ].forEach((msg) => announce(msg));
 
-            }];
-        for (let i = 0; i < msgs.length; i++) {
-            announce(msgs[i]);
-        }
-
-        return (
-            <CyverseAnnouncer/>
-        )
+        return <CyVerseAnnouncer />;
     }
 }
 

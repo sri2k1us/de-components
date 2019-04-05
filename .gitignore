@@ -10,8 +10,10 @@
 
 # production
 /build
+/dist
 
 # misc
+*.iml
 .DS_Store
 .env.local
 .env.development.local
@@ -23,3 +25,8 @@ yarn-debug.log*
 yarn-error.log*
 
 test-report.xml
+*.tgz
+
+
+
+
