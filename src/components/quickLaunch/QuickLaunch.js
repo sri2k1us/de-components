@@ -24,16 +24,28 @@ function QuickLaunch(props) {
         classes,
     } = props;
     const color = isDefault || isPublic ? "primary" : "";
-    return (
-        <Chip
-            label={label}
-            onDelete={handleDelete}
-            onClick={handleClick}
-            color={color}
-            className={classes.chip}
-            variant="outlined"
-        />
-    );
+    if (color) {
+        return (
+            <Chip
+                label={label}
+                onDelete={handleDelete}
+                onClick={handleClick}
+                color={color}
+                className={classes.chip}
+                variant="outlined"
+            />
+        );
+    } else {
+        return (
+            <Chip
+                label={label}
+                onDelete={handleDelete}
+                onClick={handleClick}
+                className={classes.chip}
+                variant="outlined"
+            />
+        );
+    }
 }
 
 QuickLaunch.propTypes = {

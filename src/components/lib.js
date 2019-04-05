@@ -10,7 +10,7 @@ import ReactDOM from "react-dom";
 window.React = React;
 window.ReactDOM = ReactDOM;
 
-const theme = () =>
+const getMuiTheme = (theme) =>
     createMuiTheme({
         palette: {
             primary: {
@@ -33,6 +33,6 @@ export {
     announce,
     QuickLaunch,
     Rate,
-    theme,
+    getMuiTheme,
     MuiThemeProvider,
 };
