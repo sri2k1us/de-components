@@ -6,6 +6,7 @@
 import React from "react";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 const styles1 = (theme) => ({
     chip: {
@@ -24,17 +25,24 @@ function QuickLaunch(props) {
     } = props;
     const color = isDefault || isPublic ? "primary" : "";
     return (
-        <React.Fragment>
-            <Chip
-                label={label}
-                onDelete={handleDelete}
-                onClick={handleClick}
-                color={color}
-                className={classes.chip}
-                variant="outlined"
-            />
-        </React.Fragment>
+        <Chip
+            label={label}
+            onDelete={handleDelete}
+            onClick={handleClick}
+            color={color}
+            className={classes.chip}
+            variant="outlined"
+        />
     );
 }
+
+QuickLaunch.propTypes = {
+    label: PropTypes.string.isRequired,
+    onDelete: PropTypes.func,
+    onClick: PropTypes.func,
+    isDefault: PropTypes.bool,
+    isPublic: PropTypes.bool,
+    classes: PropTypes.object,
+};
 
 export default withStyles(styles1)(QuickLaunch);
