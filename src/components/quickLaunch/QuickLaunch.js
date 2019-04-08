@@ -7,6 +7,8 @@ import React from "react";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
+import PublicIcon from "@material-ui/icons/Public";
+import LockIcon from "@material-ui/icons/Lock";
 
 const styles1 = (theme) => ({
     chip: {
@@ -24,10 +26,12 @@ function QuickLaunch(props) {
         classes,
     } = props;
     const color = isDefault || isPublic ? "primary" : "";
+    const icon = isPublic ? <PublicIcon /> : <LockIcon />;
     if (color) {
         return (
             <Chip
                 label={label}
+                icon={icon}
                 onDelete={handleDelete}
                 onClick={handleClick}
                 color={color}
@@ -39,6 +43,7 @@ function QuickLaunch(props) {
         return (
             <Chip
                 label={label}
+                icon={icon}
                 onDelete={handleDelete}
                 onClick={handleClick}
                 className={classes.chip}
