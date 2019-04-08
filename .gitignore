@@ -30,3 +30,6 @@ test-report.xml
 
 
 
+.vscode/launch.json
+.vscode/settings.json
+src/jsconfig.json
