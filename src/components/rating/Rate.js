@@ -4,38 +4,78 @@
  **/
 
 import React, { Component } from "react";
-import Rating from "react-rating";
-import whitestar from "./star-white.gif";
-import goldstar from "./star-gold.gif";
-import redstar from "./star-red.gif";
+import Rating from "material-ui-rating";
 import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import { withStyles } from "@material-ui/core";
+
+import DeleteIcon from "@material-ui/icons/Delete";
+import StarIcon from "@material-ui/icons/Star";
+import red from "@material-ui/core/colors/red";
+import orange from "@material-ui/core/colors/orange";
+import grey from "@material-ui/core/colors/grey";
+
+const style1 = (theme) => ({
+    ratingDelete: {
+        margin: 5,
+        "&:hover": {
+            backgroundColor: theme.palette.error.dark,
+        },
+    },
+    total: {
+        marginTop: 16,
+    },
+    rating: {
+        float: "left",
+        marginTop: 5,
+    },
+    delete: {
+        float: "left",
+        marginBottom: 10,
+    },
+});
 
 class Rate extends Component {
     render() {
-        const { label, value, readOnly, total } = this.props;
+        const {
+            label,
+            value,
+            readOnly,
+            total,
+            onChange,
+            onDelete,
+            classes,
+        } = this.props;
+
+        //if user can delete, then she/he owns the rating so style it differently
+        const iconFilled = onDelete ? orange[500] : red[500];
         return (
-            <React.Fragment>
-                <b>{label}: </b>
-                <Rating
-                    placeholderRating={value}
-                    emptySymbol={
-                        <img
-                            src={whitestar}
-                            className="icon"
-                            alt="white star"
-                        />
-                    }
-                    fullSymbol={
-                        <img src={goldstar} className="icon" alt="gold star" />
-                    }
-                    placeholderSymbol={
-                        <img src={redstar} className="icon" alt="red star" />
-                    }
-                    fractions={2}
-                    readonly={readOnly}
-                />
-                <span style={{ paddingLeft: 3 }}>({total})</span>
-            </React.Fragment>
+            <div>
+                <Typography variant="h6">{label}</Typography>
+                <div className={classes.rating}>
+                    <Rating
+                        value={value}
+                        max={5}
+                        readOnly={readOnly}
+                        onChange={onChange}
+                        iconFilled={<StarIcon nativeColor={iconFilled} />}
+                        iconHovered={<StarIcon nativeColor={orange[500]} />}
+                        iconNormal={<StarIcon nativeColor={grey[300]} />}
+                    />
+                </div>
+                <div className={classes.delete}>
+                    {onDelete && (
+                        <IconButton
+                            onClick={this.onDeleteRatingClick}
+                            className={classes.ratingDelete}
+                        >
+                            <DeleteIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                </div>
+                <div className={classes.total}>({total})</div>
+            </div>
         );
     }
 }
@@ -51,6 +91,7 @@ Rate.propTypes = {
     label: PropTypes.string.isRequired,
     readOnly: PropTypes.bool,
     total: PropTypes.number,
+    onChange: PropTypes.func,
 };
 
-export default Rate;
+export default withStyles(style1)(Rate);
