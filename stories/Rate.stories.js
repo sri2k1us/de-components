@@ -7,7 +7,6 @@ class RatingTest extends Component {
         return (
             <React.Fragment>
                 <Rate
-                    label="Rating"
                     value={number("Rating", 4.5)}
                     total={10}
                     readOnly={boolean("ReadOnly", false)}

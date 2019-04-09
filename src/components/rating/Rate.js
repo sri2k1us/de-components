@@ -24,7 +24,7 @@ const style1 = (theme) => ({
         },
     },
     total: {
-        marginTop: 16,
+        paddingTop: 17,
     },
     rating: {
         float: "left",
@@ -39,7 +39,6 @@ const style1 = (theme) => ({
 class Rate extends Component {
     render() {
         const {
-            label,
             value,
             readOnly,
             total,
@@ -52,7 +51,6 @@ class Rate extends Component {
         const iconFilled = onDelete ? orange[500] : red[500];
         return (
             <div>
-                <Typography variant="h6">{label}</Typography>
                 <div className={classes.rating}>
                     <Rating
                         value={value}
@@ -88,7 +86,6 @@ Rate.defaultProps = {
 
 Rate.propTypes = {
     value: PropTypes.number,
-    label: PropTypes.string.isRequired,
     readOnly: PropTypes.bool,
     total: PropTypes.number,
     onChange: PropTypes.func,
