@@ -1,7 +1,9 @@
 import { addDecorator, configure } from "@storybook/react";
 import { withConsole } from "@storybook/addon-console";
 import { withKnobs } from "@storybook/addon-knobs";
-import { getMuiTheme, MuiThemeProvider } from "../src/components/lib";
+import { getMuiTheme, MuiThemeProvider } from "../src/lib";
+import React from "react";
+import ReactDOM from "react-dom";
 
 //redirect console error / logs / warns to action logger
 addDecorator((storyFn, context) => withConsole()(storyFn)(context));
