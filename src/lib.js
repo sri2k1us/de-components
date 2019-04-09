@@ -1,14 +1,11 @@
-import CyVerseAnnouncer, { announce } from "./announcer/CyVerseAnnouncer";
-import QuickLaunch from "./quickLaunch/QuickLaunch";
-import Rate from "./rating/Rate";
-import palette from "../../src/util/CyVersePalette";
+import CyVerseAnnouncer, {
+    announce,
+} from "./components/announcer/CyVerseAnnouncer";
+import QuickLaunch from "./components/quickLaunch/QuickLaunch";
+import Rate from "./components/rating/Rate";
+import palette from "./util/CyVersePalette";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import React from "react";
-import ReactDOM from "react-dom";
-
-window.React = React;
-window.ReactDOM = ReactDOM;
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -32,6 +29,7 @@ export {
     CyVerseAnnouncer,
     announce,
     QuickLaunch,
+    palette,
     Rate,
     getMuiTheme,
     MuiThemeProvider,
