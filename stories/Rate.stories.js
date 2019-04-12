@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import Rate from "../src/components/rating/Rate";
-import { boolean } from "@storybook/addon-knobs";
+import { boolean, number } from "@storybook/addon-knobs";
 
 class RatingTest extends Component {
     render() {
         return (
             <Rate
-                label="Rating"
-                value={4.5}
+                value={number("Rating", 4.5)}
+                total={10}
                 readOnly={boolean("ReadOnly", false)}
+                onDelete={() => console.log("delete rating")}
+                onChange={(value) => console.log("new rating:" + value)}
             />
         );
     }
