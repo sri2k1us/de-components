@@ -47,8 +47,12 @@ class Rate extends Component {
             classes,
         } = this.props;
 
+        const iconHovered = orange[500];
+        const iconNormal = grey[300];
+
         //if user can delete, then she/he owns the rating so style it differently
-        const iconFilled = onDelete ? orange[500] : red[500];
+        const iconFilled = onDelete ? iconHovered : red[500];
+
         return (
             <div>
                 <div className={classes.rating}>
@@ -58,14 +62,14 @@ class Rate extends Component {
                         readOnly={readOnly}
                         onChange={onChange}
                         iconFilled={<StarIcon nativeColor={iconFilled} />}
-                        iconHovered={<StarIcon nativeColor={orange[500]} />}
-                        iconNormal={<StarIcon nativeColor={grey[300]} />}
+                        iconHovered={<StarIcon nativeColor={iconHovered} />}
+                        iconNormal={<StarIcon nativeColor={iconNormal} />}
                     />
                 </div>
                 <div className={classes.delete}>
                     {onDelete && (
                         <IconButton
-                            onClick={this.onDeleteRatingClick}
+                            onClick={onDelete}
                             className={classes.ratingDelete}
                         >
                             <DeleteIcon fontSize="small" />
