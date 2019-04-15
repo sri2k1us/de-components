@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import Rating from "material-ui-rating";
 import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
+
 import IconButton from "@material-ui/core/IconButton";
 import { withStyles } from "@material-ui/core";
 
