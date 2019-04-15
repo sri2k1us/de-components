@@ -26,11 +26,11 @@ const getMuiTheme = (theme) =>
     });
 
 export {
-    CyVerseAnnouncer,
     announce,
-    QuickLaunch,
-    palette,
-    Rate,
+    CyVerseAnnouncer,
     getMuiTheme,
     MuiThemeProvider,
+    palette,
+    QuickLaunch,
+    Rate,
 };

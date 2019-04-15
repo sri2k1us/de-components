@@ -25,32 +25,19 @@ function QuickLaunch(props) {
         isPublic,
         classes,
     } = props;
-    const color = isDefault || isPublic ? "primary" : "";
+    const color = isDefault || isPublic ? "primary" : "default";
     const icon = isPublic ? <PublicIcon /> : <LockIcon />;
-    if (color) {
-        return (
-            <Chip
-                label={label}
-                icon={icon}
-                onDelete={handleDelete}
-                onClick={handleClick}
-                color={color}
-                className={classes.chip}
-                variant="outlined"
-            />
-        );
-    } else {
-        return (
-            <Chip
-                label={label}
-                icon={icon}
-                onDelete={handleDelete}
-                onClick={handleClick}
-                className={classes.chip}
-                variant="outlined"
-            />
-        );
-    }
+    return (
+        <Chip
+            label={label}
+            icon={icon}
+            color={color}
+            onDelete={handleDelete}
+            onClick={handleClick}
+            className={classes.chip}
+            variant="outlined"
+        />
+    );
 }
 
 QuickLaunch.propTypes = {
