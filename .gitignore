@@ -27,9 +27,7 @@ yarn-error.log*
 test-report.xml
 *.tgz
 
-
-
-
+.vscode
 .vscode/launch.json
 .vscode/settings.json
 src/jsconfig.json

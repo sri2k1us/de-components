@@ -13,7 +13,7 @@
         "react-scripts": "2.1.5"
     },
     "scripts": {
-        "build": "rm -rf dist && NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+        "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "test:ci": "CI=true react-scripts test --env=jsdom --ci --testResultsProcessor ./node_modules/jest-junit-reporter",
@@ -52,6 +52,7 @@
         "@storybook/addon-actions": "^5.0.6",
         "@storybook/addon-knobs": "^5.0.6",
         "@storybook/addon-links": "^5.0.6",
+        "@storybook/addon-console": "^1.1.0",
         "@storybook/addons": "^5.0.6",
         "@storybook/react": "^5.0.6",
         "@storybook/storybook-deployer": "^2.8.1",
