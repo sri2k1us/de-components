@@ -10,11 +10,11 @@ import { boolean } from "@storybook/addon-knobs";
 
 class QuickLaunchTest extends Component {
     render() {
-        const handleClick = () => {
-            console.log("Badge clicked!");
+        const handleClick = (event) => {
+            console.log("Badge clicked!" + event.target);
         };
-        const handleDelete = () => {
-            console.log("Badge delete clicked!");
+        const handleDelete = (event) => {
+            console.log("Badge delete clicked!" + event.target);
         };
         return (
             <React.Fragment>

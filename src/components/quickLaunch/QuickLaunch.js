@@ -18,7 +18,9 @@ const styles1 = (theme) => ({
 
 function QuickLaunch(props) {
     const {
+        id,
         label,
+        clickable,
         handleClick,
         handleDelete,
         isDefault,
@@ -29,6 +31,8 @@ function QuickLaunch(props) {
     const icon = isPublic ? <PublicIcon /> : <LockIcon />;
     return (
         <Chip
+            clickable={clickable}
+            key={id}
             label={label}
             icon={icon}
             color={color}
@@ -36,14 +40,21 @@ function QuickLaunch(props) {
             onClick={handleClick}
             className={classes.chip}
             variant="outlined"
+            {...props}
         />
     );
 }
 
+QuickLaunch.defaultProps = {
+    clickable: true,
+};
+
 QuickLaunch.propTypes = {
+    id: PropTypes.string.isRequired,
+    clickable: PropTypes.bool,
     label: PropTypes.string.isRequired,
-    onDelete: PropTypes.func,
-    onClick: PropTypes.func,
+    handleDelete: PropTypes.func,
+    handleClick: PropTypes.func,
     isDefault: PropTypes.bool,
     isPublic: PropTypes.bool,
     classes: PropTypes.object,
