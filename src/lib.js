@@ -1,6 +1,7 @@
 import CyVerseAnnouncer, {
     announce,
 } from "./components/announcer/CyVerseAnnouncer";
+import LoadingMask from "./components/loading/LoadingMask";
 import QuickLaunch from "./components/quickLaunch/QuickLaunch";
 import Rate from "./components/rating/Rate";
 import palette from "./util/CyVersePalette";
@@ -29,6 +30,7 @@ export {
     announce,
     CyVerseAnnouncer,
     getMuiTheme,
+    LoadingMask,
     MuiThemeProvider,
     palette,
     QuickLaunch,
