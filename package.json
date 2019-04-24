@@ -10,6 +10,7 @@
         "prop-types": "^15.7.2",
         "react": "^16.8.3",
         "react-dom": "^16.8.3",
+        "react-loading-overlay": "^1.0.1",
         "react-scripts": "2.1.5"
     },
     "scripts": {
@@ -20,7 +21,8 @@
         "storybook": "start-storybook -p 9009 -s public",
         "build-storybook": "build-storybook -s public",
         "deploy-storybook": "storybook-to-ghpages",
-        "prettier": "prettier --write 'src/**/*.js' 'stories/**/*.js'"
+        "prettier": "prettier --write 'src/**/*.js' 'stories/**/*.js'",
+        "publish": "npm run build && npm-cli-login && npm publish --access public"
     },
     "eslintConfig": {
         "extends": "react-app"
