@@ -18,8 +18,10 @@ class QuickLaunchTest extends Component {
         };
         return (
             <React.Fragment>
-                <QuickLaunch label="Batman" />
+                <QuickLaunch id="test-debug-id1" label="Batman" />
                 <QuickLaunch
+                    id="test-debug-id2"
+                    clickable={true}
                     label="Superman"
                     handleClick={handleClick}
                     handleDelete={handleDelete}
