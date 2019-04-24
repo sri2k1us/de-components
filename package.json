@@ -1,6 +1,6 @@
 {
     "name": "@cyverse-de/de-components",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "private": false,
     "dependencies": {
         "@material-ui/core": "^3.9.2",
