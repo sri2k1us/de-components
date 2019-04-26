@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Rate from "../src/components/rating/Rate";
 import { boolean, number } from "@storybook/addon-knobs";
+import { storiesOf } from "@storybook/react";
 
 class RatingTest extends Component {
     render() {
@@ -16,4 +17,4 @@ class RatingTest extends Component {
     }
 }
 
-export default RatingTest;
+storiesOf("Rate", module).add("with rate", () => <RatingTest />);

@@ -7,6 +7,7 @@
 import React, { Component } from "react";
 import LoadingMask from "../src/components/loading/LoadingMask";
 import { boolean } from "@storybook/addon-knobs";
+import { storiesOf } from "@storybook/react";
 
 class LoadingMaskTest extends Component {
     render() {
@@ -69,4 +70,4 @@ class LoadingMaskTest extends Component {
     }
 }
 
-export default LoadingMaskTest;
+storiesOf("Loading", module).add("with mask", () => <LoadingMaskTest />);
