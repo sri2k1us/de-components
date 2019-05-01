@@ -7,7 +7,8 @@
         "@material-ui/icons": "^3.0.2",
         "classnames": "^2.2.6",
         "material-ui-rating": "^3.1.0",
-        "react-loading-overlay": "^1.0.1"
+        "react-loading-overlay": "^1.0.1",
+        "react-scripts": "2.1.8"
     },
     "scripts": {
         "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
@@ -63,8 +64,7 @@
         "pretty-quick": "^1.10.0",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "react-scripts": "2.1.8"
+        "react-dom": "^16.8.6"
     },
     "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
     "main": "dist/lib.js",

@@ -9,7 +9,7 @@ import LoadingMask from "../src/components/loading/LoadingMask";
 import { boolean } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 
-class LoadingMaskTest extends Component {
+export default class LoadingMaskTest extends Component {
     render() {
         return (
             <LoadingMask loading={boolean("Loading", true)}>
