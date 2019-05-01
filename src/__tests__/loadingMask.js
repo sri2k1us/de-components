@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { getMuiTheme, MuiThemeProvider } from "../lib";
 import LoadingMaskTest from "../../stories/LoadingMask.stories";
 
-it("renders announcer without crashing", () => {
+it("renders loading mask without crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
         <MuiThemeProvider theme={getMuiTheme()}>
