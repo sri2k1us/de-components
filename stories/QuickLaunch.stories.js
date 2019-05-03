@@ -7,8 +7,9 @@
 import React, { Component } from "react";
 import QuickLaunch from "../src/components/quickLaunch/QuickLaunch";
 import { boolean } from "@storybook/addon-knobs";
+import { storiesOf } from "@storybook/react";
 
-class QuickLaunchTest extends Component {
+export default class QuickLaunchTest extends Component {
     render() {
         const handleClick = (event) => {
             console.log("Badge clicked!" + event.target);
@@ -33,4 +34,6 @@ class QuickLaunchTest extends Component {
     }
 }
 
-export default QuickLaunchTest;
+storiesOf("QuickLaunch", module).add("with Quick Launch", () => (
+    <QuickLaunchTest />
+));

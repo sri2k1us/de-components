@@ -8,8 +8,9 @@ import CyVerseAnnouncer, {
     TOP,
     WARNING,
 } from "../src/components/announcer/CyVerseAnnouncer";
+import { storiesOf } from "@storybook/react";
 
-class AnnouncerTest extends Component {
+export default class AnnouncerTest extends Component {
     render() {
         [
             {
@@ -35,4 +36,4 @@ class AnnouncerTest extends Component {
     }
 }
 
-export default AnnouncerTest;
+storiesOf("Announcer", module).add("with announcer", () => <AnnouncerTest />);
