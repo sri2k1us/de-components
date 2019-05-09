@@ -1,3 +1,4 @@
+import AppTile from "./components/appTile/AppTile";
 import CyVerseAnnouncer, {
     announce,
 } from "./components/announcer/CyVerseAnnouncer";
@@ -28,6 +29,7 @@ const getMuiTheme = (theme) =>
 
 export {
     announce,
+    AppTile,
     CyVerseAnnouncer,
     getMuiTheme,
     LoadingMask,
