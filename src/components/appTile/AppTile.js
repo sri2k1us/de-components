@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Lock from "@material-ui/icons/Lock";
-import Cancel from "@material-ui/icons/Cancel";
+import Report from "@material-ui/icons/Report";
 import palette from "../../util/CyVersePalette";
 import Beta from "./betaSymbol.png";
 import md5 from "md5";
@@ -24,6 +22,14 @@ const styles = (theme) => ({
         maxHeight: 120,
         margin: 15,
         padding: 5,
+        cursor: "pointer",
+        "&:hover": {
+            border: "1px solid",
+        },
+    },
+    avatar: {
+        float: "left",
+        margin: 10,
     },
     type: {
         textAlign: "center",
@@ -36,7 +42,7 @@ const styles = (theme) => ({
         overflow: "hidden",
         whiteSpace: "nowrap",
         display: "inline-block",
-        maxWidth: 100,
+        maxWidth: 150,
         "&:hover": {
             textDecoration: "underline",
             cursor: "pointer",
@@ -44,6 +50,7 @@ const styles = (theme) => ({
     },
     more: {
         float: "right",
+        height: 120,
     },
     creator: {
         margin: 10,
@@ -54,12 +61,20 @@ const styles = (theme) => ({
         overflow: "hidden",
         whiteSpace: "nowrap",
         display: "inline-block",
-        maxWidth: 100,
+        maxWidth: 150,
     },
     status: {
         position: "relative",
         top: 40,
         right: -10,
+    },
+    statusNoMenu: {
+        position: "relative",
+        top: 90,
+        right: 10,
+    },
+    rating: {
+        width: "80%",
     },
 });
 
@@ -67,7 +82,7 @@ function AppStatus(props) {
     const { isPublic, isBeta, isDisabled } = props;
     if (!isPublic) {
         return (
-            <Tooltip title="This app is only visible to you.">
+            <Tooltip title="This app is only visible to you and people you share it with.">
                 <Lock style={{ color: palette.blue }} />
             </Tooltip>
         );
@@ -82,7 +97,7 @@ function AppStatus(props) {
     if (isDisabled) {
         return (
             <Tooltip title="This app is disabled.">
-                <Cancel style={{ color: palette.red }} />
+                <Report style={{ color: palette.red }} />
             </Tooltip>
         );
     }
@@ -119,7 +134,7 @@ function AppTile(props) {
 
     return (
         <Paper className={classes.card}>
-            <div style={{ float: "left", margin: 10 }}>
+            <div className={classes.avatar}>
                 <div>
                     <img src={avatarImgSrc} alt="avatar image" />
                 </div>
@@ -130,22 +145,32 @@ function AppTile(props) {
                     {name}
                 </div>
                 <div className={classes.more}>
-                    <IconButton
-                        aria-label="More"
-                        aria-owns={open ? "long-menu" : null}
-                        aria-haspopup="true"
-                        onClick={(event) => setAnchorEl(event.currentTarget)}
+                    {MenuItems != null && (
+                        <div>
+                            <IconButton
+                                aria-label="More"
+                                aria-owns={open ? "long-menu" : null}
+                                aria-haspopup="true"
+                                onClick={(event) =>
+                                    setAnchorEl(event.currentTarget)
+                                }
+                            >
+                                <MoreVertIcon />
+                            </IconButton>
+                            <Menu
+                                anchorEl={anchorEl}
+                                open={open}
+                                onClose={() => setAnchorEl(null)}
+                            >
+                                <MenuItems />
+                            </Menu>
+                        </div>
+                    )}
+                    <div
+                        className={
+                            MenuItems ? classes.status : classes.statusNoMenu
+                        }
                     >
-                        <MoreVertIcon />
-                    </IconButton>
-                    <Menu
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={() => setAnchorEl(null)}
-                    >
-                        <MenuItems />
-                    </Menu>
-                    <div className={classes.status}>
                         <AppStatus
                             isPublic={isPublic}
                             isBeta={isBeta}
@@ -155,7 +180,7 @@ function AppTile(props) {
                 </div>
             </div>
             <div className={classes.creator}>{creator}</div>
-            <div>
+            <div className={classes.rating}>
                 <Rate
                     value={userRating ? userRating : averageRating}
                     readOnly={isExternal}

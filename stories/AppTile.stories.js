@@ -40,7 +40,7 @@ export default class AppTileTest extends Component {
                     toolName="Tool Name"
                     toolVersion="0.0.1"
                     type="DE"
-                    rating={{ average: 3, total: 100 }}
+                    rating={{ average: 3, total: 100, user: 2 }}
                     link="https://qa.cyverse.org/de/?type=apps&app-id=676846d4-854a-11e4-980d-7f0fcca75dbb&system-id=de"
                     isBeta={false}
                     isPublic={false}
@@ -61,7 +61,6 @@ export default class AppTileTest extends Component {
                     link="https://qa.cyverse.org/de/?type=apps&app-id=676846d4-854a-11e4-980d-7f0fcca75dbb&system-id=de"
                     isBeta={true}
                     isPublic={true}
-                    MenuItems={MenuItems}
                     isDisabled={false}
                     onDeleteRatingClick={() => console.log("Rating deleted!")}
                 />
@@ -78,7 +77,6 @@ export default class AppTileTest extends Component {
                     link="https://qa.cyverse.org/de/?type=apps&app-id=676846d4-854a-11e4-980d-7f0fcca75dbb&system-id=de"
                     isBeta={false}
                     isPublic={true}
-                    MenuItems={MenuItems}
                     isDisabled={false}
                     onDeleteRatingClick={() => console.log("Rating deleted!")}
                 />

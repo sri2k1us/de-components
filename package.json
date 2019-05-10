@@ -8,6 +8,7 @@
         "classnames": "^2.2.6",
         "material-ui-rating": "^3.1.0",
         "md5": "^2.2.1",
+        "react-intl": "^2.8.0",
         "react-loading-overlay": "^1.0.1",
         "react-scripts": "2.1.8"
     },
