@@ -10,6 +10,9 @@ import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
+import { injectIntl } from "react-intl";
+import intlData from "./messages";
+import withI18N, { formatMessage } from "../../util/I18NWrapper";
 
 const GRAVATAR_URL = "https://www.gravatar.com/avatar/";
 const GRAVATAR_OPTIONS = "d=identicon&s=60";
@@ -79,24 +82,24 @@ const styles = (theme) => ({
 });
 
 function AppStatus(props) {
-    const { isPublic, isBeta, isDisabled } = props;
+    const { isPublic, isBeta, isDisabled, intl } = props;
     if (!isPublic) {
         return (
-            <Tooltip title="This app is only visible to you and people you share it with.">
+            <Tooltip title={formatMessage(intl, "privateAppTooltip")}>
                 <Lock style={{ color: palette.blue }} />
             </Tooltip>
         );
     }
     if (isBeta) {
         return (
-            <Tooltip title="This app is in beta.">
+            <Tooltip title={formatMessage(intl, "betaAppTooltip")}>
                 <img src={Beta} height={16} alt="beta" />
             </Tooltip>
         );
     }
     if (isDisabled) {
         return (
-            <Tooltip title="This app is disabled.">
+            <Tooltip title={formatMessage(intl, "disabledAppTooltip")}>
                 <Report style={{ color: palette.red }} />
             </Tooltip>
         );
@@ -119,6 +122,7 @@ function AppTile(props) {
         onRatingChange,
         onDeleteRatingClick,
         MenuItems,
+        intl,
     } = props;
 
     const {
@@ -175,6 +179,7 @@ function AppTile(props) {
                             isPublic={isPublic}
                             isBeta={isBeta}
                             isDisabled={isDisabled}
+                            intl={intl}
                         />
                     </div>
                 </div>
@@ -195,4 +200,4 @@ function AppTile(props) {
 
 AppTile.defaultProps = {};
 
-export default withStyles(styles, { withTheme: true })(AppTile);
+export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));
