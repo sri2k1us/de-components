@@ -1,9 +1,9 @@
-import SearchField from "./SearchField";
+import SearchField from "../searchField/SearchField";
 
 import Filter from "@material-ui/icons/FilterList";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Popover from "@material-ui/core/Popover";
+import IconButton from "@material-ui/core/IconButton/index";
+import InputAdornment from "@material-ui/core/InputAdornment/index";
+import Popover from "@material-ui/core/Popover/index";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 

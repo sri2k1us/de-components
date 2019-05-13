@@ -13,6 +13,7 @@ import Paper from "@material-ui/core/Paper";
 import { injectIntl } from "react-intl";
 import intlData from "./messages";
 import withI18N, { formatMessage } from "../../util/I18NWrapper";
+import classnames from "classnames";
 
 const GRAVATAR_URL = "https://www.gravatar.com/avatar/";
 const GRAVATAR_OPTIONS = "d=identicon&s=60";
@@ -29,6 +30,10 @@ const styles = (theme) => ({
         "&:hover": {
             border: "1px solid",
         },
+    },
+    selectedCard: {
+        border: "1px solid",
+        backgroundColor: palette.lightGray,
     },
     avatar: {
         float: "left",
@@ -123,6 +128,9 @@ function AppTile(props) {
         onDeleteRatingClick,
         MenuItems,
         intl,
+        onAppNameClicked,
+        onAppSelected,
+        selected,
     } = props;
 
     const {
@@ -136,8 +144,17 @@ function AppTile(props) {
 
     let avatarImgSrc = GRAVATAR_URL + md5(uuid) + "?" + GRAVATAR_OPTIONS;
 
+    const handleAppSelection = () => {};
+
     return (
-        <Paper className={classes.card}>
+        <Paper
+            className={
+                selected
+                    ? classnames(classes.card, classes.selectedCard)
+                    : classes.card
+            }
+            onClick={handleAppSelection}
+        >
             <div className={classes.avatar}>
                 <div>
                     <img src={avatarImgSrc} alt="avatar image" />
@@ -145,7 +162,11 @@ function AppTile(props) {
                 <div className={classes.type}>{type.toLowerCase()}</div>
             </div>
             <div>
-                <div title={name} className={classes.name}>
+                <div
+                    title={name}
+                    className={classes.name}
+                    onClick={onAppNameClicked}
+                >
                     {name}
                 </div>
                 <div className={classes.more}>

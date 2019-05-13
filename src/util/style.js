@@ -1,10 +1,6 @@
 import palette from "./CyVersePalette";
 
 export default {
-    highlightColor: {
-        background: "#FF0",
-    },
-
     errorHandlerTitle: {
         display: "flex",
     },

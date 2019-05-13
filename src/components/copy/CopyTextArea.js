@@ -4,7 +4,7 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import { copySelection, hasClipboardAPI } from "../clipboardFunctions";
+import { copySelection, hasClipboardAPI } from "./clipboardFunctions";
 import PropTypes from "prop-types";
 
 class CopyTextArea extends Component {
@@ -55,7 +55,7 @@ class CopyTextArea extends Component {
                 />
                 {hasClipboardAPI() && (
                     <Button
-                        variant="raised"
+                        variant="contained"
                         id={`${debugIdPrefix}.CopyTextArea.Button`}
                         onClick={this.onCopyText}
                         style={{ padding: 2 }}

@@ -7,7 +7,7 @@ import { getIn } from "formik";
 import moment from "moment";
 
 import build from "./DebugIDUtil";
-import Autocomplete from "./Autocomplete";
+import Autocomplete from "../components/autocomplete/Autocomplete";
 
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";

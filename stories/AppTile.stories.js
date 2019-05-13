@@ -30,6 +30,9 @@ export default class AppTileTest extends Component {
                     MenuItems={MenuItems}
                     isDisabled={true}
                     onDeleteRatingClick={() => console.log("Rating deleted!")}
+                    onAppNameClicked={() => console.log("AppName clicked")}
+                    onAppSelected={() => console.log("App selected")}
+                    selected={true}
                 />
                 <AppTile
                     uuid="2"
@@ -47,6 +50,9 @@ export default class AppTileTest extends Component {
                     MenuItems={MenuItems}
                     isDisabled={false}
                     onDeleteRatingClick={() => console.log("Rating deleted!")}
+                    onAppNameClicked={() => console.log("AppName clicked")}
+                    onAppSelected={() => console.log("App selected")}
+                    selected={false}
                 />
                 <AppTile
                     uuid="3"
@@ -63,6 +69,9 @@ export default class AppTileTest extends Component {
                     isPublic={true}
                     isDisabled={false}
                     onDeleteRatingClick={() => console.log("Rating deleted!")}
+                    onAppNameClicked={() => console.log("AppName clicked")}
+                    onAppSelected={() => console.log("App selected")}
+                    selected={true}
                 />
                 <AppTile
                     uuid="4"
@@ -79,6 +88,9 @@ export default class AppTileTest extends Component {
                     isPublic={true}
                     isDisabled={false}
                     onDeleteRatingClick={() => console.log("Rating deleted!")}
+                    onAppNameClicked={() => console.log("AppName clicked")}
+                    onAppSelected={() => console.log("App selected")}
+                    selected={false}
                 />
             </React.Fragment>
         );

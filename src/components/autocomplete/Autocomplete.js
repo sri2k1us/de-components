@@ -2,15 +2,15 @@ import styles from "./AutocompleteStyles";
 
 import Async from "react-select/lib/Async";
 import AsyncCreatableSelect from "react-select/lib/AsyncCreatable";
-import Chip from "@material-ui/core/Chip";
+import Chip from "@material-ui/core/Chip/index";
 import classNames from "classnames";
-import MenuItem from "@material-ui/core/MenuItem";
+import MenuItem from "@material-ui/core/MenuItem/index";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Select, { Creatable } from "react-select";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField/index";
+import Typography from "@material-ui/core/Typography/index";
+import { withStyles } from "@material-ui/core/styles/index";
 
 /**
  * @author aramsey

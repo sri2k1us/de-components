@@ -1,12 +1,9 @@
-import styles from "./style";
-
-import injectSheet from "react-jss";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import PropTypes from "prop-types";
 import React, { Component } from "react";
+import InputAdornment from "@material-ui/core/InputAdornment/index";
+import PropTypes from "prop-types";
 import Search from "@material-ui/icons/Search";
-import TextField from "@material-ui/core/TextField";
-import CyVersePalette from "./CyVersePalette";
+import TextField from "@material-ui/core/TextField/index";
+import CyVersePalette from "../../util/CyVersePalette";
 
 /**
  * @author aramsey
@@ -101,7 +98,6 @@ class SearchField extends Component {
                         disableUnderline: true,
                         startAdornment: startAdornment,
                         endAdornment: endAdornment,
-                        className: classes.searchInput,
                     }}
                 />
                 {children}
@@ -135,4 +131,4 @@ SearchField.defaultProps = {
     endAdornment: null,
 };
 
-export default injectSheet(styles)(SearchField);
+export default SearchField;
