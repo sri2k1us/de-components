@@ -11,9 +11,9 @@ class App extends Component {
                             className="App-link"
                             target="_blank"
                             rel="noopener noreferrer"
-                            href="https://cyverse-de.github.io/de-components/"
+                            href="https://cyverse-de.github.io/ui-lib/"
                         >
-                            DE Components
+                            DE UI Library
                         </a>
                     </p>
                 </header>

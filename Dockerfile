@@ -1,6 +1,6 @@
 FROM node:8
 
-COPY . /src/de-components
-WORKDIR /src/de-components
+COPY . /src/ui-lib
+WORKDIR /src/ui-lib
 
 CMD ["npm", "run", "test:ci"]
