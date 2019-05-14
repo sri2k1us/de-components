@@ -6,14 +6,16 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Dialog from "@material-ui/core/Dialog";
+
+import intlData from "./messages";
 import DEDialogHeader from "./DEDialogHeader";
 import withI18N, { getMessage } from "../I18NWrapper";
-import TextField from "../../../node_modules/@material-ui/core/TextField/TextField";
+
 import Button from "../../../node_modules/@material-ui/core/Button/Button";
+import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import intlData from "./messages";
+import TextField from "../../../node_modules/@material-ui/core/TextField/TextField";
 
 class DEPromptDialog extends Component {
     constructor(props) {

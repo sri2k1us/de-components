@@ -3,14 +3,16 @@
  *
  * */
 import React from "react";
+import PropTypes from "prop-types";
+
+import intlData from "./messages";
+import withI18N, { getMessage } from "../I18NWrapper";
+
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
-import intlData from "./messages";
-import withI18N, { getMessage } from "../I18NWrapper";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
 const actionsStyles = (theme) => ({

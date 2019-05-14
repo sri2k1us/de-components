@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import InputAdornment from "@material-ui/core/InputAdornment/index";
 import PropTypes from "prop-types";
+import CyVersePalette from "../../util/CyVersePalette";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import Search from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField/index";
-import CyVersePalette from "../../util/CyVersePalette";
 
 /**
  * @author aramsey

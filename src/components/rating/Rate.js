@@ -4,8 +4,8 @@
  **/
 
 import React, { Component } from "react";
-import Rating from "material-ui-rating";
 import PropTypes from "prop-types";
+import Rating from "material-ui-rating";
 
 import IconButton from "@material-ui/core/IconButton";
 import { Tooltip, withStyles } from "@material-ui/core";

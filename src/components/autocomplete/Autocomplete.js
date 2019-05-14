@@ -1,12 +1,15 @@
-import styles from "./AutocompleteStyles";
+import React, { Component } from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 
 import Async from "react-select/lib/Async";
 import AsyncCreatableSelect from "react-select/lib/AsyncCreatable";
+
+import styles from "./AutocompleteStyles";
+
 import Chip from "@material-ui/core/Chip/index";
-import classNames from "classnames";
 import MenuItem from "@material-ui/core/MenuItem/index";
-import PropTypes from "prop-types";
-import React, { Component } from "react";
+
 import Select, { Creatable } from "react-select";
 import TextField from "@material-ui/core/TextField/index";
 import Typography from "@material-ui/core/Typography/index";

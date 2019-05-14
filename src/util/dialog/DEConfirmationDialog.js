@@ -3,16 +3,18 @@
  *
  **/
 import React, { Component } from "react";
-import Dialog from "@material-ui/core/Dialog/Dialog";
+import PropTypes from "prop-types";
+
+import ids from "./ids";
+import intlData from "./messages";
+import build from "../DebugIDUtil";
 import withI18N, { getMessage } from "../I18NWrapper";
+import DEDialogHeader from "./DEDialogHeader";
+
+import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import Button from "@material-ui/core/Button/Button";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
-import DEDialogHeader from "./DEDialogHeader";
-import intlData from "./messages";
-import PropTypes from "prop-types";
-import ids from "./ids";
-import build from "../DebugIDUtil";
 
 export const TWO_BUTTON_VARIANT = "twoButtonVariant";
 export const THREE_BUTTON_VARIANT = "threeButtonVariant";

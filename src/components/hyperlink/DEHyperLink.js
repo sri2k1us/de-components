@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import styles from "./style";
 import PropTypes from "prop-types";
+import styles from "./style";
 import { withStyles } from "@material-ui/core/styles";
 class DEHyperLink extends Component {
     render() {

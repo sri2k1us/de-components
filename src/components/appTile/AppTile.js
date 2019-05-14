@@ -1,19 +1,28 @@
+/**
+ *  @author sriram
+ *
+ **/
+
 import React, { useState } from "react";
-import Lock from "@material-ui/icons/Lock";
-import Report from "@material-ui/icons/Report";
-import palette from "../../util/CyVersePalette";
-import Beta from "./betaSymbol.png";
+import classnames from "classnames";
+import { injectIntl } from "react-intl";
+
 import md5 from "md5";
-import { Tooltip, withStyles } from "@material-ui/core";
+import PropTypes from "prop-types";
 import Rate from "../rating/Rate";
+
+import intlData from "./messages";
+import Beta from "./betaSymbol.png";
+import palette from "../../util/CyVersePalette";
+
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
-import { injectIntl } from "react-intl";
-import intlData from "./messages";
+import Lock from "@material-ui/icons/Lock";
+import Report from "@material-ui/icons/Report";
+import { Tooltip, withStyles } from "@material-ui/core";
 import withI18N, { formatMessage } from "../../util/I18NWrapper";
-import classnames from "classnames";
 
 const GRAVATAR_URL = "https://www.gravatar.com/avatar/";
 const GRAVATAR_OPTIONS = "d=identicon&s=60";
@@ -219,6 +228,26 @@ function AppTile(props) {
     );
 }
 
-AppTile.defaultProps = {};
+AppTile.propTypes = {
+    uuid: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    creator: PropTypes.string.isRequired,
+    rating: PropTypes.shape({
+        average: PropTypes.number,
+        user: PropTypes.number,
+        total: PropTypes.number,
+    }),
+    type: PropTypes.string.isRequired,
+    isPublic: PropTypes.bool,
+    isBeta: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    isExternal: PropTypes.bool,
+    onRatingChange: PropTypes.func,
+    onDeleteRatingClick: PropTypes.func,
+    MenuItems: PropTypes.node,
+    onAppNameClicked: PropTypes.func,
+    onAppSelected: PropTypes.func,
+    selected: PropTypes.bool,
+};
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));
