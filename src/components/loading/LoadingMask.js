@@ -26,6 +26,7 @@ function LoadingMask(props) {
             active={loading}
             spinner={
                 <CircularProgress
+                    id="loading-mask"
                     size={30}
                     className={classes.loading}
                     thickness={7}
