@@ -4,7 +4,6 @@
 
 import moment from "moment";
 import constants from "../constants";
-
 /**
  * Format date with the given format or return a `-`
  * @param longDate

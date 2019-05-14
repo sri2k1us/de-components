@@ -1,3 +1,5 @@
+import constants from "./constants";
+
 import AppTile from "./components/appTile/AppTile";
 import CyVerseAnnouncer, {
     announce,
@@ -21,8 +23,6 @@ import {
     formatMessage,
     formatHTMLMessage,
 } from "./util/I18NWrapper";
-
-import withStoreProvider from "./util/StoreProvider";
 
 import DEAlertDialog from "./util/dialog/DEAlertDialog";
 import DEConfirmationDialog from "./util/dialog/DEConfirmationDialog";
@@ -61,8 +61,9 @@ export {
     announce,
     AppTile,
     build,
-    CyVerseAnnouncer,
     CopyTextArea,
+    constants,
+    CyVerseAnnouncer,
     DEAlertDialog,
     DEConfirmationDialog,
     DEDialogHeader,
@@ -90,5 +91,4 @@ export {
     stableSort,
     TablePaginationActions,
     TriggerField,
-    withStoreProvider,
 };
