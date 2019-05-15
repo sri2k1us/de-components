@@ -1,6 +1,7 @@
 import constants from "./constants";
 
 import AppTile from "./components/appTile/AppTile";
+import Autocomplete from "./components/autocomplete/Autocomplete";
 import CyVerseAnnouncer, {
     announce,
 } from "./components/announcer/CyVerseAnnouncer";
@@ -15,6 +16,19 @@ import TriggerField from "./components/triggerField/TriggerField";
 
 import build from "./util/DebugIDUtil";
 import formatDate from "./util/DateFormatter";
+import {
+    FormCheckbox,
+    FormCheckboxStringValue,
+    FormCheckboxTableCell,
+    FormIntegerField,
+    FormMultilineTextField,
+    FormNumberField,
+    FormSearchField,
+    FormSelectField,
+    FormTextField,
+    FormTimestampField,
+    getFormError,
+} from "./util/FormField";
 import getRegExp from "./util/getRegExp";
 import hasProps from "./util/hasProps";
 import palette from "./util/CyVersePalette";
@@ -23,6 +37,8 @@ import {
     formatMessage,
     formatHTMLMessage,
 } from "./util/I18NWrapper";
+
+import withI18N from "./util/I18NWrapper";
 
 import DEAlertDialog from "./util/dialog/DEAlertDialog";
 import DEConfirmationDialog from "./util/dialog/DEConfirmationDialog";
@@ -60,6 +76,7 @@ const getMuiTheme = (theme) =>
 export {
     announce,
     AppTile,
+    Autocomplete,
     build,
     CopyTextArea,
     constants,
@@ -74,8 +91,19 @@ export {
     ErrorExpansionPanel,
     ErrorHandler,
     formatDate,
+    FormCheckbox,
+    FormCheckboxStringValue,
+    FormCheckboxTableCell,
+    FormIntegerField,
+    FormMultilineTextField,
+    FormNumberField,
+    FormSearchField,
+    FormSelectField,
+    FormTextField,
+    FormTimestampField,
     formatMessage,
     formatHTMLMessage,
+    getFormError,
     getMessage,
     getMuiTheme,
     getRegExp,
@@ -91,4 +119,5 @@ export {
     stableSort,
     TablePaginationActions,
     TriggerField,
+    withI18N,
 };
