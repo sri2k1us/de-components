@@ -15,7 +15,7 @@ import SearchField from "./components/searchField/SearchField";
 import TriggerField from "./components/triggerField/TriggerField";
 
 import build from "./util/DebugIDUtil";
-import formatDate from "./util/DateFormatter";
+import { formatDate, getCurrentDateFormatted } from "./util/DateFormatter";
 import {
     FormCheckbox,
     FormCheckboxStringValue,
@@ -103,6 +103,7 @@ export {
     FormTimestampField,
     formatMessage,
     formatHTMLMessage,
+    getCurrentDateFormatted,
     getFormError,
     getMessage,
     getMuiTheme,
