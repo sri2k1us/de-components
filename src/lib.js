@@ -1,4 +1,4 @@
-import constants from "./constants";
+import dateConstants from "./dateConstants";
 
 import AppTile from "./components/appTile/AppTile";
 import Autocomplete from "./components/autocomplete/Autocomplete";
@@ -79,7 +79,7 @@ export {
     Autocomplete,
     build,
     CopyTextArea,
-    constants,
+    dateConstants,
     CyVerseAnnouncer,
     DEAlertDialog,
     DEConfirmationDialog,
