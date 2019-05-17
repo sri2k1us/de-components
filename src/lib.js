@@ -6,7 +6,7 @@ import CyVerseAnnouncer, {
     announce,
 } from "./components/announcer/CyVerseAnnouncer";
 import CopyTextArea from "./components/copy/CopyTextArea";
-import DEHyperLink from "./components/hyperlink/DEHyperLink";
+import DEHyperlink from "./components/hyperlink/DEHyperlink";
 import Highlighter from "./components/highlighter/Highlighter";
 import LoadingMask from "./components/loading/LoadingMask";
 import QuickLaunch from "./components/quickLaunch/QuickLaunch";
@@ -85,7 +85,7 @@ export {
     DEConfirmationDialog,
     DEDialogHeader,
     DEPromptDialog,
-    DEHyperLink,
+    DEHyperlink,
     EmptyTable,
     EnhancedTableHead,
     ErrorExpansionPanel,
