@@ -6,23 +6,20 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { injectIntl } from "react-intl";
-
 import md5 from "md5";
 import PropTypes from "prop-types";
-import Rate from "../rating/Rate";
 
+import AppStatusIcon from "./AppStatusIcon";
 import intlData from "./messages";
-import Beta from "./betaSymbol.png";
 import palette from "../../util/CyVersePalette";
+import Rate from "../rating/Rate";
+import withI18N from "../../util/I18NWrapper";
 
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
-import Lock from "@material-ui/icons/Lock";
-import Report from "@material-ui/icons/Report";
-import { Tooltip, withStyles } from "@material-ui/core";
-import withI18N, { formatMessage } from "../../util/I18NWrapper";
+import { withStyles } from "@material-ui/core";
 
 const GRAVATAR_URL = "https://www.gravatar.com/avatar/";
 const GRAVATAR_OPTIONS = "d=identicon&s=60";
@@ -95,32 +92,6 @@ const styles = (theme) => ({
     },
 });
 
-function AppStatus(props) {
-    const { isPublic, isBeta, isDisabled, intl } = props;
-    if (!isPublic) {
-        return (
-            <Tooltip title={formatMessage(intl, "privateAppTooltip")}>
-                <Lock style={{ color: palette.blue }} />
-            </Tooltip>
-        );
-    }
-    if (isBeta) {
-        return (
-            <Tooltip title={formatMessage(intl, "betaAppTooltip")}>
-                <img src={Beta} height={16} alt="beta" />
-            </Tooltip>
-        );
-    }
-    if (isDisabled) {
-        return (
-            <Tooltip title={formatMessage(intl, "disabledAppTooltip")}>
-                <Report style={{ color: palette.red }} />
-            </Tooltip>
-        );
-    }
-    return null;
-}
-
 function AppTile(props) {
     const {
         classes,
@@ -153,8 +124,6 @@ function AppTile(props) {
 
     let avatarImgSrc = GRAVATAR_URL + md5(uuid) + "?" + GRAVATAR_OPTIONS;
 
-    const handleAppSelection = () => {};
-
     return (
         <Paper
             className={
@@ -162,7 +131,7 @@ function AppTile(props) {
                     ? classnames(classes.card, classes.selectedCard)
                     : classes.card
             }
-            onClick={handleAppSelection}
+            onClick={onAppSelected}
         >
             <div className={classes.avatar}>
                 <div>
@@ -205,11 +174,10 @@ function AppTile(props) {
                             MenuItems ? classes.status : classes.statusNoMenu
                         }
                     >
-                        <AppStatus
+                        <AppStatusIcon
                             isPublic={isPublic}
                             isBeta={isBeta}
                             isDisabled={isDisabled}
-                            intl={intl}
                         />
                     </div>
                 </div>

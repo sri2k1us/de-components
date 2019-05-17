@@ -1,5 +1,6 @@
 import dateConstants from "./dateConstants";
 
+import AppStatusIcon from "./components/appTile/AppStatusIcon";
 import AppTile from "./components/appTile/AppTile";
 import Autocomplete from "./components/autocomplete/Autocomplete";
 import CyVerseAnnouncer, {
@@ -75,6 +76,7 @@ const getMuiTheme = (theme) =>
 
 export {
     announce,
+    AppStatusIcon,
     AppTile,
     Autocomplete,
     build,
