@@ -4,7 +4,7 @@
 import React from "react";
 
 import { getIn } from "formik";
-import moment from "moment";
+import { format } from "date-fns";
 
 import build from "./DebugIDUtil";
 import Autocomplete from "../components/autocomplete/Autocomplete";
@@ -180,7 +180,7 @@ const FormMultilineTextField = (props) => (
 const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const time = moment(date).format("HH:mm:ss");
+    const time = format(date).format("HH:mm:ss");
 
     setFieldValue(fieldName, `${newValue} ${time}`);
 };
@@ -188,7 +188,7 @@ const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
 const onTimeChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const dateStr = moment(date).format("YYYY-MM-DD");
+    const dateStr = format(date).format("YYYY-MM-DD");
 
     setFieldValue(fieldName, `${dateStr} ${newValue}`);
 };
@@ -213,7 +213,7 @@ const FormTimestampField = ({
                 label={label}
                 error={!!errorMsg}
                 required={required}
-                value={date ? moment(date).format("YYYY-MM-DD") : ""}
+                value={date ? format(date).format("YYYY-MM-DD") : ""}
                 onChange={onDateChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}
@@ -224,7 +224,7 @@ const FormTimestampField = ({
                 variant="outlined"
                 error={!!errorMsg}
                 required={required}
-                value={date ? moment(date).format("HH:mm:ss") : ""}
+                value={date ? format(date).format("HH:mm:ss") : ""}
                 onChange={onTimeChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}
