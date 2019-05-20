@@ -180,7 +180,7 @@ const FormMultilineTextField = (props) => (
 const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const time = formatDateObject(date, "YYYY-MM-DD");
+    const time = formatDateObject(date, "HH:mm:ss");
 
     setFieldValue(fieldName, `${newValue} ${time}`);
 };
@@ -224,7 +224,7 @@ const FormTimestampField = ({
                 variant="outlined"
                 error={!!errorMsg}
                 required={required}
-                value={date ? formatDateObject(date, "YYYY-MM-DD") : ""}
+                value={date ? formatDateObject(date, "HH:mm:ss") : ""}
                 onChange={onTimeChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}

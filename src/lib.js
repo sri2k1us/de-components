@@ -110,6 +110,7 @@ export {
     formatMessage,
     formatHTMLMessage,
     formatCurrentDate,
+    formatDateObject,
     getFormError,
     getMessage,
     getMuiTheme,
