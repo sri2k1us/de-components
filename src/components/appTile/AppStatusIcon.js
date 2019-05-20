@@ -58,7 +58,7 @@ function DisabledIcon(props) {
 function BetaIcon(props) {
     return (
         <ToolTip title={getMessage("betaAppTooltip")}>
-            <img src={betaPng} alt={betaSvg} />
+            <img src={betaSvg} alt={betaPng} />
         </ToolTip>
     );
 }

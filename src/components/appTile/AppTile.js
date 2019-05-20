@@ -21,9 +21,6 @@ import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core";
 
-const GRAVATAR_URL = "https://www.gravatar.com/avatar/";
-const GRAVATAR_OPTIONS = "d=identicon&s=60";
-
 const styles = (theme) => ({
     card: {
         minWidth: 300,
@@ -121,8 +118,8 @@ function AppTile(props) {
 
     const [anchorEl, setAnchorEl] = useState("");
     const open = Boolean(anchorEl);
-
-    let avatarImgSrc = GRAVATAR_URL + md5(uuid) + "?" + GRAVATAR_OPTIONS;
+    const getGravatarIconSrc = (uuid) =>
+        `https://www.gravatar.com/avatar/${md5(uuid)}?d=identicon&s=60`;
 
     return (
         <Paper
@@ -135,7 +132,7 @@ function AppTile(props) {
         >
             <div className={classes.avatar}>
                 <div>
-                    <img src={avatarImgSrc} alt="avatar image" />
+                    <img src={getGravatarIconSrc} alt="avatar image" />
                 </div>
                 <div className={classes.type}>{type.toLowerCase()}</div>
             </div>
@@ -148,7 +145,7 @@ function AppTile(props) {
                     {name}
                 </div>
                 <div className={classes.more}>
-                    {MenuItems != null && (
+                    {MenuItems && (
                         <div>
                             <IconButton
                                 aria-label="More"
@@ -185,7 +182,7 @@ function AppTile(props) {
             <div className={classes.creator}>{creator}</div>
             <div className={classes.rating}>
                 <Rate
-                    value={userRating ? userRating : averageRating}
+                    value={userRating || averageRating}
                     readOnly={isExternal}
                     total={totalRating}
                     onChange={onRatingChange}

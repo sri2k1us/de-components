@@ -15,7 +15,7 @@ import Button from "../../../node_modules/@material-ui/core/Button/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import TextField from "../../../node_modules/@material-ui/core/TextField/TextField";
+import TextField from "@material-ui/core/TextField";
 
 class DEPromptDialog extends Component {
     constructor(props) {
