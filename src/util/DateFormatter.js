@@ -9,6 +9,7 @@ import dateConstants from "../dateConstants";
  * Format date with the given format or return a `-`.
  * @param longDate
  * @param dateFormat
+ * @returns {string}
  */
 function formatDate(longDate, dateFormat = dateConstants.LONG_DATE_FORMAT) {
     const longDateInt = parseInt(longDate, 10);
@@ -22,8 +23,18 @@ function formatDate(longDate, dateFormat = dateConstants.LONG_DATE_FORMAT) {
  * @param format
  * @returns {string}
  */
-function getCurrentDateFormatted(format = dateConstants.LONG_DATE_FORMAT) {
+function formatCurrentDate(format = dateConstants.LONG_DATE_FORMAT) {
     return formatDate(Date().valueOf(), format);
 }
 
-export { formatDate, getCurrentDateFormatted };
+/**
+ * Format Date object with the give format
+ * @param Date Object
+ * @param format
+ * @returns {string}
+ */
+function formatDateObject(dateObj, dateFormat) {
+    return formatDate(dateObj.valueOf(), dateFormat);
+}
+
+export { formatDate, formatCurrentDate, formatDateObject };
