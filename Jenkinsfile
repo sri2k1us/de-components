@@ -1,12 +1,12 @@
 #!groovy
 milestone 0
-def repo = "de-components"
+def repo = "ui-lib"
 
 timestamps {
   node('docker') {
       slackJobDescription = "job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
 
-      dockerCacheVolumes = """-v /tmp:/tmp -v "\$(pwd)/node_modules:/src/de-components/node_modules\""""
+      dockerCacheVolumes = """-v /tmp:/tmp -v "\$(pwd)/node_modules:/src/ui-lib/node_modules\""""
 
       try {
           stage "Prepare"
@@ -26,7 +26,7 @@ timestamps {
 
               sh "docker run ${dockerCacheVolumes} --rm ${dockerRepoTest} npm install"
               sh "docker run ${dockerCacheVolumes} --name ${dockerTestRunner} ${dockerRepoTest}"
-              sh "docker cp ${dockerTestRunner}:/src/de-components/test-report.xml ./test-report.xml"
+              sh "docker cp ${dockerTestRunner}:/src/ui-lib/test-report.xml ./test-report.xml"
 
               junit "test-report.xml"
           } finally {

@@ -7,8 +7,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import LoadingOverlay from "react-loading-overlay";
 import palette from "../../util/CyVersePalette";
-import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { withStyles } from "@material-ui/core/styles";
 
 const style1 = (theme) => ({
     loading: {
@@ -26,6 +26,7 @@ function LoadingMask(props) {
             active={loading}
             spinner={
                 <CircularProgress
+                    id="loading-mask"
                     size={30}
                     className={classes.loading}
                     thickness={7}

@@ -4,11 +4,11 @@
  **/
 
 import React, { Component } from "react";
-import Rating from "material-ui-rating";
 import PropTypes from "prop-types";
+import Rating from "material-ui-rating";
 
 import IconButton from "@material-ui/core/IconButton";
-import { withStyles } from "@material-ui/core";
+import { Tooltip, withStyles } from "@material-ui/core";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import StarIcon from "@material-ui/icons/Star";
@@ -24,15 +24,15 @@ const style1 = (theme) => ({
         },
     },
     total: {
-        paddingTop: 17,
+        paddingTop: 14,
     },
     rating: {
         float: "left",
-        marginTop: 5,
     },
     delete: {
-        float: "left",
-        marginBottom: 10,
+        position: "relative",
+        top: -35,
+        left: 30,
     },
 });
 
@@ -66,17 +66,19 @@ class Rate extends Component {
                         iconNormal={<StarIcon nativeColor={iconNormal} />}
                     />
                 </div>
+                <div className={classes.total}> ({total}) </div>
                 <div className={classes.delete}>
                     {onDelete && (
-                        <IconButton
-                            onClick={onDelete}
-                            className={classes.ratingDelete}
-                        >
-                            <DeleteIcon fontSize="small" />
-                        </IconButton>
+                        <Tooltip title="Delete Rating">
+                            <IconButton
+                                onClick={onDelete}
+                                className={classes.ratingDelete}
+                            >
+                                <DeleteIcon fontSize="small" />
+                            </IconButton>
+                        </Tooltip>
                     )}
                 </div>
-                <div className={classes.total}>({total})</div>
             </div>
         );
     }
