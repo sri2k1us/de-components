@@ -118,8 +118,9 @@ function AppTile(props) {
 
     const [anchorEl, setAnchorEl] = useState("");
     const open = Boolean(anchorEl);
-    const getGravatarIconSrc = (uuid) =>
-        `https://www.gravatar.com/avatar/${md5(uuid)}?d=identicon&s=60`;
+    const getGravatarIconSrc = `https://www.gravatar.com/avatar/${md5(
+        uuid
+    )}?d=identicon&s=60`;
 
     return (
         <Paper
