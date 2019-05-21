@@ -4,7 +4,6 @@
 import React from "react";
 
 import { getIn } from "formik";
-import { format } from "date-fns";
 
 import build from "./DebugIDUtil";
 import Autocomplete from "../components/autocomplete/Autocomplete";
@@ -17,6 +16,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import TableCell from "@material-ui/core/TableCell";
 import TextField from "@material-ui/core/TextField";
+import { formatDateObject } from "./DateFormatter";
 
 const getFormError = (name, touched, errors) => {
     const error = getIn(errors, name);
@@ -180,7 +180,7 @@ const FormMultilineTextField = (props) => (
 const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const time = format(date).format("HH:mm:ss");
+    const time = formatDateObject(date, "HH:mm:ss");
 
     setFieldValue(fieldName, `${newValue} ${time}`);
 };
@@ -188,7 +188,7 @@ const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
 const onTimeChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const dateStr = format(date).format("YYYY-MM-DD");
+    const dateStr = formatDateObject(date, "YYYY-MM-DD");
 
     setFieldValue(fieldName, `${dateStr} ${newValue}`);
 };
@@ -213,7 +213,7 @@ const FormTimestampField = ({
                 label={label}
                 error={!!errorMsg}
                 required={required}
-                value={date ? format(date).format("YYYY-MM-DD") : ""}
+                value={date ? formatDateObject(date, "YYYY-MM-DD") : ""}
                 onChange={onDateChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}
@@ -224,7 +224,7 @@ const FormTimestampField = ({
                 variant="outlined"
                 error={!!errorMsg}
                 required={required}
-                value={date ? format(date).format("HH:mm:ss") : ""}
+                value={date ? formatDateObject(date, "HH:mm:ss") : ""}
                 onChange={onTimeChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}
