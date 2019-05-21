@@ -34,7 +34,9 @@ function formatCurrentDate(format = dateConstants.LONG_DATE_FORMAT) {
  * @returns {string}
  */
 function formatDateObject(dateObj, dateFormat) {
-    return dateObj ? formatDate(dateObj.valueOf(), dateFormat) : "-";
+    return dateObj
+        ? formatDate(dateObj.valueOf(), dateFormat)
+        : dateConstants.EMPTY_DATE;
 }
 
 export { formatDate, formatCurrentDate, formatDateObject };
