@@ -10,9 +10,16 @@ import { boolean } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 
 export default class LoadingMaskTest extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { mask: true };
+    }
     render() {
+        window.setTimeout(() => {
+            this.setState({ mask: false });
+        }, 3000);
         return (
-            <LoadingMask loading={boolean("Loading", true)}>
+            <LoadingMask loading={this.state.mask}>
                 <div>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nunc scelerisque dui vel dolor accumsan, ac commodo sem
