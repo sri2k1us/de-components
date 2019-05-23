@@ -102,9 +102,9 @@ DEConfirmationDialog.propTypes = {
     onCancelBtnClick: PropTypes.func.isRequired,
     onOptionalBtnClick: PropTypes.func,
     debugId: PropTypes.string.isRequired,
-    okLabel: PropTypes.string,
-    cancelLabel: PropTypes.string,
-    optionalLabel: PropTypes.string,
+    okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    optionalLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     variant: PropTypes.oneOf([TWO_BUTTON_VARIANT, THREE_BUTTON_VARIANT]),
 };
 export default withI18N(DEConfirmationDialog, intlData);
