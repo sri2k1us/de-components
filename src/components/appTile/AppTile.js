@@ -13,7 +13,7 @@ import AppStatusIcon from "./AppStatusIcon";
 import intlData from "./messages";
 import palette from "../../util/CyVersePalette";
 import Rate from "../rating/Rate";
-import withI18N from "../../util/I18NWrapper";
+import withI18N, { formatMessage } from "../../util/I18NWrapper";
 
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -54,6 +54,8 @@ const styles = (theme) => ({
         whiteSpace: "nowrap",
         display: "inline-block",
         maxWidth: 150,
+    },
+    nameHover: {
         "&:hover": {
             textDecoration: "underline",
             cursor: "pointer",
@@ -88,6 +90,22 @@ const styles = (theme) => ({
         width: "80%",
     },
 });
+
+function AppName(props) {
+    const { isDisabled, name, classes, onAppNameClicked, intl } = props;
+    let classname = isDisabled
+        ? classes.name
+        : classnames(classes.name, classes.nameHover);
+    let title = isDisabled
+        ? formatMessage(intl, "disabledAppTooltip")
+        : formatMessage(intl, "useAppTooltip");
+    let handleClick = isDisabled ? undefined : onAppNameClicked;
+    return (
+        <div title={title} className={classname} onClick={handleClick}>
+            {name}
+        </div>
+    );
+}
 
 function AppTile(props) {
     const {
@@ -138,13 +156,13 @@ function AppTile(props) {
                 <div className={classes.type}>{type.toLowerCase()}</div>
             </div>
             <div>
-                <div
-                    title={name}
-                    className={classes.name}
-                    onClick={onAppNameClicked}
-                >
-                    {name}
-                </div>
+                <AppName
+                    intl={intl}
+                    name={name}
+                    isDisabled={isDisabled}
+                    classes={classes}
+                    onAppNameClicked={onAppNameClicked}
+                />
                 <div className={classes.more}>
                     {MenuItems && (
                         <div>
