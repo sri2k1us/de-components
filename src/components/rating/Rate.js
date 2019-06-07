@@ -48,7 +48,7 @@ class Rate extends Component {
         } = this.props;
 
         const iconHovered = orange[500];
-        const iconNormal = grey[300];
+        const iconNormal = grey[500];
 
         //if user can delete, then she/he owns the rating so style it differently
         const iconFilled = onDelete ? iconHovered : red[500];
