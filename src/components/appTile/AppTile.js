@@ -93,13 +93,13 @@ const styles = (theme) => ({
 
 function AppName(props) {
     const { isDisabled, name, classes, onAppNameClicked, intl } = props;
-    let classname = isDisabled
+    const classname = isDisabled
         ? classes.name
         : classnames(classes.name, classes.nameHover);
-    let title = isDisabled
+    const title = isDisabled
         ? formatMessage(intl, "disabledAppTooltip")
         : formatMessage(intl, "useAppTooltip");
-    let handleClick = isDisabled ? undefined : onAppNameClicked;
+    const handleClick = isDisabled ? undefined : onAppNameClicked;
     return (
         <div title={title} className={classname} onClick={handleClick}>
             {name}
