@@ -23,8 +23,8 @@ import { withStyles } from "@material-ui/core";
 
 const styles = (theme) => ({
     card: {
-        minWidth: 300,
-        maxWidth: 400,
+        minWidth: 200,
+        maxWidth: 320,
         minHeight: 120,
         maxHeight: 120,
         margin: 15,
@@ -63,7 +63,7 @@ const styles = (theme) => ({
     },
     more: {
         float: "right",
-        height: 120,
+        height: 105,
     },
     creator: {
         margin: 10,
@@ -78,7 +78,7 @@ const styles = (theme) => ({
     },
     status: {
         position: "relative",
-        top: 40,
+        top: 30,
         right: -10,
     },
     statusNoMenu: {

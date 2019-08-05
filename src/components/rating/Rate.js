@@ -5,33 +5,28 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Rating from "material-ui-rating";
+import Rating from "@material-ui/lab/Rating";
 
 import IconButton from "@material-ui/core/IconButton";
 import { Tooltip, withStyles } from "@material-ui/core";
 
 import DeleteIcon from "@material-ui/icons/Delete";
-import StarIcon from "@material-ui/icons/Star";
-import red from "@material-ui/core/colors/red";
-import orange from "@material-ui/core/colors/orange";
-import grey from "@material-ui/core/colors/grey";
 
 const style1 = (theme) => ({
     ratingDelete: {
-        margin: 5,
         "&:hover": {
             backgroundColor: theme.palette.error.dark,
         },
     },
     total: {
-        paddingTop: 14,
+        paddingTop: 3,
     },
     rating: {
         float: "left",
     },
     delete: {
         position: "relative",
-        top: -35,
+        top: -20,
         left: 30,
     },
 });
@@ -47,23 +42,15 @@ class Rate extends Component {
             classes,
         } = this.props;
 
-        const iconHovered = orange[500];
-        const iconNormal = grey[500];
-
-        //if user can delete, then she/he owns the rating so style it differently
-        const iconFilled = onDelete ? iconHovered : red[500];
-
         return (
-            <div>
+            <React.Fragment>
                 <div className={classes.rating}>
                     <Rating
+                        name="de-rating"
                         value={value}
-                        max={5}
                         readOnly={readOnly}
                         onChange={onChange}
-                        iconFilled={<StarIcon nativeColor={iconFilled} />}
-                        iconHovered={<StarIcon nativeColor={iconHovered} />}
-                        iconNormal={<StarIcon nativeColor={iconNormal} />}
+                        precision={0.5}
                     />
                 </div>
                 <div className={classes.total}> ({total}) </div>
@@ -72,21 +59,22 @@ class Rate extends Component {
                         <Tooltip title="Delete Rating">
                             <IconButton
                                 onClick={onDelete}
+                                size="small"
                                 className={classes.ratingDelete}
                             >
-                                <DeleteIcon fontSize="small" />
+                                <DeleteIcon fontSize="inherit" />
                             </IconButton>
                         </Tooltip>
                     )}
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
 
 Rate.defaultProps = {
     value: 0,
-    readOnly: true,
+    readOnly: false,
     total: 0,
 };
 
