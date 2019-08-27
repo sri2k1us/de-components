@@ -26,7 +26,7 @@ DEAlertDialog.propTypes = {
 };
 
 function DEAlertDialog(props) {
-    const [dialogOpen, heading, alertMessage, handleClose] = props;
+    const { dialogOpen, heading, alertMessage, handleClose } = props;
     return (
         <Dialog
             open={dialogOpen}
@@ -40,7 +40,7 @@ function DEAlertDialog(props) {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={this.handleClose} color="primary" autoFocus>
+                <Button onClick={handleClose} color="primary" autoFocus>
                     {getMessage("okBtnText")}
                 </Button>
             </DialogActions>

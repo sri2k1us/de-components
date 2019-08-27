@@ -4,7 +4,7 @@ export default (theme) => ({
     dialogCloseButton: {
         position: "absolute",
         right: 0,
-        top: 10,
+        top: 5,
         color: Color.white,
     },
     header: {
