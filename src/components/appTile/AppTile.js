@@ -23,7 +23,7 @@ import { withStyles } from "@material-ui/core";
 
 const styles = (theme) => ({
     card: {
-        minWidth: 200,
+        minWidth: 320,
         maxWidth: 320,
         minHeight: 120,
         maxHeight: 120,
