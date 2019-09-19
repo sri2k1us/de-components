@@ -1,5 +1,6 @@
 import dateConstants from "./dateConstants";
 
+import AppName from "./components/appTile/AppName";
 import AppStatusIcon from "./components/appTile/AppStatusIcon";
 import AppTile from "./components/appTile/AppTile";
 import Autocomplete from "./components/autocomplete/Autocomplete";
@@ -81,6 +82,7 @@ const getMuiTheme = (theme) =>
 export {
     announce,
     AppStatusIcon,
+    AppName,
     AppTile,
     Autocomplete,
     build,
