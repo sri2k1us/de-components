@@ -25,13 +25,15 @@ export default class AppTileTest extends Component {
                     reason: "",
                 },
                 is_favorite: true,
-                integrator_name: "Roger Barthelson",
+                integrator_name:
+                    "Roger Barthelson Roger Barthelson Roger Barthelson",
                 beta: false,
                 permission: "read",
                 can_favor: true,
                 disabled: false,
                 can_rate: true,
-                name: "Annotate transcripts",
+                name:
+                    "Bowtie-2.2.1--Build-and-Map for workflows Bowtie-2.2.1--Build-and-Map for workflowsBowtie-2.2.1--Build-and-Map for workflows",
                 system_id: "de",
                 is_public: true,
                 id: "676846d4-854a-11e4-980d-7f0fcca75dbb",
@@ -298,7 +300,7 @@ export default class AppTileTest extends Component {
         return (
             <Grid container style={{ flexGrow: 1 }} spacing={1}>
                 {apps.map((app) => (
-                    <Grid key={app.id} item sm>
+                    <Grid key={app.id} item>
                         <AppTile
                             uuid={app.id}
                             name={app.name}
@@ -309,6 +311,7 @@ export default class AppTileTest extends Component {
                             isBeta={app.beta}
                             isDisabled={app.disabled}
                             isExternal={app.app_type !== "DE"}
+                            MenuItems={MenuItems}
                         />
                     </Grid>
                 ))}

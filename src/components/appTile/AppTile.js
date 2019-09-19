@@ -20,6 +20,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core";
+import AppName from "./AppName";
 
 const styles = (theme) => ({
     card: {
@@ -31,11 +32,10 @@ const styles = (theme) => ({
         padding: 5,
         cursor: "pointer",
         "&:hover": {
-            border: "1px solid",
+            backgroundColor: palette.lightGray,
         },
     },
     selectedCard: {
-        border: "1px solid",
         backgroundColor: palette.lightGray,
     },
     avatar: {
@@ -50,8 +50,8 @@ const styles = (theme) => ({
         margin: 10,
         fontSize: 12,
         textOverflow: "ellipsis",
-        overflow: "hidden",
         whiteSpace: "nowrap",
+        overflow: "hidden",
         display: "inline-block",
         maxWidth: 150,
     },
@@ -69,9 +69,8 @@ const styles = (theme) => ({
         margin: 10,
         top: 50,
         fontSize: 12,
-        fontStyle: "italic",
-        textOverflow: "ellipsis",
         overflow: "hidden",
+        textOverflow: "ellipsis",
         whiteSpace: "nowrap",
         display: "inline-block",
         maxWidth: 150,
@@ -90,22 +89,6 @@ const styles = (theme) => ({
         width: "80%",
     },
 });
-
-function AppName(props) {
-    const { isDisabled, name, classes, onAppNameClicked, intl } = props;
-    const classname = isDisabled
-        ? classes.name
-        : classnames(classes.name, classes.nameHover);
-    const title = isDisabled
-        ? formatMessage(intl, "disabledAppTooltip")
-        : formatMessage(intl, "useAppTooltip");
-    const handleClick = isDisabled ? undefined : onAppNameClicked;
-    return (
-        <div title={title} className={classname} onClick={handleClick}>
-            {name}
-        </div>
-    );
-}
 
 function AppTile(props) {
     const {
@@ -202,7 +185,7 @@ function AppTile(props) {
             <div className={classes.rating}>
                 <Rate
                     value={userRating || averageRating}
-                    readOnly={isExternal}
+                    readOnly={isExternal || !isPublic}
                     total={totalRating}
                     onChange={onRatingChange}
                     onDelete={userRating ? onDeleteRatingClick : undefined}
