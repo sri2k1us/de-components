@@ -3,7 +3,7 @@
  *
  **/
 
-import React, { useState } from "react";
+import React from "react";
 import classnames from "classnames";
 import { injectIntl } from "react-intl";
 import md5 from "md5";
@@ -109,6 +109,9 @@ function AppTile(props) {
         onAppNameClicked,
         onAppSelected,
         selected,
+        anchorEl,
+        handleMenuClose,
+        handleMenuClick,
     } = props;
 
     const {
@@ -117,7 +120,6 @@ function AppTile(props) {
         total: totalRating,
     } = rating;
 
-    const [anchorEl, setAnchorEl] = useState("");
     const open = Boolean(anchorEl);
     const getGravatarIconSrc = `https://www.gravatar.com/avatar/${md5(
         uuid
@@ -153,16 +155,14 @@ function AppTile(props) {
                                 aria-label="More"
                                 aria-owns={open ? "long-menu" : null}
                                 aria-haspopup="true"
-                                onClick={(event) =>
-                                    setAnchorEl(event.currentTarget)
-                                }
+                                onClick={(event) => handleMenuClick(event)}
                             >
                                 <MoreVertIcon />
                             </IconButton>
                             <Menu
                                 anchorEl={anchorEl}
                                 open={open}
-                                onClose={() => setAnchorEl(null)}
+                                onClose={() => handleMenuClose(null)}
                             >
                                 <MenuItems />
                             </Menu>
