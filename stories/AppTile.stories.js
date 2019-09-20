@@ -5,12 +5,30 @@ import { MenuItem } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
 export default class AppTileTest extends Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+        this.state = {
+            anchorEl: null,
+        };
+    }
+
+    handleMenuClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
+    handleMenuClick = (event) => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
     render() {
         const MenuItems = () => {
             return [
-                <MenuItem>Info</MenuItem>,
-                <MenuItem>Add To Favorite</MenuItem>,
-                <MenuItem>Comments</MenuItem>,
+                <MenuItem onClick={this.handleMenuClose}>Info</MenuItem>,
+                <MenuItem onClick={this.handleMenuClose}>
+                    Add To Favorite
+                </MenuItem>,
+                <MenuItem onClick={this.handleMenuClose}>Comments</MenuItem>,
             ];
         };
 
@@ -312,6 +330,9 @@ export default class AppTileTest extends Component {
                             isDisabled={app.disabled}
                             isExternal={app.app_type !== "DE"}
                             MenuItems={MenuItems}
+                            anchorEl={this.state.anchorEl}
+                            handleMenuClose={this.handleMenuClose}
+                            handleMenuClick={this.handleMenuClick}
                         />
                     </Grid>
                 ))}

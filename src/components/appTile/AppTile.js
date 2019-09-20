@@ -13,7 +13,7 @@ import AppStatusIcon from "./AppStatusIcon";
 import intlData from "./messages";
 import palette from "../../util/CyVersePalette";
 import Rate from "../rating/Rate";
-import withI18N, { formatMessage } from "../../util/I18NWrapper";
+import withI18N from "../../util/I18NWrapper";
 
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -162,7 +162,7 @@ function AppTile(props) {
                             <Menu
                                 anchorEl={anchorEl}
                                 open={open}
-                                onClose={() => handleMenuClose(null)}
+                                onClose={handleMenuClose}
                             >
                                 <MenuItems />
                             </Menu>
