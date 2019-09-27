@@ -111,26 +111,24 @@ function AppMenu(props) {
                         {getMessage("comments")}
                     </MenuItem>
                 )}
-                {isExternal && (
-                    <React.Fragment>
-                        <MenuItem
-                            disabled={false}
-                            className={classes.menuItem}
-                            data-disabled={false}
-                            onClick={handleClose}
-                        >
-                            {getMessage("favoriteNotSupported")}
-                        </MenuItem>
-                        <MenuItem
-                            disabled={false}
-                            className={classes.menuItem}
-                            data-disabled={false}
-                            onClick={handleClose}
-                        >
-                            {getMessage("commentsNotSupported")}
-                        </MenuItem>
-                    </React.Fragment>
-                )}
+                {isExternal && [
+                    <MenuItem
+                        disabled={false}
+                        className={classes.menuItem}
+                        data-disabled={false}
+                        onClick={handleClose}
+                    >
+                        {getMessage("favoriteNotSupported")}
+                    </MenuItem>,
+                    <MenuItem
+                        disabled={false}
+                        className={classes.menuItem}
+                        data-disabled={false}
+                        onClick={handleClose}
+                    >
+                        {getMessage("commentsNotSupported")}
+                    </MenuItem>,
+                ]}
             </Menu>
         </div>
     );
