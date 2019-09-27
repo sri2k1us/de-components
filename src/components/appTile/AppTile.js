@@ -3,7 +3,7 @@
  *
  **/
 
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import { injectIntl } from "react-intl";
 import md5 from "md5";
@@ -21,6 +21,7 @@ import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core";
 import AppName from "./AppName";
+import AppMenu from "./AppMenu";
 
 const styles = (theme) => ({
     card: {
@@ -36,7 +37,7 @@ const styles = (theme) => ({
         },
     },
     selectedCard: {
-        backgroundColor: palette.lightGray,
+        backgroundColor: palette.gray,
     },
     avatar: {
         float: "left",
@@ -91,6 +92,7 @@ const styles = (theme) => ({
 });
 
 function AppTile(props) {
+    const [anchorEl, setAnchorEl] = useState("");
     const {
         classes,
         uuid,
@@ -102,16 +104,17 @@ function AppTile(props) {
         isBeta,
         isDisabled,
         isExternal,
+        isFavorite,
         onRatingChange,
-        onDeleteRatingClick,
-        MenuItems,
         intl,
-        onAppNameClicked,
-        onAppSelected,
         selected,
-        anchorEl,
-        handleMenuClose,
-        handleMenuClick,
+        onDeleteRatingClick,
+        onAppNameClick,
+        onAppSelected,
+        onAppInfoClick,
+        onCommentsClick,
+        onFavoriteClick,
+        baseDebugId,
     } = props;
 
     const {
@@ -132,7 +135,6 @@ function AppTile(props) {
                     ? classnames(classes.card, classes.selectedCard)
                     : classes.card
             }
-            onClick={onAppSelected}
         >
             <div className={classes.avatar}>
                 <div>
@@ -146,33 +148,18 @@ function AppTile(props) {
                     name={name}
                     isDisabled={isDisabled}
                     classes={classes}
-                    onAppNameClicked={onAppNameClicked}
+                    onAppNameClicked={onAppNameClick}
                 />
                 <div className={classes.more}>
-                    {MenuItems && (
-                        <div>
-                            <IconButton
-                                aria-label="More"
-                                aria-owns={open ? "long-menu" : null}
-                                aria-haspopup="true"
-                                onClick={(event) => handleMenuClick(event)}
-                            >
-                                <MoreVertIcon />
-                            </IconButton>
-                            <Menu
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleMenuClose}
-                            >
-                                <MenuItems />
-                            </Menu>
-                        </div>
-                    )}
-                    <div
-                        className={
-                            MenuItems ? classes.status : classes.statusNoMenu
-                        }
-                    >
+                    <AppMenu
+                        onAppInfoClick={onAppInfoClick}
+                        onCommentsClick={onCommentsClick}
+                        onFavoriteClick={onFavoriteClick}
+                        baseDebugId={baseDebugId}
+                        isExternal={isExternal}
+                        isFavorite={isFavorite}
+                    />
+                    <div className={classes.status}>
                         <AppStatusIcon
                             isPublic={isPublic}
                             isBeta={isBeta}
@@ -184,6 +171,7 @@ function AppTile(props) {
             <div className={classes.creator}>{creator}</div>
             <div className={classes.rating}>
                 <Rate
+                    name={uuid}
                     value={userRating || averageRating}
                     readOnly={isExternal || !isPublic}
                     total={totalRating}
@@ -209,12 +197,16 @@ AppTile.propTypes = {
     isBeta: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isExternal: PropTypes.bool,
+    isFavorite: PropTypes.bool,
     onRatingChange: PropTypes.func,
     onDeleteRatingClick: PropTypes.func,
     MenuItems: PropTypes.node,
-    onAppNameClicked: PropTypes.func,
+    onAppNameClick: PropTypes.func,
     onAppSelected: PropTypes.func,
     selected: PropTypes.bool,
+    onAppInfoClick: PropTypes.func.isRequired,
+    onCommentsClick: PropTypes.func,
+    onFavoriteClick: PropTypes.func,
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));

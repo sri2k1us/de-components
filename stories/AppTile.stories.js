@@ -1,37 +1,14 @@
 import React, { Component } from "react";
 import AppTile from "../src/components/appTile/AppTile";
 import { storiesOf } from "@storybook/react";
-import { MenuItem } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
 export default class AppTileTest extends Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = {
-            anchorEl: null,
-        };
     }
-
-    handleMenuClose = () => {
-        this.setState({ anchorEl: null });
-    };
-
-    handleMenuClick = (event) => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
-
     render() {
-        const MenuItems = () => {
-            return [
-                <MenuItem onClick={this.handleMenuClose}>Info</MenuItem>,
-                <MenuItem onClick={this.handleMenuClose}>
-                    Add To Favorite
-                </MenuItem>,
-                <MenuItem onClick={this.handleMenuClose}>Comments</MenuItem>,
-            ];
-        };
-
         const apps = [
             {
                 integration_date: "2013-05-24T21:44:49.000Z",
@@ -314,7 +291,7 @@ export default class AppTileTest extends Component {
                 },
             },
         ];
-
+        const onChange = (event, value) => console.log("new rating:" + value);
         return (
             <Grid container style={{ flexGrow: 1 }} spacing={1}>
                 {apps.map((app) => (
@@ -329,10 +306,20 @@ export default class AppTileTest extends Component {
                             isBeta={app.beta}
                             isDisabled={app.disabled}
                             isExternal={app.app_type !== "DE"}
-                            MenuItems={MenuItems}
-                            anchorEl={this.state.anchorEl}
-                            handleMenuClose={this.handleMenuClose}
-                            handleMenuClick={this.handleMenuClick}
+                            isFavorite={app.is_favorite}
+                            onAppInfoClick={() =>
+                                console.log("App info clicked!")
+                            }
+                            onCommentsClick={() =>
+                                console.log("Comments clicked!")
+                            }
+                            onFavoriteClick={() =>
+                                console.log("Favorite clicked!")
+                            }
+                            onRatingChange={onChange}
+                            onDeleteRatingClick={() =>
+                                console.log("Delete rating selected!")
+                            }
                         />
                     </Grid>
                 ))}
