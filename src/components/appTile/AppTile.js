@@ -14,14 +14,12 @@ import intlData from "./messages";
 import palette from "../../util/CyVersePalette";
 import Rate from "../rating/Rate";
 import withI18N from "../../util/I18NWrapper";
-
-import IconButton from "@material-ui/core/IconButton";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Menu from "@material-ui/core/Menu";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core";
 import AppName from "./AppName";
 import AppMenu from "./AppMenu";
+import { build } from "../../lib";
+import ids from "./ids";
 
 const styles = (theme) => ({
     card: {
@@ -127,7 +125,7 @@ function AppTile(props) {
     const getGravatarIconSrc = `https://www.gravatar.com/avatar/${md5(
         uuid
     )}?d=identicon&s=60`;
-
+    const tileId = build(baseDebugId, uuid);
     return (
         <Paper
             className={
@@ -136,15 +134,23 @@ function AppTile(props) {
                     : classes.card
             }
             onClick={onAppSelected}
+            key={uuid}
+            id={tileId}
         >
             <div className={classes.avatar}>
                 <div>
-                    <img src={getGravatarIconSrc} alt="avatar image" />
+                    <img
+                        id={build(tileId, ids.CARD)}
+                        onClick={onAppNameClick}
+                        src={getGravatarIconSrc}
+                        alt="avatar image"
+                    />
                 </div>
                 <div className={classes.type}>{type.toLowerCase()}</div>
             </div>
             <div>
                 <AppName
+                    baseDebugId={build(tileId, ids.APP_NAME)}
                     intl={intl}
                     name={name}
                     isDisabled={isDisabled}
@@ -156,7 +162,7 @@ function AppTile(props) {
                         onAppInfoClick={onAppInfoClick}
                         onCommentsClick={onCommentsClick}
                         onFavoriteClick={onFavoriteClick}
-                        baseDebugId={baseDebugId}
+                        baseDebugId={tileId}
                         isExternal={isExternal}
                         isFavorite={isFavorite}
                     />
@@ -207,6 +213,7 @@ AppTile.propTypes = {
     onAppInfoClick: PropTypes.func.isRequired,
     onCommentsClick: PropTypes.func,
     onFavoriteClick: PropTypes.func,
+    baseDebugId: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AppName(props) {
-    const { isDisabled, name, onAppNameClicked, intl } = props;
+    const { baseDebugId, isDisabled, name, onAppNameClicked, intl } = props;
     const classes = useStyles();
     const classname = isDisabled
         ? classes.name
@@ -35,7 +35,12 @@ function AppName(props) {
         : formatMessage(intl, "useAppTooltip");
     const handleClick = isDisabled ? undefined : onAppNameClicked;
     return (
-        <div title={title} className={classname} onClick={handleClick}>
+        <div
+            id={baseDebugId}
+            title={title}
+            className={classname}
+            onClick={handleClick}
+        >
             {name}
         </div>
     );

@@ -10,6 +10,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import CommentsIcon from "@material-ui/icons/CommentOutlined";
 import palette from "../../util/CyVersePalette";
 import intlData from "./messages";
+import build from "../../util/DebugIDUtil";
+import ids from "./ids";
 
 /**
  *
@@ -43,7 +45,7 @@ function AppMenu(props) {
     return (
         <div>
             <IconButton
-                id={baseDebugId}
+                id={build(baseDebugId, ids.DOT_MENU)}
                 aria-label="More"
                 aria-owns={open ? "long-menu" : null}
                 aria-haspopup="true"
@@ -51,13 +53,9 @@ function AppMenu(props) {
             >
                 <MoreVertIcon />
             </IconButton>
-            <Menu
-                id={baseDebugId + ".menu"}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-            >
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <MenuItem
+                    id={build(baseDebugId, ids.APP_INFO)}
                     disabled={false}
                     className={classes.menuItem}
                     data-disabled={false}
@@ -71,6 +69,7 @@ function AppMenu(props) {
                 </MenuItem>
                 {!isFavorite && !isExternal && (
                     <MenuItem
+                        id={build(baseDebugId, ids.FAVORITES)}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
@@ -85,6 +84,7 @@ function AppMenu(props) {
                 )}
                 {isFavorite && !isExternal && (
                     <MenuItem
+                        id={build(baseDebugId, ids.FAVORITES)}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
@@ -99,6 +99,7 @@ function AppMenu(props) {
                 )}
                 {!isExternal && (
                     <MenuItem
+                        id={build(baseDebugId, ids.APP_COMMENTS)}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
@@ -113,6 +114,7 @@ function AppMenu(props) {
                 )}
                 {isExternal && [
                     <MenuItem
+                        id={build(baseDebugId, ids.FAVORITES)}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
@@ -121,6 +123,7 @@ function AppMenu(props) {
                         {getMessage("favoriteNotSupported")}
                     </MenuItem>,
                     <MenuItem
+                        id={build(baseDebugId, ids.APP_COMMENTS)}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
