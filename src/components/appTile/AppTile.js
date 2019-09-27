@@ -135,6 +135,7 @@ function AppTile(props) {
                     ? classnames(classes.card, classes.selectedCard)
                     : classes.card
             }
+            onClick={onAppSelected}
         >
             <div className={classes.avatar}>
                 <div>
@@ -200,9 +201,8 @@ AppTile.propTypes = {
     isFavorite: PropTypes.bool,
     onRatingChange: PropTypes.func,
     onDeleteRatingClick: PropTypes.func,
-    MenuItems: PropTypes.node,
-    onAppNameClick: PropTypes.func,
-    onAppSelected: PropTypes.func,
+    onAppNameClick: PropTypes.func.isRequired,
+    onAppSelected: PropTypes.func.isRequired,
     selected: PropTypes.bool,
     onAppInfoClick: PropTypes.func.isRequired,
     onCommentsClick: PropTypes.func,
