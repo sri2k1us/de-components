@@ -5,13 +5,14 @@ import { storiesOf } from "@storybook/react";
 
 export default class RatingTest extends Component {
     render() {
+        const onChange = (event, value) => console.log("new rating:" + value);
         return (
             <Rate
                 value={number("Rating", 4.5)}
-                total={10}
+                total={9999}
                 readOnly={boolean("ReadOnly", false)}
                 onDelete={() => console.log("delete rating")}
-                onChange={(value) => console.log("new rating:" + value)}
+                onChange={onChange}
             />
         );
     }
