@@ -137,5 +137,12 @@ function AppMenu(props) {
         </div>
     );
 }
-
+AppMenu.propTypes = {
+    onAppInfoClick: PropTypes.func,
+    onCommentsClick: PropTypes.func,
+    onFavoriteClick: PropTypes.func,
+    baseDebugId: PropTypes.string.isRequired,
+    isExternal: PropTypes.bool.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
+};
 export default withI18N(injectIntl(AppMenu), intlData);
