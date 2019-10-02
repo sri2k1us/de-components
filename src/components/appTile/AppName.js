@@ -5,6 +5,7 @@ import classnames from "classnames";
 import withI18N, { formatMessage } from "../../util/I18NWrapper";
 import { injectIntl } from "react-intl";
 import intlData from "./messages";
+import Highlighter from "../highlighter/Highlighter";
 
 const useStyles = makeStyles((theme) => ({
     name: {
@@ -25,15 +26,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AppName(props) {
-    const { baseDebugId, isDisabled, name, onAppNameClicked, intl } = props;
+    const {
+        baseDebugId,
+        isDisabled,
+        name,
+        onAppNameClicked,
+        intl,
+        searchRegexPattern,
+    } = props;
     const classes = useStyles();
-    const classname = isDisabled
-        ? classes.name
-        : classnames(classes.name, classes.nameHover);
-    const title = isDisabled
-        ? formatMessage(intl, "disabledAppTooltip")
-        : formatMessage(intl, "useAppTooltip");
+    const classname =
+        isDisabled || !onAppNameClicked
+            ? classes.name
+            : classnames(classes.name, classes.nameHover);
     const handleClick = isDisabled ? undefined : onAppNameClicked;
+    let title = "";
+    if (handleClick) {
+        title = isDisabled
+            ? formatMessage(intl, "disabledAppTooltip")
+            : formatMessage(intl, "useAppTooltip");
+    }
     return (
         <div
             id={baseDebugId}
@@ -41,7 +53,7 @@ function AppName(props) {
             className={classname}
             onClick={handleClick}
         >
-            {name}
+            <Highlighter search={searchRegexPattern}>{name}</Highlighter>
         </div>
     );
 }

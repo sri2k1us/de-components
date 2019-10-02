@@ -50,6 +50,7 @@ function AppMenu(props) {
                 aria-owns={open ? "long-menu" : null}
                 aria-haspopup="true"
                 onClick={(event) => setAnchorEl(event.currentTarget)}
+                size="small"
             >
                 <MoreVertIcon />
             </IconButton>

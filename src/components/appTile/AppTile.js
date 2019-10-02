@@ -20,6 +20,7 @@ import AppName from "./AppName";
 import AppMenu from "./AppMenu";
 import { build } from "../../lib";
 import ids from "./ids";
+import Highlighter from "../highlighter/Highlighter";
 
 const styles = (theme) => ({
     card: {
@@ -76,13 +77,8 @@ const styles = (theme) => ({
     },
     status: {
         position: "relative",
-        top: 30,
-        right: -10,
-    },
-    statusNoMenu: {
-        position: "relative",
-        top: 90,
-        right: 10,
+        top: 40,
+        right: -5,
     },
     rating: {
         width: "80%",
@@ -113,6 +109,7 @@ function AppTile(props) {
         onCommentsClick,
         onFavoriteClick,
         baseDebugId,
+        searchRegexPattern,
     } = props;
 
     const {
@@ -156,6 +153,7 @@ function AppTile(props) {
                     isDisabled={isDisabled}
                     classes={classes}
                     onAppNameClicked={onAppNameClick}
+                    searchRegexPattern={searchRegexPattern}
                 />
                 <div className={classes.more}>
                     <AppMenu
@@ -175,7 +173,10 @@ function AppTile(props) {
                     </div>
                 </div>
             </div>
-            <div className={classes.creator}>{creator}</div>
+
+            <div className={classes.creator}>
+                <Highlighter search={searchRegexPattern}>{creator}</Highlighter>
+            </div>
             <div className={classes.rating}>
                 <Rate
                     name={uuid}
@@ -214,6 +215,7 @@ AppTile.propTypes = {
     onCommentsClick: PropTypes.func,
     onFavoriteClick: PropTypes.func,
     baseDebugId: PropTypes.string.isRequired,
+    searchRegexPattern: PropTypes.string,
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));
