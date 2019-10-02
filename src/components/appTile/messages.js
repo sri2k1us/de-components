@@ -1,4 +1,4 @@
-var intlData = {
+const intlData = {
     locales: "en-US",
     messages: {
         privateAppTooltip:
