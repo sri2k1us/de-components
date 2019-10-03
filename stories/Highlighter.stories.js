@@ -5,12 +5,12 @@ import { storiesOf } from "@storybook/react";
 
 export default class HighlighterTest extends Component {
     render() {
-        const searchText = "see";
+        const searchText = "zzz";
 
         return (
             <div>
                 <Highlighter search={text("Search:", searchText)}>
-                    I see you!
+                    zzz Ez as 123, ABC...
                 </Highlighter>
             </div>
         );

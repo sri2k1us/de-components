@@ -13,7 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
 const style1 = (theme) => ({
     loading: {
         position: "absolute",
-        top: "50%",
+        top: "10%",
         left: "50%",
         color: palette.orange,
     },

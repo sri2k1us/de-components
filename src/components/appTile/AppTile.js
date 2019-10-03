@@ -13,17 +13,18 @@ import AppStatusIcon from "./AppStatusIcon";
 import intlData from "./messages";
 import palette from "../../util/CyVersePalette";
 import Rate from "../rating/Rate";
-import withI18N, { formatMessage } from "../../util/I18NWrapper";
-
-import IconButton from "@material-ui/core/IconButton";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Menu from "@material-ui/core/Menu";
+import withI18N from "../../util/I18NWrapper";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core";
+import AppName from "./AppName";
+import AppMenu from "./AppMenu";
+import { build } from "../../lib";
+import ids from "./ids";
+import Highlighter from "../highlighter/Highlighter";
 
 const styles = (theme) => ({
     card: {
-        minWidth: 200,
+        minWidth: 320,
         maxWidth: 320,
         minHeight: 120,
         maxHeight: 120,
@@ -31,12 +32,11 @@ const styles = (theme) => ({
         padding: 5,
         cursor: "pointer",
         "&:hover": {
-            border: "1px solid",
+            backgroundColor: palette.lightGray,
         },
     },
     selectedCard: {
-        border: "1px solid",
-        backgroundColor: palette.lightGray,
+        backgroundColor: palette.gray,
     },
     avatar: {
         float: "left",
@@ -50,8 +50,8 @@ const styles = (theme) => ({
         margin: 10,
         fontSize: 12,
         textOverflow: "ellipsis",
-        overflow: "hidden",
         whiteSpace: "nowrap",
+        overflow: "hidden",
         display: "inline-block",
         maxWidth: 150,
     },
@@ -69,45 +69,24 @@ const styles = (theme) => ({
         margin: 10,
         top: 50,
         fontSize: 12,
-        fontStyle: "italic",
-        textOverflow: "ellipsis",
         overflow: "hidden",
+        textOverflow: "ellipsis",
         whiteSpace: "nowrap",
         display: "inline-block",
         maxWidth: 150,
     },
     status: {
         position: "relative",
-        top: 30,
-        right: -10,
-    },
-    statusNoMenu: {
-        position: "relative",
-        top: 90,
-        right: 10,
+        top: 40,
+        right: -5,
     },
     rating: {
         width: "80%",
     },
 });
 
-function AppName(props) {
-    const { isDisabled, name, classes, onAppNameClicked, intl } = props;
-    const classname = isDisabled
-        ? classes.name
-        : classnames(classes.name, classes.nameHover);
-    const title = isDisabled
-        ? formatMessage(intl, "disabledAppTooltip")
-        : formatMessage(intl, "useAppTooltip");
-    const handleClick = isDisabled ? undefined : onAppNameClicked;
-    return (
-        <div title={title} className={classname} onClick={handleClick}>
-            {name}
-        </div>
-    );
-}
-
 function AppTile(props) {
+    const [anchorEl, setAnchorEl] = useState("");
     const {
         classes,
         uuid,
@@ -119,13 +98,18 @@ function AppTile(props) {
         isBeta,
         isDisabled,
         isExternal,
+        isFavorite,
         onRatingChange,
-        onDeleteRatingClick,
-        MenuItems,
         intl,
-        onAppNameClicked,
-        onAppSelected,
         selected,
+        onDeleteRatingClick,
+        onAppNameClick,
+        onAppSelected,
+        onAppInfoClick,
+        onCommentsClick,
+        onFavoriteClick,
+        baseDebugId,
+        searchRegexPattern,
     } = props;
 
     const {
@@ -134,12 +118,11 @@ function AppTile(props) {
         total: totalRating,
     } = rating;
 
-    const [anchorEl, setAnchorEl] = useState("");
     const open = Boolean(anchorEl);
     const getGravatarIconSrc = `https://www.gravatar.com/avatar/${md5(
         uuid
     )}?d=identicon&s=60`;
-
+    const tileId = build(baseDebugId, uuid);
     return (
         <Paper
             className={
@@ -148,48 +131,39 @@ function AppTile(props) {
                     : classes.card
             }
             onClick={onAppSelected}
+            id={tileId}
         >
             <div className={classes.avatar}>
                 <div>
-                    <img src={getGravatarIconSrc} alt="avatar image" />
+                    <img
+                        id={build(tileId, ids.CARD)}
+                        onClick={onAppNameClick}
+                        src={getGravatarIconSrc}
+                        alt="avatar image"
+                    />
                 </div>
                 <div className={classes.type}>{type.toLowerCase()}</div>
             </div>
             <div>
                 <AppName
+                    baseDebugId={build(tileId, ids.APP_NAME)}
                     intl={intl}
                     name={name}
                     isDisabled={isDisabled}
                     classes={classes}
-                    onAppNameClicked={onAppNameClicked}
+                    onAppNameClicked={onAppNameClick}
+                    searchRegexPattern={searchRegexPattern}
                 />
                 <div className={classes.more}>
-                    {MenuItems && (
-                        <div>
-                            <IconButton
-                                aria-label="More"
-                                aria-owns={open ? "long-menu" : null}
-                                aria-haspopup="true"
-                                onClick={(event) =>
-                                    setAnchorEl(event.currentTarget)
-                                }
-                            >
-                                <MoreVertIcon />
-                            </IconButton>
-                            <Menu
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={() => setAnchorEl(null)}
-                            >
-                                <MenuItems />
-                            </Menu>
-                        </div>
-                    )}
-                    <div
-                        className={
-                            MenuItems ? classes.status : classes.statusNoMenu
-                        }
-                    >
+                    <AppMenu
+                        onAppInfoClick={onAppInfoClick}
+                        onCommentsClick={onCommentsClick}
+                        onFavoriteClick={onFavoriteClick}
+                        baseDebugId={tileId}
+                        isExternal={isExternal}
+                        isFavorite={isFavorite}
+                    />
+                    <div className={classes.status}>
                         <AppStatusIcon
                             isPublic={isPublic}
                             isBeta={isBeta}
@@ -198,11 +172,15 @@ function AppTile(props) {
                     </div>
                 </div>
             </div>
-            <div className={classes.creator}>{creator}</div>
+
+            <div className={classes.creator}>
+                <Highlighter search={searchRegexPattern}>{creator}</Highlighter>
+            </div>
             <div className={classes.rating}>
                 <Rate
+                    name={uuid}
                     value={userRating || averageRating}
-                    readOnly={isExternal}
+                    readOnly={isExternal || !isPublic}
                     total={totalRating}
                     onChange={onRatingChange}
                     onDelete={userRating ? onDeleteRatingClick : undefined}
@@ -226,12 +204,17 @@ AppTile.propTypes = {
     isBeta: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isExternal: PropTypes.bool,
+    isFavorite: PropTypes.bool,
     onRatingChange: PropTypes.func,
     onDeleteRatingClick: PropTypes.func,
-    MenuItems: PropTypes.node,
-    onAppNameClicked: PropTypes.func,
-    onAppSelected: PropTypes.func,
+    onAppNameClick: PropTypes.func.isRequired,
+    onAppSelected: PropTypes.func.isRequired,
     selected: PropTypes.bool,
+    onAppInfoClick: PropTypes.func.isRequired,
+    onCommentsClick: PropTypes.func,
+    onFavoriteClick: PropTypes.func,
+    baseDebugId: PropTypes.string.isRequired,
+    searchRegexPattern: PropTypes.string,
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));
