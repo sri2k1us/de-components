@@ -27,10 +27,13 @@ timestamps {
               milestone 30
 
               sh "docker run ${dockerCacheVolumes} --rm ${dockerRepoTest} npm install"
+
+              milestone 40
               sh "docker run ${dockerCacheVolumes} --name ${dockerTestRunner} ${dockerRepoTest}"
               sh "docker cp ${dockerTestRunner}:/src/ui-lib/test-report.xml ./test-report.xml"
 
               junit "test-report.xml"
+              milestone 50
           } finally {
               sh returnStatus: true, script: "docker kill ${dockerTestRunner}"
               sh returnStatus: true, script: "docker rm ${dockerTestRunner}"
