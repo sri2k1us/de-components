@@ -12,6 +12,7 @@ const intlData = {
         comments: "Comments",
         favoriteNotSupported: "Favorites not supported for external apps!",
         commentsNotSupported: "Comments not supported for external apps!",
+        more: "More",
     },
 };
 

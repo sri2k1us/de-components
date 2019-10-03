@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { IconButton, Menu, MenuItem, makeStyles } from "@material-ui/core";
+import { IconButton, makeStyles, Menu, MenuItem } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import withI18N, { getMessage } from "../../util/I18NWrapper";
+import withI18N, { formatMessage, getMessage } from "../../util/I18NWrapper";
 import { injectIntl } from "react-intl";
 import InfoIcon from "@material-ui/icons/InfoOutlined";
 import UnFavoriteIcon from "@material-ui/icons/FavoriteBorderOutlined";
@@ -37,6 +37,7 @@ function AppMenu(props) {
         baseDebugId,
         isExternal,
         isFavorite,
+        intl,
     } = props;
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -46,7 +47,7 @@ function AppMenu(props) {
         <div>
             <IconButton
                 id={build(baseDebugId, ids.DOT_MENU)}
-                aria-label="More"
+                aria-label={formatMessage(intl, "more")}
                 aria-owns={open ? "long-menu" : null}
                 aria-haspopup="true"
                 onClick={(event) => setAnchorEl(event.currentTarget)}
@@ -57,7 +58,6 @@ function AppMenu(props) {
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <MenuItem
                     id={build(baseDebugId, ids.APP_INFO)}
-                    disabled={false}
                     className={classes.menuItem}
                     data-disabled={false}
                     onClick={() => {
@@ -116,7 +116,6 @@ function AppMenu(props) {
                 {isExternal && [
                     <MenuItem
                         id={build(baseDebugId, ids.FAVORITES)}
-                        disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
                         onClick={handleClose}
@@ -125,7 +124,6 @@ function AppMenu(props) {
                     </MenuItem>,
                     <MenuItem
                         id={build(baseDebugId, ids.APP_COMMENTS)}
-                        disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
                         onClick={handleClose}

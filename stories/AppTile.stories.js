@@ -320,6 +320,12 @@ export default class AppTileTest extends Component {
                             onDeleteRatingClick={() =>
                                 console.log("Delete rating selected!")
                             }
+                            searchRegexPattern=""
+                            baseDebugId="appListing"
+                            onAppSelected={() => console.log("App selected!")}
+                            onAppNameClick={() =>
+                                console.log("App name clicked!")
+                            }
                         />
                     </Grid>
                 ))}

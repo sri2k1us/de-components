@@ -131,7 +131,6 @@ function AppTile(props) {
                     : classes.card
             }
             onClick={onAppSelected}
-            key={uuid}
             id={tileId}
         >
             <div className={classes.avatar}>
