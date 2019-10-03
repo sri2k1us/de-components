@@ -9,16 +9,18 @@ timestamps {
       dockerCacheVolumes = """-v /tmp:/tmp -v "\$(pwd)/node_modules:/src/ui-lib/node_modules\""""
 
       try {
-          stage "Prepare"
-          checkout scm
+          dir('git-checkout') {
+              stage "Prepare"
+              checkout scm
 
-          stage "Create Test Image"
-          milestone 20
+              stage "Create Test Image"
+              milestone 20
 
-          dockerRepoTest = "test-${repo}-${env.BUILD_TAG}"
-          dockerTestRunner = "test-${repo}-${env.BUILD_TAG}"
+              dockerRepoTest = "test-${repo}-${env.BUILD_TAG}"
+              dockerTestRunner = "test-${repo}-${env.BUILD_TAG}"
 
-          sh "docker build --pull --rm -t ${dockerRepoTest} ."
+              sh "docker build --pull --rm -t ${dockerRepoTest} ."
+          }
 
           try {
               stage "Test"
