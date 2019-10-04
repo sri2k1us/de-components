@@ -8,6 +8,7 @@ import InfoIcon from "@material-ui/icons/InfoOutlined";
 import UnFavoriteIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CommentsIcon from "@material-ui/icons/CommentOutlined";
+import PlayIcon from "@material-ui/icons/PlayArrow";
 import palette from "../../util/CyVersePalette";
 import intlData from "./messages";
 import build from "../../util/DebugIDUtil";
@@ -34,6 +35,7 @@ function AppMenu(props) {
         onAppInfoClick,
         onCommentsClick,
         onFavoriteClick,
+        onQuickLaunchClick,
         baseDebugId,
         isExternal,
         isFavorite,
@@ -98,7 +100,20 @@ function AppMenu(props) {
                         {getMessage("removeFromFavorites")}
                     </MenuItem>
                 )}
-                {!isExternal && (
+                {!isExternal && [
+                    <MenuItem
+                        id={build(baseDebugId, ids.APP_QUICK_LAUNCH)}
+                        disabled={false}
+                        className={classes.menuItem}
+                        data-disabled={false}
+                        onClick={() => {
+                            onQuickLaunchClick();
+                            handleClose();
+                        }}
+                    >
+                        <PlayIcon className={classes.toolbarItemColor} />
+                        {getMessage("quickLaunch")}
+                    </MenuItem>,
                     <MenuItem
                         id={build(baseDebugId, ids.APP_COMMENTS)}
                         disabled={false}
@@ -111,8 +126,8 @@ function AppMenu(props) {
                     >
                         <CommentsIcon className={classes.toolbarItemColor} />
                         {getMessage("comments")}
-                    </MenuItem>
-                )}
+                    </MenuItem>,
+                ]}
                 {isExternal && [
                     <MenuItem
                         id={build(baseDebugId, ids.FAVORITES)}
@@ -139,6 +154,7 @@ AppMenu.propTypes = {
     onAppInfoClick: PropTypes.func,
     onCommentsClick: PropTypes.func,
     onFavoriteClick: PropTypes.func,
+    onQuickLaunchClick: PropTypes.func,
     baseDebugId: PropTypes.string.isRequired,
     isExternal: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired,
