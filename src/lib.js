@@ -55,6 +55,7 @@ import DEPromptDialog from "./util/dialog/DEPromptDialog";
 import ErrorExpansionPanel from "./util/ErrorExpansionPanel";
 import ErrorHandler from "./util/ErrorHandler";
 import DECheckbox from "./util/table/DECheckbox";
+import DETableRow from "./util/table/DETableRow";
 import EmptyTable from "./util/table/EmptyTable";
 import EnhancedTableHead from "./util/table/EnhancedTableHead";
 
@@ -98,6 +99,7 @@ export {
     DEDialogHeader,
     DEPromptDialog,
     DEHyperlink,
+    DETableRow,
     EmptyTable,
     EnhancedTableHead,
     ErrorExpansionPanel,
