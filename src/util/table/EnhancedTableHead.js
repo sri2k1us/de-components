@@ -21,7 +21,15 @@ class EnhancedTableHead extends React.Component {
     createSortHandler = (property) => (event) => {
         this.props.onRequestSort(event, property);
     };
-
+    getColumnAlignment(column) {
+        if (column.align) {
+            return column.align;
+        } else if (column.numeric) {
+            return "right";
+        } else {
+            return "inherit";
+        }
+    }
     render() {
         const {
             onSelectAllClick,
@@ -54,13 +62,13 @@ class EnhancedTableHead extends React.Component {
                     )}
                     {columnData.map((column) => {
                         const key = column.key || column.name;
-
+                        const align = this.getColumnAlignment(column);
                         return (
                             <TableCell
                                 key={key}
                                 id={build(this.props.baseId, column.id)}
                                 variant="head"
-                                align={column.numeric ? "right" : "inherit"}
+                                align={align}
                                 padding={column.padding || padding || "default"}
                                 sortDirection={orderBy === key ? order : false}
                                 className={classes.column_heading}
@@ -116,6 +124,7 @@ EnhancedTableHead.propTypes = {
             numeric: PropTypes.bool,
             enableSorting: PropTypes.bool,
             key: PropTypes.string,
+            align: PropTypes.string,
         })
     ),
     padding: PropTypes.string,
