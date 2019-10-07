@@ -20,16 +20,10 @@ const style1 = (theme) => ({
         },
     },
     total: {
-        paddingTop: 3,
+        paddingTop: 1,
     },
     rating: {
         float: "left",
-    },
-    delete: {
-        position: "relative",
-        top: -20,
-        left: 45,
-        marginLeft: 2,
     },
 });
 
@@ -60,8 +54,8 @@ class Rate extends Component {
                         size="small"
                     />
                 </div>
-                <div className={classes.total}> ({totalString}) </div>
-                <div className={classes.delete}>
+                <div className={classes.total}>
+                    ({totalString})
                     {onDelete && (
                         <Tooltip title="Delete Rating">
                             <IconButton
