@@ -24,10 +24,10 @@ import Highlighter from "../highlighter/Highlighter";
 
 const styles = (theme) => ({
     card: {
-        minWidth: 320,
-        maxWidth: 320,
-        minHeight: 120,
-        maxHeight: 120,
+        minWidth: 280,
+        maxWidth: 280,
+        minHeight: 100,
+        maxHeight: 100,
         margin: 15,
         padding: 5,
         cursor: "pointer",
