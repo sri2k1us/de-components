@@ -54,6 +54,7 @@ import DEPromptDialog from "./util/dialog/DEPromptDialog";
 
 import ErrorExpansionPanel from "./util/ErrorExpansionPanel";
 import ErrorHandler from "./util/ErrorHandler";
+import DECheckbox from "./util/table/DECheckbox";
 import EmptyTable from "./util/table/EmptyTable";
 import EnhancedTableHead from "./util/table/EnhancedTableHead";
 
@@ -92,6 +93,7 @@ export {
     dateConstants,
     CyVerseAnnouncer,
     DEAlertDialog,
+    DECheckbox,
     DEConfirmationDialog,
     DEDialogHeader,
     DEPromptDialog,
