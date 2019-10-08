@@ -28,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DETableRow(props) {
-    const { children } = props;
+    const { children, ...rest } = props;
     const classes = useStyles();
 
     return (
-        <TableRow classes={classes} {...props}>
+        <TableRow classes={classes} {...rest}>
             {children}
         </TableRow>
     );
