@@ -7,13 +7,7 @@ import React from "react";
 import { Checkbox } from "@material-ui/core";
 
 function DECheckbox(props) {
-    const { children } = props;
-
-    return (
-        <Checkbox color="primary" {...props}>
-            {children}
-        </Checkbox>
-    );
+    return <Checkbox color="primary" {...props} />;
 }
 
 export default DECheckbox;
