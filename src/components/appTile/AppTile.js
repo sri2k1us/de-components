@@ -109,7 +109,7 @@ function AppTile(props) {
         onCommentsClick,
         onFavoriteClick,
         baseDebugId,
-        searchRegexPattern,
+        searchText,
     } = props;
 
     const {
@@ -152,7 +152,7 @@ function AppTile(props) {
                     isDisabled={isDisabled}
                     classes={classes}
                     onAppNameClicked={onAppNameClick}
-                    searchRegexPattern={searchRegexPattern}
+                    searchText={searchText}
                 />
                 <div className={classes.more}>
                     <AppMenu
@@ -174,7 +174,7 @@ function AppTile(props) {
             </div>
 
             <div className={classes.creator}>
-                <Highlighter search={searchRegexPattern}>{creator}</Highlighter>
+                <Highlighter search={searchText}>{creator}</Highlighter>
             </div>
             <div className={classes.rating}>
                 <Rate
@@ -214,7 +214,7 @@ AppTile.propTypes = {
     onCommentsClick: PropTypes.func,
     onFavoriteClick: PropTypes.func,
     baseDebugId: PropTypes.string.isRequired,
-    searchRegexPattern: PropTypes.string,
+    searchText: PropTypes.string,
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));

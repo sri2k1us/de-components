@@ -32,7 +32,7 @@ function AppName(props) {
         name,
         onAppNameClicked,
         intl,
-        searchRegexPattern,
+        searchText,
     } = props;
     const classes = useStyles();
     const classname =
@@ -53,7 +53,7 @@ function AppName(props) {
             className={classname}
             onClick={handleClick}
         >
-            <Highlighter search={searchRegexPattern}>{name}</Highlighter>
+            <Highlighter search={searchText}>{name}</Highlighter>
         </div>
     );
 }
@@ -61,5 +61,6 @@ AppName.propTypes = {
     isDisabled: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     onAppNameClicked: PropTypes.func,
+    searchText: PropTypes.string,
 };
 export default withI18N(injectIntl(AppName), intlData);
