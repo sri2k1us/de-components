@@ -214,7 +214,10 @@ AppTile.propTypes = {
     onCommentsClick: PropTypes.func,
     onFavoriteClick: PropTypes.func,
     baseDebugId: PropTypes.string.isRequired,
-    searchText: PropTypes.string,
+    searchText: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(RegExp),
+    ]),
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));
