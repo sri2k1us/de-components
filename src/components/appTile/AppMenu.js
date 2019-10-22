@@ -22,6 +22,9 @@ import ids from "./ids";
  *
  */
 const useStyles = makeStyles((theme) => ({
+    menuItem: {
+        padding: 5,
+    },
     toolbarItemColor: {
         color: palette.darkBlue,
     },
@@ -57,6 +60,7 @@ function AppMenu(props) {
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <MenuItem
                     id={build(baseDebugId, ids.APP_INFO)}
+                    className={classes.menuItem}
                     data-disabled={false}
                     onClick={() => {
                         onAppInfoClick();
@@ -70,6 +74,7 @@ function AppMenu(props) {
                     <MenuItem
                         id={build(baseDebugId, ids.FAVORITES)}
                         disabled={false}
+                        className={classes.menuItem}
                         data-disabled={false}
                         onClick={() => {
                             onFavoriteClick();
@@ -84,6 +89,7 @@ function AppMenu(props) {
                     <MenuItem
                         id={build(baseDebugId, ids.FAVORITES)}
                         disabled={false}
+                        className={classes.menuItem}
                         data-disabled={false}
                         onClick={() => {
                             onFavoriteClick();
@@ -98,6 +104,7 @@ function AppMenu(props) {
                     <MenuItem
                         id={build(baseDebugId, ids.APP_QUICK_LAUNCH)}
                         disabled={false}
+                        className={classes.menuItem}
                         data-disabled={false}
                         onClick={() => {
                             onQuickLaunchClick();
@@ -110,6 +117,7 @@ function AppMenu(props) {
                     <MenuItem
                         id={build(baseDebugId, ids.APP_COMMENTS)}
                         disabled={false}
+                        className={classes.menuItem}
                         data-disabled={false}
                         onClick={() => {
                             onCommentsClick();
@@ -123,6 +131,7 @@ function AppMenu(props) {
                 {isExternal && [
                     <MenuItem
                         id={build(baseDebugId, ids.FAVORITES)}
+                        className={classes.menuItem}
                         data-disabled={false}
                         onClick={handleClose}
                     >
@@ -130,6 +139,7 @@ function AppMenu(props) {
                     </MenuItem>,
                     <MenuItem
                         id={build(baseDebugId, ids.APP_COMMENTS)}
+                        className={classes.menuItem}
                         data-disabled={false}
                         onClick={handleClose}
                     >
