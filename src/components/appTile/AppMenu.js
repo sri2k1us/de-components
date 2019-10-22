@@ -24,6 +24,7 @@ import ids from "./ids";
 const useStyles = makeStyles((theme) => ({
     menuItem: {
         padding: 5,
+        fontSize: 10,
     },
     toolbarItemColor: {
         color: palette.darkBlue,
