@@ -108,6 +108,7 @@ function AppTile(props) {
         onAppInfoClick,
         onCommentsClick,
         onFavoriteClick,
+        onQuickLaunchClick,
         baseDebugId,
         searchText,
     } = props;
@@ -159,6 +160,7 @@ function AppTile(props) {
                         onAppInfoClick={onAppInfoClick}
                         onCommentsClick={onCommentsClick}
                         onFavoriteClick={onFavoriteClick}
+                        onQuickLaunchClick={onQuickLaunchClick}
                         baseDebugId={tileId}
                         isExternal={isExternal}
                         isFavorite={isFavorite}
@@ -213,6 +215,7 @@ AppTile.propTypes = {
     onAppInfoClick: PropTypes.func.isRequired,
     onCommentsClick: PropTypes.func,
     onFavoriteClick: PropTypes.func,
+    onQuickLaunchClick: PropTypes.func,
     baseDebugId: PropTypes.string.isRequired,
     searchText: PropTypes.string,
 };
