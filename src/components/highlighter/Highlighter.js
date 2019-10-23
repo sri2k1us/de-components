@@ -16,14 +16,8 @@ const styles = (theme) => ({
 });
 function Highlighter(props) {
     let { search, children, classes } = props;
-    let regexSearch = search
-        ? search.replace("*", ".*").replace("?", ".")
-        : search;
     return (
-        <Highlight
-            matchClass={classes.highlightColor}
-            search={regexSearch ? new RegExp(regexSearch, "i") : ""}
-        >
+        <Highlight matchClass={classes.highlightColor} search={search}>
             {children}
         </Highlight>
     );

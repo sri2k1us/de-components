@@ -61,6 +61,9 @@ AppName.propTypes = {
     isDisabled: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     onAppNameClicked: PropTypes.func,
-    searchText: PropTypes.string,
+    searchText: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(RegExp),
+    ]),
 };
 export default withI18N(injectIntl(AppName), intlData);

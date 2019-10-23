@@ -32,11 +32,17 @@ const styles = (theme) => ({
         padding: 5,
         cursor: "pointer",
         "&:hover": {
-            backgroundColor: palette.lightGray,
+            backgroundColor:
+                theme.palette.type === "light"
+                    ? "rgba(0, 0, 0, 0.13)"
+                    : "rgba(255, 255, 255, 0.28)",
         },
     },
     selectedCard: {
-        backgroundColor: palette.gray,
+        backgroundColor:
+            theme.palette.type === "light"
+                ? palette.lightBlue
+                : "rgba(255, 255, 255, 0.16)",
     },
     avatar: {
         float: "left",
@@ -217,7 +223,10 @@ AppTile.propTypes = {
     onFavoriteClick: PropTypes.func,
     onQuickLaunchClick: PropTypes.func,
     baseDebugId: PropTypes.string.isRequired,
-    searchText: PropTypes.string,
+    searchText: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(RegExp),
+    ]),
 };
 
 export default withStyles(styles)(withI18N(injectIntl(AppTile), intlData));
