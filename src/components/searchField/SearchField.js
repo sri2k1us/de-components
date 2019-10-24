@@ -79,7 +79,6 @@ class SearchField extends Component {
             startAdornment,
             endAdornment,
             children,
-            classes,
             height,
         } = this.props;
 
@@ -95,7 +94,6 @@ class SearchField extends Component {
                     onKeyPress={this.handleKeyPress}
                     onChange={this.handleChange}
                     InputProps={{
-                        disableUnderline: true,
                         startAdornment: startAdornment,
                         endAdornment: endAdornment,
                     }}
