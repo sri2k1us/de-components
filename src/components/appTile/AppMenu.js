@@ -104,6 +104,7 @@ function AppMenu(props) {
                 {!isExternal && [
                     <MenuItem
                         id={build(baseDebugId, ids.APP_QUICK_LAUNCH)}
+                        key={ids.APP_QUICK_LAUNCH}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
@@ -117,6 +118,7 @@ function AppMenu(props) {
                     </MenuItem>,
                     <MenuItem
                         id={build(baseDebugId, ids.APP_COMMENTS)}
+                        key={ids.APP_COMMENTS}
                         disabled={false}
                         className={classes.menuItem}
                         data-disabled={false}
@@ -132,6 +134,7 @@ function AppMenu(props) {
                 {isExternal && [
                     <MenuItem
                         id={build(baseDebugId, ids.FAVORITES)}
+                        key={ids.FAVORITES}
                         className={classes.menuItem}
                         data-disabled={false}
                         onClick={handleClose}
@@ -140,6 +143,7 @@ function AppMenu(props) {
                     </MenuItem>,
                     <MenuItem
                         id={build(baseDebugId, ids.APP_COMMENTS)}
+                        key={ids.APP_COMMENTS}
                         className={classes.menuItem}
                         data-disabled={false}
                         onClick={handleClose}
