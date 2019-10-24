@@ -326,6 +326,7 @@ export default class AppTileTest extends Component {
                             onAppNameClick={() =>
                                 console.log("App name clicked!")
                             }
+                            searchText=""
                         />
                     </Grid>
                 ))}

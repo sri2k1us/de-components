@@ -13,6 +13,7 @@ export default class RatingTest extends Component {
                 readOnly={boolean("ReadOnly", false)}
                 onDelete={() => console.log("delete rating")}
                 onChange={onChange}
+                name="Super Rating"
             />
         );
     }
