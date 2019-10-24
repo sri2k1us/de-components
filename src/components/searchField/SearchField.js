@@ -18,8 +18,6 @@ class SearchField extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleShow = this.handleShow.bind(this);
-        this.handleHide = this.handleHide.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
@@ -60,14 +58,6 @@ class SearchField extends Component {
 
     handleSearch() {
         this.props.handleSearch(this.state.inputValue);
-    }
-
-    handleShow(event) {
-        this.setState({ anchorEl: event.currentTarget });
-    }
-
-    handleHide() {
-        this.setState({ anchorEl: null });
     }
 
     render() {
