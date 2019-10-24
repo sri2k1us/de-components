@@ -16,7 +16,7 @@ export default (theme) => ({
         alignItems: "center",
     },
     chip: {
-        margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+        margin: `${theme.spacing(0.5)}px ${theme.spacing(0.25)}px`,
     },
     chipFocused: {
         backgroundColor: emphasize(
@@ -28,7 +28,7 @@ export default (theme) => ({
     },
     noOptionsMessage: {
         fontSize: 16,
-        padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+        padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
     },
     singleValue: {
         fontSize: 16,
