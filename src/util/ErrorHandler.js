@@ -32,7 +32,7 @@ class ErrorHandler extends Component {
         this.onClose = this.onClose.bind(this);
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
+    componentDidMount() {
         this.setState({ open: true });
     }
 

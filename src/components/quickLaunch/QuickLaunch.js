@@ -12,7 +12,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles1 = (theme) => ({
     chip: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
     },
 });
 

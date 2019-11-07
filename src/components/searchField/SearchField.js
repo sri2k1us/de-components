@@ -18,13 +18,11 @@ class SearchField extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleShow = this.handleShow.bind(this);
-        this.handleHide = this.handleHide.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.keyPressTimer = null;
     }
 
@@ -62,14 +60,6 @@ class SearchField extends Component {
         this.props.handleSearch(this.state.inputValue);
     }
 
-    handleShow(event) {
-        this.setState({ anchorEl: event.currentTarget });
-    }
-
-    handleHide() {
-        this.setState({ anchorEl: null });
-    }
-
     render() {
         let { inputValue } = this.state;
         let {
@@ -79,7 +69,6 @@ class SearchField extends Component {
             startAdornment,
             endAdornment,
             children,
-            classes,
             height,
         } = this.props;
 
@@ -95,7 +84,6 @@ class SearchField extends Component {
                     onKeyPress={this.handleKeyPress}
                     onChange={this.handleChange}
                     InputProps={{
-                        disableUnderline: true,
                         startAdornment: startAdornment,
                         endAdornment: endAdornment,
                     }}

@@ -92,7 +92,6 @@ const styles = (theme) => ({
 });
 
 function AppTile(props) {
-    const [anchorEl, setAnchorEl] = useState("");
     const {
         classes,
         uuid,
@@ -125,7 +124,6 @@ function AppTile(props) {
         total: totalRating,
     } = rating;
 
-    const open = Boolean(anchorEl);
     const getGravatarIconSrc = `https://www.gravatar.com/avatar/${md5(
         uuid
     )}?d=identicon&s=60`;
