@@ -79,7 +79,7 @@ CopyTextArea.propTypes = {
     debugIdPrefix: PropTypes.string,
     multiline: PropTypes.bool,
     text: PropTypes.string.isRequired,
-    btnText: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+    btnText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     copiedBtnText: PropTypes.string,
 };
 
