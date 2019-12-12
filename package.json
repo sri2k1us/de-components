@@ -12,7 +12,8 @@
         "numeral": "^2.0.6",
         "react-highlighter": "^0.4.3",
         "react-loading-overlay": "^1.0.1",
-        "react-scripts": "3.3.0"
+        "react-scripts": "3.3.0",
+        "typescript": "^3.7.3"
     },
     "peerDependencies": {
         "@material-ui/core": "^4.5.1",
@@ -22,7 +23,8 @@
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-intl": "^2.9.0",
-        "react-select": "^2.0.0"
+        "react-select": "^2.0.0",
+        "typescript": "^3.7.3"
     },
     "scripts": {
         "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
