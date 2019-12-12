@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Autocomplete from "../src/components/autocomplete/Autocomplete";
 import { storiesOf } from "@storybook/react";
-import DEHyperLinkTest from "./DEHyperlink.stories";
 
 /**
  * @author aramsey
