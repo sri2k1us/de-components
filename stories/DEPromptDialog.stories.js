@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import DEPromptDialog from "../src/util/dialog/DEPromptDialog";
 import { storiesOf } from "@storybook/react";
 
-export default class DEPromptDialogTest extends Component {
+export class DEPromptDialogTest extends Component {
     render() {
         const heading = "test";
         const prompt = "Enter something";

@@ -3,7 +3,7 @@ import ErrorExpansionPanel from "../src/util/ErrorExpansionPanel";
 import { storiesOf } from "@storybook/react";
 import DEPromptDialog from "../src/util/dialog/DEPromptDialog";
 
-export default class ErrorExpansionPanelTest extends Component {
+export class ErrorExpansionPanelTest extends Component {
     render() {
         const errMsg =
             "Error: ERR_ILLEGAL_ARGUMENT<br>Real Error: Everything is broken forever, run!";

@@ -3,7 +3,7 @@ import AppTile from "../src/components/appTile/AppTile";
 import { storiesOf } from "@storybook/react";
 import Grid from "@material-ui/core/Grid";
 
-export default class AppTileTest extends Component {
+export class AppTileTest extends Component {
     constructor(props) {
         super(props);
         this.props = props;

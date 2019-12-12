@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { storiesOf } from "@storybook/react";
 import TriggerField from "../src/components/triggerField/TriggerField";
 
-export default class TriggerFieldTest extends Component {
+export class TriggerFieldTest extends Component {
     render() {
         const handleSearch =
             this.props.logger ||

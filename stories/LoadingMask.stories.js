@@ -9,7 +9,7 @@ import LoadingMask from "../src/components/loading/LoadingMask";
 import { boolean } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 
-export default class LoadingMaskTest extends Component {
+export class LoadingMaskTest extends Component {
     constructor(props) {
         super(props);
         this.state = { mask: true };

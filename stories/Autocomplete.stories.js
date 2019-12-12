@@ -6,7 +6,7 @@ import DEHyperLinkTest from "./DEHyperlink.stories";
 /**
  * @author aramsey
  */
-export default class AutocompleteTest extends Component {
+export class AutocompleteTest extends Component {
     render() {
         const selectOptionLogger =
             this.props.selectOptionLogger ||

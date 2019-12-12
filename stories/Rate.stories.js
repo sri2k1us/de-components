@@ -3,7 +3,7 @@ import Rate from "../src/components/rating/Rate";
 import { boolean, number } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 
-export default class RatingTest extends Component {
+export class RatingTest extends Component {
     render() {
         const onChange = (event, value) => console.log("new rating:" + value);
         return (

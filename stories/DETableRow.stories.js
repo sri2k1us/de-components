@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell } from "@material-ui/core";
 import { storiesOf } from "@storybook/react";
 import DECheckbox from "../src/util/table/DECheckbox";
 
-export default class DETableRowTest extends Component {
+export class DETableRowTest extends Component {
     render() {
         return (
             <Table>

@@ -10,7 +10,7 @@ import CyVerseAnnouncer, {
 } from "../src/components/announcer/CyVerseAnnouncer";
 import { storiesOf } from "@storybook/react";
 
-export default class AnnouncerTest extends Component {
+export class AnnouncerTest extends Component {
     render() {
         [
             {
