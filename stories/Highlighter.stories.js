@@ -3,7 +3,7 @@ import Highlighter from "../src/components/highlighter/Highlighter";
 import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 
-export default class HighlighterTest extends Component {
+export class HighlighterTest extends Component {
     render() {
         const searchText = "zzz";
 

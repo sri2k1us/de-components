@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import CopyTextArea from "../src/components/copy/CopyTextArea";
 import { storiesOf } from "@storybook/react";
 
-export default class CopyTextAreaTest extends Component {
+export class CopyTextAreaTest extends Component {
     render() {
         let textToCopy = `The Dark Arts better be worried,
          oh boy!`;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SearchField from "../src/components/searchField/SearchField";
 import { storiesOf } from "@storybook/react";
 
-export default class SearchFieldTest extends Component {
+export class SearchFieldTest extends Component {
     render() {
         const handleSearch =
             this.props.logger ||

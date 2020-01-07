@@ -3,7 +3,7 @@ import DEHyperlink from "../src/components/hyperlink/DEHyperlink";
 import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 
-export default class DEHyperlinkTest extends Component {
+export class DEHyperlinkTest extends Component {
     render() {
         let linkText = "Test links";
 

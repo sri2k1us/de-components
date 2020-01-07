@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { getMuiTheme, MuiThemeProvider } from "../lib";
-import TriggerFieldTest from "../../stories/TriggerField.stories";
+import { TriggerFieldTest } from "../../stories/TriggerField.stories";
 
 it("renders trigger field without crashing", () => {
     const div = document.createElement("div");

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import Autocomplete from "../src/components/autocomplete/Autocomplete";
 import { storiesOf } from "@storybook/react";
-import DEHyperLinkTest from "./DEHyperlink.stories";
 
 /**
  * @author aramsey
  */
-export default class AutocompleteTest extends Component {
+export class AutocompleteTest extends Component {
     render() {
         const selectOptionLogger =
             this.props.selectOptionLogger ||

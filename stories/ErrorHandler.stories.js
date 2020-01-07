@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ErrorHandler from "../src/util/ErrorHandler";
 import { storiesOf } from "@storybook/react";
 
-export default class ErrorHandlerTest extends Component {
+export class ErrorHandlerTest extends Component {
     render() {
         const errorSummary = "Everything is broken forever, come back later.";
 

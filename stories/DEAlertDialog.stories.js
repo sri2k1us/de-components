@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DEAlertDialog from "../src/util/dialog/DEAlertDialog";
 import { storiesOf } from "@storybook/react";
 
-export default class DEAlertDialogTest extends Component {
+export class DEAlertDialogTest extends Component {
     render() {
         return (
             <DEAlertDialog
