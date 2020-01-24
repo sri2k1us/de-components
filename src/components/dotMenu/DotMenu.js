@@ -33,10 +33,16 @@ function DotMenu(props) {
     const open = Boolean(anchorEl);
 
     const handleDotMenuClick = (event) => {
+        if (event) {
+            event.stopPropagation();
+        }
         setAnchorEl(event.currentTarget);
     };
 
-    const handleDotMenuClose = () => {
+    const handleDotMenuClose = (event) => {
+        if (event) {
+            event.stopPropagation();
+        }
         setAnchorEl(null);
     };
 
