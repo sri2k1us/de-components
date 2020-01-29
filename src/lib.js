@@ -58,7 +58,6 @@ import EnhancedTableHead from "./util/table/EnhancedTableHead";
 import TablePaginationActions from "./util/table/TablePaginationActions";
 import { stableSort, getSorting } from "./util/table/TableSort";
 
-import { MuiThemeProvider } from "@material-ui/core/styles";
 import getMuiTheme from "./util/CyVerseTheme";
 
 export {
@@ -103,7 +102,6 @@ export {
     hasProps,
     Highlighter,
     LoadingMask,
-    MuiThemeProvider,
     QuickLaunch,
     Rate,
     SearchField,
