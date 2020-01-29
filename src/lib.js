@@ -35,7 +35,6 @@ import {
 } from "./util/FormField";
 import getRegExp from "./util/getRegExp";
 import hasProps from "./util/hasProps";
-import palette from "./util/CyVersePalette";
 import {
     getMessage,
     formatMessage,
@@ -59,25 +58,8 @@ import EnhancedTableHead from "./util/table/EnhancedTableHead";
 import TablePaginationActions from "./util/table/TablePaginationActions";
 import { stableSort, getSorting } from "./util/table/TableSort";
 
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-
-const getMuiTheme = (theme) =>
-    createMuiTheme({
-        palette: {
-            primary: {
-                main: palette.blue,
-            },
-            secondary: {
-                main: palette.lightBlue,
-            },
-        },
-        typography: {
-            button: {
-                textTransform: "none",
-            },
-            useNextVariants: true,
-        },
-    });
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import getMuiTheme from "./util/CyVerseTheme";
 
 export {
     announce,
@@ -122,7 +104,6 @@ export {
     Highlighter,
     LoadingMask,
     MuiThemeProvider,
-    palette,
     QuickLaunch,
     Rate,
     SearchField,
