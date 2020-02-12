@@ -1,4 +1,4 @@
-export default {
+const oldPalette = {
     orange: "#f19e1f", // 241, 158, 31
     lightGreen: "#97af3c", // 151, 175, 60
     darkGreen: "#5c8727", // 92, 135, 39
@@ -11,4 +11,29 @@ export default {
     darkestBlue: "#142248", // 20, 34, 72
     white: "#ffffff",
     red: "#e60424",
+};
+
+const newPalette = {
+    white: "#ffffff",
+    lightSilver: "#e2e2e2",
+    silver: "#a5a4a4",
+    blueGrey: "#525A68",
+    black: "#000000",
+    darkNavy: "#142248",
+    navy: "#004471",
+    cobalt: "#0971AB", // primary
+    sky: "#99D9EA",
+    yellow: "#F7D21E",
+    gold: "#F8981D",
+    redSun: "#F1592B",
+    violet: "#AA2173",
+    indigo: "#4A2E8D",
+    leaf: "#378F43",
+    grass: "#7CB342",
+};
+
+// Merge the two palettes for now. We'll eventually remove the old palette.
+export default {
+    ...oldPalette,
+    ...newPalette,
 };

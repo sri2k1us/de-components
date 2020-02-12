@@ -1,7 +1,7 @@
 import React from "react";
 
 import { makeStyles, TableRow } from "@material-ui/core";
-import { palette } from "../../lib";
+import palette from "../CyVersePalette";
 
 /**
  * This style was copied from MUI's TableRow style and updated to have the selected and hover colors
