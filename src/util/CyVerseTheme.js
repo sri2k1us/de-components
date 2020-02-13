@@ -33,6 +33,12 @@ export default (theme) =>
                 success: {
                     main: palette.grass,
                 },
+                action: {
+                    hover: "rgba(0, 0, 0, 0.1)", // was 0.04
+                    hoverOpacity: 0.1,
+                    selected: "rgba(0, 0, 0, 0.2)", // was 0.08
+                    selectedOpacity: 0.2,
+                },
 
                 ...palette, // allow all of the colors to be referenced in the palette.
             },

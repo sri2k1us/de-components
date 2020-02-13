@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import { getMuiTheme, MuiThemeProvider } from "../lib";
+import { getMuiTheme } from "../lib";
 import { DEHyperlinkTest } from "../../stories/DEHyperlink.stories";
 
 it("renders hyperlink without crashing", () => {

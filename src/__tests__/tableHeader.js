@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
-import { getMuiTheme, MuiThemeProvider } from "../lib";
-import { DETableRowTest } from "../../stories/DETableRow.stories";
+import { getMuiTheme } from "../lib";
+import { DETableHeader } from "../../stories/TableHeader.stories";
 
-it("renders DETableRow without crashing", () => {
+it("renders table header without crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
         <MuiThemeProvider theme={getMuiTheme()}>
-            <DETableRowTest />
+            <DETableHeader />
         </MuiThemeProvider>,
         div
     );

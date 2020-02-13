@@ -4,18 +4,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Color from "../CyVersePalette";
 import build from "../DebugIDUtil";
+import DECheckbox from "./DECheckbox";
+import messages from "./messages";
+import withI18N, { getMessage } from "../I18NWrapper";
 
-import exStyles from "./style";
-
-import Checkbox from "@material-ui/core/Checkbox";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Tooltip from "@material-ui/core/Tooltip";
-import { withStyles } from "@material-ui/core/styles";
 
 class EnhancedTableHead extends React.Component {
     createSortHandler = (property) => (event) => {
@@ -38,7 +36,6 @@ class EnhancedTableHead extends React.Component {
             numSelected,
             columnData,
             selectable,
-            classes,
             padding,
             rowsInPage,
         } = this.props;
@@ -48,15 +45,14 @@ class EnhancedTableHead extends React.Component {
             <TableHead>
                 <TableRow>
                     {selectable && (
-                        <TableCell
-                            padding={padding ? padding : "checkbox"}
-                            className={classes.checkbox_cell}
-                        >
-                            <Checkbox
+                        <TableCell padding={padding ? padding : "checkbox"}>
+                            <DECheckbox
                                 indeterminate={isInDeterminate}
                                 checked={numSelected === rowsInPage}
                                 onChange={onSelectAllClick}
-                                className={classes.column_heading}
+                                inputProps={{
+                                    "aria-label": getMessage("selectAll"),
+                                }}
                             />
                         </TableCell>
                     )}
@@ -71,11 +67,10 @@ class EnhancedTableHead extends React.Component {
                                 align={align}
                                 padding={column.padding || padding || "default"}
                                 sortDirection={orderBy === key ? order : false}
-                                className={classes.column_heading}
                             >
                                 {column.enableSorting ? (
                                     <Tooltip
-                                        title="Sort"
+                                        title={getMessage("sort")}
                                         placement={
                                             column.numeric
                                                 ? "bottom-end"
@@ -90,7 +85,6 @@ class EnhancedTableHead extends React.Component {
                                                 this.props.onRequestSort &&
                                                 this.createSortHandler(key)
                                             }
-                                            style={{ color: Color.white }}
                                         >
                                             {column.name}
                                         </TableSortLabel>
@@ -134,4 +128,4 @@ EnhancedTableHead.defaultProps = {
     selectable: false,
 };
 
-export default withStyles(exStyles)(EnhancedTableHead);
+export default withI18N(EnhancedTableHead, messages);
