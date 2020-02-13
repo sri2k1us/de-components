@@ -5,5 +5,7 @@ export default {
         lastPage: "Last Page",
         nextPage: "Next Page",
         prevPage: "Previous Page",
+        selectAll: "Select all",
+        sort: "Sort",
     },
 };

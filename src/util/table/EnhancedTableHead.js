@@ -5,9 +5,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import build from "../DebugIDUtil";
+import DECheckbox from "./DECheckbox";
+import messages from "./messages";
+import withI18N, { getMessage } from "../I18NWrapper";
 
-
-import Checkbox from "@material-ui/core/Checkbox";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
@@ -44,13 +45,14 @@ class EnhancedTableHead extends React.Component {
             <TableHead>
                 <TableRow>
                     {selectable && (
-                        <TableCell
-                            padding={padding ? padding : "checkbox"}
-                        >
-                            <Checkbox
+                        <TableCell padding={padding ? padding : "checkbox"}>
+                            <DECheckbox
                                 indeterminate={isInDeterminate}
                                 checked={numSelected === rowsInPage}
                                 onChange={onSelectAllClick}
+                                inputProps={{
+                                    "aria-label": getMessage("selectAll"),
+                                }}
                             />
                         </TableCell>
                     )}
@@ -68,7 +70,7 @@ class EnhancedTableHead extends React.Component {
                             >
                                 {column.enableSorting ? (
                                     <Tooltip
-                                        title="Sort"
+                                        title={getMessage("sort")}
                                         placement={
                                             column.numeric
                                                 ? "bottom-end"
