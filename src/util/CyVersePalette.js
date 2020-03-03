@@ -26,11 +26,11 @@ const newPalette = {
     sky: "#99D9EA",
     yellow: "#F7D21E",
     gold: "#F8981D",
-    redSun: "#F1592B",
     violet: "#AA2173",
     indigo: "#4A2E8D",
     leaf: "#378F43",
     grass: "#7CB342",
+    alertRed: "#AF0404",
 };
 
 // Merge the two palettes for now. We'll eventually remove the old palette.

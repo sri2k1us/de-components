@@ -22,13 +22,13 @@ export default (theme) =>
                     main: palette.sky,
                 },
                 error: {
-                    main: palette.redSun,
+                    main: palette.alertRed,
                 },
                 warning: {
                     main: palette.yellow,
                 },
                 info: {
-                    main: palette.silver,
+                    main: palette.blueGrey,
                 },
                 success: {
                     main: palette.grass,
