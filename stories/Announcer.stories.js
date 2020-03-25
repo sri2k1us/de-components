@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
 import CyVerseAnnouncer, {
     announce,
     BOTTOM,
@@ -9,7 +10,17 @@ import CyVerseAnnouncer, {
     WARNING,
 } from "../src/components/announcer/CyVerseAnnouncer";
 import { storiesOf } from "@storybook/react";
-
+const action = () => {
+    return (
+        <Button
+            color="secondary"
+            size="small"
+            onClick={() => console.log("Test Action clicked!")}
+        >
+            Test Action
+        </Button>
+    );
+};
 export class AnnouncerTest extends Component {
     render() {
         [
@@ -17,6 +28,7 @@ export class AnnouncerTest extends Component {
                 text: "this is an Information",
                 duration: 3000,
                 vertical: TOP,
+                customAction: action,
             },
             {
                 text: "this is Error Message",

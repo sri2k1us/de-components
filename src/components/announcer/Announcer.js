@@ -58,7 +58,7 @@ const styles1 = (theme) => ({
 });
 
 function MySnackbarContent(props) {
-    const { classes, message, onClose, variant } = props;
+    const { classes, message, onClose, variant, customAction } = props;
     const Icon = variantIcon[variant];
 
     return (
@@ -77,6 +77,7 @@ function MySnackbarContent(props) {
                 </span>
             }
             action={[
+                customAction ? customAction() : null,
                 <IconButton
                     key="close"
                     aria-label="Close"
@@ -122,6 +123,7 @@ class Announcer extends React.Component {
             vertical,
             onClose,
             open,
+            customAction,
         } = this.props;
         if (message) {
             return (
@@ -142,6 +144,7 @@ class Announcer extends React.Component {
                             variant={variant}
                             message={message}
                             classes={classes}
+                            customAction={customAction}
                         />
                     </Snackbar>
                 </div>
