@@ -103,7 +103,14 @@ class CyVerseAnnouncer extends Component {
 
     render() {
         const {
-            msg: { text, variant, duration, horizontal, vertical },
+            msg: {
+                text,
+                variant,
+                duration,
+                horizontal,
+                vertical,
+                customAction,
+            },
             open,
         } = this.state;
         return (
@@ -115,6 +122,7 @@ class CyVerseAnnouncer extends Component {
                 onClose={this.handleClose}
                 horizontal={horizontal ? horizontal : CENTER}
                 vertical={vertical ? vertical : TOP}
+                customAction={customAction}
             />
         );
     }
