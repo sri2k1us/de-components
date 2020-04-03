@@ -9,21 +9,20 @@ import numeral from "numeral";
 import Rating from "@material-ui/lab/Rating";
 
 import IconButton from "@material-ui/core/IconButton";
-import { Tooltip, withStyles } from "@material-ui/core";
+import { Tooltip, Typography, withStyles } from "@material-ui/core";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
 const style1 = (theme) => ({
-    ratingDelete: {
-        "&:hover": {
-            backgroundColor: theme.palette.error.dark,
-        },
-    },
-    total: {
-        paddingTop: 1,
-    },
     rating: {
         float: "left",
+        marginTop: theme.spacing(0.15),
+    },
+    total: {
+        marginTop: theme.spacing(0.05),
+    },
+    delete: {
+        marginTop: theme.spacing(0.15),
     },
 });
 
@@ -55,17 +54,22 @@ class Rate extends Component {
                     />
                 </div>
                 <div className={classes.total}>
-                    ({totalString})
+                    {total > 0 && (
+                        <Typography component="span" variant="caption">
+                            ({totalString})
+                        </Typography>
+                    )}
                     {onDelete && (
-                        <Tooltip title="Delete Rating">
-                            <IconButton
-                                onClick={onDelete}
-                                size="small"
-                                className={classes.ratingDelete}
-                            >
-                                <DeleteIcon fontSize="inherit" />
-                            </IconButton>
-                        </Tooltip>
+                        <span className={classes.delete}>
+                            <Tooltip title="Delete Rating">
+                                <IconButton onClick={onDelete} size="small">
+                                    <DeleteIcon
+                                        fontSize="small"
+                                        color="error"
+                                    />
+                                </IconButton>
+                            </Tooltip>
+                        </span>
                     )}
                 </div>
             </React.Fragment>
