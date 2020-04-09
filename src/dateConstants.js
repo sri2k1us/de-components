@@ -1,5 +1,5 @@
 export default {
-    DATE_FORMAT: "YYYY-MM-DD",
-    LONG_DATE_FORMAT: "YYYY-MM-DD HH:mm:ss",
+    DATE_FORMAT: "yyyy-MM-dd",
+    LONG_DATE_FORMAT: "yyyy-MM-dd HH:mm:ss",
     EMPTY_DATE: "-",
 };
