@@ -5,6 +5,8 @@
 import { format } from "date-fns";
 import dateConstants from "../dateConstants";
 
+import { legacyParse, convertTokens } from "@date-fns/upgrade/v2";
+
 /**
  * Format a date with the given format or return a `-`.
  * @param longDate
@@ -14,7 +16,7 @@ import dateConstants from "../dateConstants";
 function formatDate(longDate, dateFormat = dateConstants.LONG_DATE_FORMAT) {
     const longDateInt = parseInt(longDate, 10);
     return longDateInt
-        ? format(new Date(longDateInt), dateFormat)
+        ? format(legacyParse(new Date(longDateInt)), convertTokens(dateFormat))
         : dateConstants.EMPTY_DATE;
 }
 
