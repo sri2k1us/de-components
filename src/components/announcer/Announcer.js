@@ -6,92 +6,25 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import classNames from "classnames";
-
-import palette from "../../util/CyVersePalette";
-
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { BOTTOM, LEFT, SUCCESS, TIMEOUT, WARNING } from "./AnnouncerConstants";
 import CloseIcon from "@material-ui/icons/Close";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
 import IconButton from "@material-ui/core/IconButton";
-import Snackbar from "@material-ui/core/Snackbar";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import WarningIcon from "@material-ui/icons/Warning";
-
-import { withStyles } from "@material-ui/core/styles";
-
-const variantIcon = {
-    success: CheckCircleIcon,
-    warning: WarningIcon,
-    error: ErrorIcon,
-    info: InfoIcon,
-};
-
-const styles1 = (theme) => ({
-    success: {
-        backgroundColor: palette.darkGreen,
-    },
-    error: {
-        backgroundColor: palette.red,
-    },
-    info: {
-        backgroundColor: palette.blue,
-    },
-    warning: {
-        backgroundColor: palette.orange,
-    },
-    icon: {
-        fontSize: 20,
-    },
-    iconVariant: {
-        opacity: 0.9,
-        marginRight: theme.spacing(1),
-    },
-    message: {
-        display: "flex",
-        alignItems: "center",
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-});
+import { Snackbar, useTheme } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
 
 function MySnackbarContent(props) {
-    const { classes, message, onClose, variant, customAction } = props;
-    const Icon = variantIcon[variant];
-
+    const { message, onClose, variant, action } = props;
     return (
-        <SnackbarContent
-            className={classNames(classes[variant], classes.margin)}
-            aria-describedby="client-snackbar"
-            message={
-                <span id="client-snackbar" className={classes.message}>
-                    <Icon
-                        className={classNames(
-                            classes.icon,
-                            classes.iconVariant
-                        )}
-                    />
-                    {message}
-                </span>
-            }
-            action={[
-                customAction ? customAction() : null,
-                <IconButton
-                    key="close"
-                    aria-label="Close"
-                    color="inherit"
-                    className={classes.close}
-                    onClick={() => {
-                        console.log("close");
-                        onClose();
-                    }}
-                >
-                    <CloseIcon className={classes.icon} />
-                </IconButton>,
-            ]}
-        />
+        <Alert
+            elevation={6}
+            variant="filled"
+            severity={variant}
+            onClose={onClose}
+            color={variant}
+            action={action}
+        >
+            {message}
+        </Alert>
     );
 }
 
@@ -104,54 +37,70 @@ MySnackbarContent.propTypes = {
         .isRequired,
 };
 
-const MySnackbarContentWrapper = withStyles(styles1)(MySnackbarContent);
-
-const styles2 = (theme) => ({});
-
-class Announcer extends React.Component {
-    constructor(props) {
-        super(props);
+function Announcer(props) {
+    const {
+        message,
+        variant,
+        duration,
+        horizontal,
+        vertical,
+        onClose,
+        open,
+        CustomAction,
+    } = props;
+    const theme = useTheme();
+    let color = theme.palette.info.contrastText;
+    switch (variant) {
+        case Error:
+            color = theme.palette.error.contrastText;
+            break;
+        case SUCCESS:
+            color = theme.palette.success.contrastText;
+            break;
+        case WARNING:
+            color = theme.palette.warning.contrastText;
+            break;
     }
-
-    render() {
-        const {
-            classes,
-            message,
-            variant,
-            duration,
-            horizontal,
-            vertical,
-            onClose,
-            open,
-            customAction,
-        } = this.props;
-        if (message) {
-            return (
-                <div>
-                    <Snackbar
-                        key={message}
-                        anchorOrigin={{
-                            vertical: vertical ? vertical : "bottom",
-                            horizontal: horizontal ? horizontal : "left",
-                        }}
-                        open={open}
-                        autoHideDuration={duration ? duration : 6000}
+    if (message) {
+        return (
+            <div>
+                <Snackbar
+                    key={message}
+                    anchorOrigin={{
+                        vertical: vertical ? vertical : BOTTOM,
+                        horizontal: horizontal ? horizontal : LEFT,
+                    }}
+                    open={open}
+                    autoHideDuration={duration ? duration : TIMEOUT}
+                    onClose={onClose}
+                    disableWindowBlurListener={true}
+                >
+                    <MySnackbarContent
                         onClose={onClose}
-                        disableWindowBlurListener={true}
-                    >
-                        <MySnackbarContentWrapper
-                            onClose={onClose}
-                            variant={variant}
-                            message={message}
-                            classes={classes}
-                            customAction={customAction}
-                        />
-                    </Snackbar>
-                </div>
-            );
-        } else {
-            return null;
-        }
+                        variant={variant}
+                        message={message}
+                        action={[
+                            CustomAction ? <CustomAction key="custom" /> : null,
+                            <IconButton
+                                key="close"
+                                size="small"
+                                style={{
+                                    color: color,
+                                }}
+                                aria-label="Close"
+                                onClick={() => {
+                                    onClose();
+                                }}
+                            >
+                                <CloseIcon />
+                            </IconButton>,
+                        ]}
+                    />
+                </Snackbar>
+            </div>
+        );
+    } else {
+        return null;
     }
 }
 
@@ -166,4 +115,4 @@ Announcer.propTypes = {
     horizontal: PropTypes.oneOf(["center", "right", "left"]),
 };
 
-export default withStyles(styles2)(Announcer);
+export default Announcer;
