@@ -9,19 +9,39 @@ import PropTypes from "prop-types";
 import { BOTTOM, LEFT, SUCCESS, TIMEOUT, WARNING } from "./AnnouncerConstants";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
-import { Snackbar, useTheme } from "@material-ui/core";
+import { Snackbar, useTheme, Typography } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
+
+function getTextColor(theme, variant) {
+    let color;
+    switch (variant) {
+        case Error:
+            color = theme.palette.error.contrastText;
+            break;
+        case SUCCESS:
+            color = theme.palette.success.contrastText;
+            break;
+        case WARNING:
+            color = theme.palette.warning.contrastText;
+            break;
+        default:
+            color = theme.palette.info.contrastText;
+    }
+
+    return color;
+}
 
 function MySnackbarContent(props) {
     const { message, onClose, variant, action } = props;
+    const theme = useTheme();
     return (
         <Alert
             elevation={6}
             variant="filled"
             severity={variant}
             onClose={onClose}
-            color={variant}
             action={action}
+            style={{ color: getTextColor(theme, variant) }}
         >
             {message}
         </Alert>
@@ -29,12 +49,11 @@ function MySnackbarContent(props) {
 }
 
 MySnackbarContent.propTypes = {
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
     message: PropTypes.node,
     onClose: PropTypes.func,
     variant: PropTypes.oneOf(["success", "warning", "error", "info"])
         .isRequired,
+    action: PropTypes.node,
 };
 
 function Announcer(props) {
@@ -49,18 +68,6 @@ function Announcer(props) {
         CustomAction,
     } = props;
     const theme = useTheme();
-    let color = theme.palette.info.contrastText;
-    switch (variant) {
-        case Error:
-            color = theme.palette.error.contrastText;
-            break;
-        case SUCCESS:
-            color = theme.palette.success.contrastText;
-            break;
-        case WARNING:
-            color = theme.palette.warning.contrastText;
-            break;
-    }
     if (message) {
         return (
             <div>
@@ -84,9 +91,7 @@ function Announcer(props) {
                             <IconButton
                                 key="close"
                                 size="small"
-                                style={{
-                                    color: color,
-                                }}
+                                style={{ color: getTextColor(theme, variant) }}
                                 aria-label="Close"
                                 onClick={() => {
                                     onClose();
@@ -105,7 +110,6 @@ function Announcer(props) {
 }
 
 Announcer.propTypes = {
-    classes: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
     message: PropTypes.string,
     variant: PropTypes.oneOf(["success", "warning", "error", "info"])

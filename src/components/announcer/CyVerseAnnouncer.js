@@ -6,18 +6,7 @@
 
 import React, { Component } from "react";
 import Announcer from "./Announcer";
-import {
-    TIMEOUT,
-    CENTER,
-    LEFT,
-    RIGHT,
-    TOP,
-    BOTTOM,
-    SUCCESS,
-    ERROR,
-    WARNING,
-    INFO,
-} from "./AnnouncerConstants";
+import { TIMEOUT, CENTER, TOP, INFO } from "./AnnouncerConstants";
 
 let msgQueue = [];
 
