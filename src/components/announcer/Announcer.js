@@ -6,16 +6,23 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import { BOTTOM, LEFT, SUCCESS, TIMEOUT, WARNING } from "./AnnouncerConstants";
+import {
+    BOTTOM,
+    ERROR,
+    LEFT,
+    SUCCESS,
+    TIMEOUT,
+    WARNING,
+} from "./AnnouncerConstants";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
-import { Snackbar, useTheme, Typography } from "@material-ui/core";
+import { Snackbar, useTheme } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
-function getTextColor(theme, variant) {
+function getTextColor(theme, severity) {
     let color;
-    switch (variant) {
-        case Error:
+    switch (severity) {
+        case ERROR:
             color = theme.palette.error.contrastText;
             break;
         case SUCCESS:
@@ -32,16 +39,16 @@ function getTextColor(theme, variant) {
 }
 
 function MySnackbarContent(props) {
-    const { message, onClose, variant, action } = props;
+    const { message, onClose, variant: severity, action } = props;
     const theme = useTheme();
     return (
         <Alert
             elevation={6}
             variant="filled"
-            severity={variant}
+            severity={severity}
             onClose={onClose}
             action={action}
-            style={{ color: getTextColor(theme, variant) }}
+            style={{ color: getTextColor(theme, severity) }}
         >
             {message}
         </Alert>
@@ -70,39 +77,37 @@ function Announcer(props) {
     const theme = useTheme();
     if (message) {
         return (
-            <div>
-                <Snackbar
-                    key={message}
-                    anchorOrigin={{
-                        vertical: vertical ? vertical : BOTTOM,
-                        horizontal: horizontal ? horizontal : LEFT,
-                    }}
-                    open={open}
-                    autoHideDuration={duration ? duration : TIMEOUT}
+            <Snackbar
+                key={message}
+                anchorOrigin={{
+                    vertical: vertical ? vertical : BOTTOM,
+                    horizontal: horizontal ? horizontal : LEFT,
+                }}
+                open={open}
+                autoHideDuration={duration ? duration : TIMEOUT}
+                onClose={onClose}
+                disableWindowBlurListener={true}
+            >
+                <MySnackbarContent
                     onClose={onClose}
-                    disableWindowBlurListener={true}
-                >
-                    <MySnackbarContent
-                        onClose={onClose}
-                        variant={variant}
-                        message={message}
-                        action={[
-                            CustomAction ? <CustomAction key="custom" /> : null,
-                            <IconButton
-                                key="close"
-                                size="small"
-                                style={{ color: getTextColor(theme, variant) }}
-                                aria-label="Close"
-                                onClick={() => {
-                                    onClose();
-                                }}
-                            >
-                                <CloseIcon />
-                            </IconButton>,
-                        ]}
-                    />
-                </Snackbar>
-            </div>
+                    variant={variant}
+                    message={message}
+                    action={[
+                        CustomAction ? <CustomAction key="custom" /> : null,
+                        <IconButton
+                            key="close"
+                            size="small"
+                            style={{ color: getTextColor(theme, variant) }}
+                            aria-label="Close"
+                            onClick={() => {
+                                onClose();
+                            }}
+                        >
+                            <CloseIcon />
+                        </IconButton>,
+                    ]}
+                />
+            </Snackbar>
         );
     } else {
         return null;
