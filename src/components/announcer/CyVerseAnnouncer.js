@@ -6,18 +6,7 @@
 
 import React, { Component } from "react";
 import Announcer from "./Announcer";
-import {
-    TIMEOUT,
-    CENTER,
-    LEFT,
-    RIGHT,
-    TOP,
-    BOTTOM,
-    SUCCESS,
-    ERROR,
-    WARNING,
-    INFO,
-} from "./AnnouncerConstants";
+import { TIMEOUT, CENTER, TOP, INFO } from "./AnnouncerConstants";
 
 let msgQueue = [];
 
@@ -66,7 +55,7 @@ class CyVerseAnnouncer extends Component {
                 duration,
                 horizontal,
                 vertical,
-                customAction,
+                CustomAction,
             },
             open,
         } = this.state;
@@ -79,7 +68,7 @@ class CyVerseAnnouncer extends Component {
                 onClose={this.handleClose}
                 horizontal={horizontal ? horizontal : CENTER}
                 vertical={vertical ? vertical : TOP}
-                customAction={customAction}
+                CustomAction={CustomAction}
             />
         );
     }
@@ -109,7 +98,7 @@ export default CyVerseAnnouncer;
  */
 
 /**
- *  Queue messages needed to be announced using CyverseAnnouncer
+ *  Queue messages needed to be announced using CyVerseAnnouncer
  *  @param {QueueMessage} msg - A message with configuration.
  */
 const announce = (msg) => {
