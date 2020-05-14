@@ -2,7 +2,7 @@ This repo serves as a common React component and util library for CyVerse's Disc
 
 ### Publishing to npm registry
 
-Once your PR is accepted, Please merge your branch with `master` from you command-line and update the version. Now push your commits to `master`. This will trigger the workflow to build, run test and publish. All other steps listed under Development Workflow are optional.
+Once your PR is accepted, Please merge your branch with `master` from your command-line and update the version. Then push your commits to `master`. This will trigger the workflow to build, run test and publish. All other steps listed under Development Workflow are optional.
 
 ### `npm run deploy-storybook`
 
