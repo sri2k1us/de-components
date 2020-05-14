@@ -20,7 +20,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm version patch | minor | major`
 
-Once you've merged your changes, this will bump the version number of the project.
+Once you've merged your changes, this will bump the version number of the project. Note: merge you changes from command-line only
 
 Generally:
 
@@ -28,12 +28,13 @@ Generally:
 -   `minor` is used when you add functionality in a backwards-compatible manner.
 -   `major` is used when you make incompatible changes.
 
-### `npm run build-publish`
-
-Builds the project and publishes the changes to npm.
-
 ### `npm run deploy-storybook`
 
 This will deploy any changes or updates to our components' code and stories to GitHub pages for users to see and test the functionality of the components.
+
+### Publishing to npm registry
+
+Once your PR is accepted, Please merge your branch with `master` from you command-line and update the version. Now push your commits to `master`. This will trigger the workflow to build, run test and publish. 
+
 
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)
