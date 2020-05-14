@@ -35,8 +35,7 @@
         "storybook": "start-storybook -p 9009 -s public",
         "build-storybook": "build-storybook -s public",
         "deploy-storybook": "storybook-to-ghpages",
-        "format": "prettier --write 'src/**/*.js' 'stories/**/*.js'",
-        "build-publish": "npm run build && npm-cli-login && npm publish --access public"
+        "format": "prettier --write 'src/**/*.js' 'stories/**/*.js'"
     },
     "eslintConfig": {
         "extends": "react-app"
