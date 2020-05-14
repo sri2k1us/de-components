@@ -18,6 +18,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
+                  registry-url: https://registry.npmjs.org/
             - name: npm install, build, and test
               run: |
                   npm ci
@@ -26,6 +27,4 @@ jobs:
                   npm publish --access public
               env:
                   CI: true
-                  NPM_USER: ${{secrets.NPM_USER}}
-                  NPM_PASS: ${{secrets.NPM_PASS}}
-                  NPM_EMAIL: ${{secrets.NPM_EMAIL}}
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
