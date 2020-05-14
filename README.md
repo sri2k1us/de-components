@@ -1,5 +1,13 @@
 This repo serves as a common React component and util library for CyVerse's Discovery Environment user interfaces, such as the [Discovery Environment](https://github.com/cyverse-de/ui/) and [VICE](https://github.com/cyverse-de/interapps-landing).
 
+### Publishing to npm registry
+
+Once your PR is accepted, Please merge your branch with `master` from you command-line and update the version. Now push your commits to `master`. This will trigger the workflow to build, run test and publish. All other steps listed under Development Workflow are optional.
+
+### `npm run deploy-storybook`
+
+This will deploy any changes or updates to our components' code and stories to GitHub pages for users to see and test the functionality of the components.
+
 ## Development Workflow
 
 In the project directory, you can run:
@@ -26,15 +34,7 @@ Generally:
 
 -   `patch` is used for backwards-compatible bug fixes.
 -   `minor` is used when you add functionality in a backwards-compatible manner.
--   `major` is used when you make incompatible changes.
-
-### `npm run deploy-storybook`
-
-This will deploy any changes or updates to our components' code and stories to GitHub pages for users to see and test the functionality of the components.
-
-### Publishing to npm registry
-
-Once your PR is accepted, Please merge your branch with `master` from you command-line and update the version. Now push your commits to `master`. This will trigger the workflow to build, run test and publish. 
+-   `major` is used when you make incompatible changes
 
 
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)
