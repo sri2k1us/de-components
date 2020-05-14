@@ -1,6 +1,8 @@
 name: Node CI
 
-on: [push]
+on:
+    push:
+        branches: [master]
 
 jobs:
     build:
@@ -24,3 +26,6 @@ jobs:
                   npm publish --access public
               env:
                   CI: true
+                  NPM_USER: ${{secrets.NPM_USER}}
+                  NPM_PASS: ${{secrets.NPM_PASS}}
+                  NPM_EMAIL: ${{secrets.NPM_EMAIL}}
