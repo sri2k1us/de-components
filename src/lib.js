@@ -6,10 +6,7 @@ import CyVerseAnnouncer, {
 } from "./components/announcer/CyVerseAnnouncer";
 import * as AnnouncerConstants from "./components/announcer/AnnouncerConstants";
 import CopyTextArea from "./components/copy/CopyTextArea";
-import DEHyperlink from "./components/hyperlink/DEHyperlink";
 import DotMenu from "./components/dotMenu/DotMenu";
-import Highlighter from "./components/highlighter/Highlighter";
-import LoadingMask from "./components/loading/LoadingMask";
 import QuickLaunch from "./components/quickLaunch/QuickLaunch";
 import Rate from "./components/rating/Rate";
 import SearchField from "./components/searchField/SearchField";
@@ -44,13 +41,6 @@ import {
 
 import withI18N from "./util/I18NWrapper";
 
-import DEAlertDialog from "./util/dialog/DEAlertDialog";
-import DEConfirmationDialog from "./util/dialog/DEConfirmationDialog";
-import DEDialogHeader from "./util/dialog/DEDialogHeader";
-import DEPromptDialog from "./util/dialog/DEPromptDialog";
-
-import ErrorExpansionPanel from "./util/ErrorExpansionPanel";
-import ErrorHandler from "./util/ErrorHandler";
 import DECheckbox from "./util/table/DECheckbox";
 import EmptyTable from "./util/table/EmptyTable";
 import EnhancedTableHead from "./util/table/EnhancedTableHead";
@@ -68,17 +58,10 @@ export {
     CopyTextArea,
     dateConstants,
     CyVerseAnnouncer,
-    DEAlertDialog,
     DECheckbox,
-    DEConfirmationDialog,
-    DEDialogHeader,
-    DEPromptDialog,
-    DEHyperlink,
     DotMenu,
     EmptyTable,
     EnhancedTableHead,
-    ErrorExpansionPanel,
-    ErrorHandler,
     formatDate,
     FormCheckbox,
     FormCheckboxStringValue,
@@ -100,8 +83,6 @@ export {
     getRegExp,
     getSorting,
     hasProps,
-    Highlighter,
-    LoadingMask,
     QuickLaunch,
     Rate,
     SearchField,
