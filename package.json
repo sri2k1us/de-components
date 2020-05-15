@@ -1,6 +1,6 @@
 {
     "name": "@cyverse-de/ui-lib",
-    "version": "4.0.16",
+    "version": "4.0.17",
     "private": false,
     "publishConfig": {
         "access": "public"
@@ -67,7 +67,6 @@
         "@babel/core": "^7.7.5",
         "@babel/plugin-proposal-class-properties": "^7.7.4",
         "@babel/plugin-syntax-dynamic-import": "^7.7.4",
-        "babel-plugin-transform-imports": "^2.0.0",
         "@babel/preset-env": "^7.7.6",
         "@babel/preset-react": "^7.7.4",
         "@material-ui/core": "^4.7.2",
