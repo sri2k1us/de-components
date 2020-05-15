@@ -23,7 +23,7 @@
 import React, { useState } from "react";
 
 import { Menu, IconButton } from "@material-ui/core";
-import { MoreVert } from "@material-ui/icons";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import build from "../../util/DebugIDUtil";
 
@@ -58,7 +58,7 @@ function DotMenu(props) {
                 size="small"
                 {...ButtonProps}
             >
-                <MoreVert />
+                <MoreVertIcon />
             </IconButton>
             <Menu
                 id={menuId}
