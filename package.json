@@ -1,12 +1,13 @@
 {
     "name": "@cyverse-de/ui-lib",
-    "version": "4.0.14",
+    "version": "4.0.15",
     "private": false,
     "publishConfig": {
         "access": "public"
     },
     "dependencies": {
         "@date-fns/upgrade": "^1.0.3",
+        "babel-plugin-transform-imports": "^2.0.0",
         "classnames": "^2.2.6",
         "date-fns": "^2.11.1",
         "md5": "^2.2.1",
