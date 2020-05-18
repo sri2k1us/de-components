@@ -1,0 +1,10 @@
+/**
+ * @author psarando
+ */
+import FormTextField from "./FormTextField";
+
+const FormMultilineTextField = (props) => (
+    <FormTextField multiline rows={3} {...props} />
+);
+
+export default FormMultilineTextField;
