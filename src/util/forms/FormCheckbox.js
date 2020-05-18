@@ -30,3 +30,4 @@ const FormCheckbox = ({
 );
 
 export default FormCheckbox;
+export { onCheckboxChange };

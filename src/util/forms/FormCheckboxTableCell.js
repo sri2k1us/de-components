@@ -3,11 +3,7 @@
  */
 import Checkbox from "@material-ui/core/Checkbox";
 import TableCell from "@material-ui/core/TableCell";
-
-// Apparently only necessary for FastField, but maybe more correct for "vanilla" Field as well.
-const onCheckboxChange = (setFieldValue, fieldName) => (event, checked) => {
-    setFieldValue(fieldName, checked);
-};
+import { onCheckboxChange } from "./FormCheckbox";
 
 const FormCheckboxTableCell = ({
     field: { value, onChange, ...field },
