@@ -2,10 +2,9 @@
  @author sriram
  */
 
-import { format } from "date-fns";
+import lightFormat from "date-fns/lightFormat";
+import toDate from "date-fns/toDate";
 import dateConstants from "../dateConstants";
-
-import { legacyParse } from "@date-fns/upgrade/v2";
 
 /**
  * Format a date with the given format or return a `-`.
@@ -16,7 +15,7 @@ import { legacyParse } from "@date-fns/upgrade/v2";
 function formatDate(longDate, dateFormat = dateConstants.LONG_DATE_FORMAT) {
     const longDateInt = parseInt(longDate, 10);
     return longDateInt
-        ? format(legacyParse(new Date(longDateInt)), dateFormat)
+        ? lightFormat(toDate(new Date(longDateInt)), dateFormat)
         : dateConstants.EMPTY_DATE;
 }
 
