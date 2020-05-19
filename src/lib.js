@@ -7,6 +7,7 @@ import CyVerseAnnouncer, {
 import * as AnnouncerConstants from "./components/announcer/AnnouncerConstants";
 import CopyTextArea from "./components/copy/CopyTextArea";
 import DotMenu from "./components/dotMenu/DotMenu";
+import Highlighter from "./components/highlighter/Highlighter";
 import QuickLaunch from "./components/quickLaunch/QuickLaunch";
 import Rate from "./components/rating/Rate";
 import SearchField from "./components/searchField/SearchField";
@@ -82,6 +83,7 @@ export {
     getMuiTheme,
     getRegExp,
     getSorting,
+    Highlighter,
     hasProps,
     QuickLaunch,
     Rate,
