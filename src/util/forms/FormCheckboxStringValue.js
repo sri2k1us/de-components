@@ -1,6 +1,7 @@
 /**
  * @author psarando
  */
+import React from "react";
 import FormCheckbox from "./FormCheckbox";
 
 const FormCheckboxStringValue = ({

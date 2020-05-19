@@ -1,6 +1,7 @@
 /**
  * @author psarando
  */
+import React from "react";
 import FormTextField from "./FormTextField";
 
 const onNumberChange = (onChange) => (event) => {
