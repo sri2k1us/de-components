@@ -8,6 +8,7 @@ export {
 export {
     default as FormCheckboxTableCell,
 } from "./forms/FormCheckboxTableCell";
+export { default as FormFieldLoading } from "./forms/FormFieldLoading";
 export { default as FormIntegerField } from "./forms/FormIntegerField";
 export {
     default as FormMultilineTextField,
