@@ -2,16 +2,18 @@
  * @author psarando
  */
 import React from "react";
+
 import Autocomplete from "../../components/autocomplete/Autocomplete";
+
+import getFormError from "./getFormError";
 
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
-import getFormError from "./getFormError";
-
 const FormSearchField = ({
     field: { value, onBlur, onChange, ...field },
     label,
+    helperText,
     required,
     form: { touched, errors, setFieldTouched, setFieldValue },
     ...props
@@ -37,7 +39,7 @@ const FormSearchField = ({
                 {...field}
                 {...props}
             />
-            <FormHelperText>{errorMsg}</FormHelperText>
+            <FormHelperText>{errorMsg || helperText}</FormHelperText>
         </FormControl>
     );
 };

@@ -2,17 +2,19 @@
  * @author psarando
  */
 import React from "react";
+
+import getFormError from "./getFormError";
+
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 
-import getFormError from "./getFormError";
-
 const FormSelectField = ({
     id,
     field: { value, ...field },
     label,
+    helperText,
     required,
     form: { touched, errors },
     children,
@@ -28,7 +30,7 @@ const FormSelectField = ({
             <Select id={id} value={value || ""} {...field} {...custom}>
                 {children}
             </Select>
-            <FormHelperText>{errorMsg}</FormHelperText>
+            <FormHelperText>{errorMsg || helperText}</FormHelperText>
         </FormControl>
     );
 };

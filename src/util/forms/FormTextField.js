@@ -2,12 +2,15 @@
  * @author psarando
  */
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+
 import getFormError from "./getFormError";
+
+import TextField from "@material-ui/core/TextField";
 
 const FormTextField = ({
     field,
     label,
+    helperText,
     required,
     form: { touched, errors },
     ...custom
@@ -17,7 +20,7 @@ const FormTextField = ({
         <TextField
             label={label}
             error={!!errorMsg}
-            helperText={errorMsg}
+            helperText={errorMsg || helperText}
             required={required}
             variant="outlined"
             margin="dense"

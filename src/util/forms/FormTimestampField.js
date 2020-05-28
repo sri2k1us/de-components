@@ -2,14 +2,15 @@
  * @author psarando
  */
 import React from "react";
+
 import build from "../DebugIDUtil";
+import { formatDateObject } from "../DateFormatter";
+
+import getFormError from "./getFormError";
 
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import TextField from "@material-ui/core/TextField";
-import { formatDateObject } from "../DateFormatter";
-
-import getFormError from "./getFormError";
 
 const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
@@ -30,6 +31,7 @@ const onTimeChange = (prevDate, fieldName, setFieldValue) => (event) => {
 const FormTimestampField = ({
     id,
     label,
+    helperText,
     required,
     field: { value, onChange, ...field },
     form: { touched, errors, setFieldValue },
@@ -63,7 +65,7 @@ const FormTimestampField = ({
                 {...field}
                 {...custom}
             />
-            <FormHelperText>{errorMsg}</FormHelperText>
+            <FormHelperText>{errorMsg || helperText}</FormHelperText>
         </FormControl>
     );
 };
