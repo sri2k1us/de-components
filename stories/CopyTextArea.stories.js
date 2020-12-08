@@ -9,13 +9,14 @@ import { storiesOf } from "@storybook/react";
 export class CopyTextAreaTest extends Component {
     render() {
         let textToCopy = `The Dark Arts better be worried,
-         oh boy!`;
+oh boy!`;
 
         return (
             <CopyTextArea
                 debugIdPrefix="test.id.prefix"
                 btnText="Copy"
                 copiedBtnText="Copied!"
+                multiline={true}
                 text={textToCopy}
             />
         );
