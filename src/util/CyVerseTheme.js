@@ -12,8 +12,7 @@ export default (theme) =>
     createMuiTheme(
         {
             palette: {
-                type: "light",
-
+                type: "dark",
                 // All intentions should be defined with references to colors from the new palette.
                 primary: {
                     main: palette.cobalt,
@@ -39,6 +38,13 @@ export default (theme) =>
                     selected: "rgba(0, 0, 0, 0.2)", // was 0.08
                     selectedOpacity: 0.2,
                 },
+                // Used by `getContrastText()` to maximize the contrast between
+                // the background and the text.
+                contrastThreshold: 3,
+                // Used by the functions below to shift a color's luminance by approximately
+                // two indexes within its tonal palette.
+                // E.g., shift from Red 500 to Red 300 or Red 700.
+                tonalOffset: 0.2,
 
                 ...palette, // allow all of the colors to be referenced in the palette.
             },
