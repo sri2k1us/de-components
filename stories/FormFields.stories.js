@@ -12,7 +12,11 @@ import {
     FormSelectField,
     FormSwitch,
     FormTextField,
+    FormTimestampField,
 } from "../src/util/FormField";
+
+import { formatDateObject } from "../src/util/DateFormatter";
+import dateConstants from "../src/dateConstants";
 
 import { MenuItem } from "@material-ui/core";
 
@@ -156,6 +160,27 @@ export const Switch = () => {
         <TestForm initialValue={true}>
             <Field
                 component={FormSwitch}
+                name="test_field"
+                label={label}
+                helperText={helperText}
+            />
+        </TestForm>
+    );
+};
+
+export const Timestamp = () => {
+    const label = text("Label", "Timestamp Label");
+    const helperText = text("Helper Text", "");
+
+    return (
+        <TestForm
+            initialValue={formatDateObject(
+                new Date(),
+                dateConstants.LONG_DATE_FORMAT
+            )}
+        >
+            <Field
+                component={FormTimestampField}
                 name="test_field"
                 label={label}
                 helperText={helperText}

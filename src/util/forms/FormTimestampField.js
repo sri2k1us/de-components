@@ -5,6 +5,7 @@ import React from "react";
 
 import build from "../DebugIDUtil";
 import { formatDateObject } from "../DateFormatter";
+import dateConstants from "../../dateConstants";
 
 import getFormError from "./getFormError";
 
@@ -15,7 +16,7 @@ import TextField from "@material-ui/core/TextField";
 const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const time = formatDateObject(date, "HH:mm:ss");
+    const time = formatDateObject(date, dateConstants.TIME_FORMAT);
 
     setFieldValue(fieldName, `${newValue} ${time}`);
 };
@@ -23,7 +24,7 @@ const onDateChange = (prevDate, fieldName, setFieldValue) => (event) => {
 const onTimeChange = (prevDate, fieldName, setFieldValue) => (event) => {
     const newValue = event.target.value;
     const date = prevDate ? prevDate : new Date();
-    const dateStr = formatDateObject(date, "YYYY-MM-DD");
+    const dateStr = formatDateObject(date, dateConstants.DATE_FORMAT);
 
     setFieldValue(fieldName, `${dateStr} ${newValue}`);
 };
@@ -49,7 +50,11 @@ const FormTimestampField = ({
                 label={label}
                 error={!!errorMsg}
                 required={required}
-                value={date ? formatDateObject(date, "YYYY-MM-DD") : ""}
+                value={
+                    date
+                        ? formatDateObject(date, dateConstants.DATE_FORMAT)
+                        : ""
+                }
                 onChange={onDateChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}
@@ -60,7 +65,11 @@ const FormTimestampField = ({
                 variant="outlined"
                 error={!!errorMsg}
                 required={required}
-                value={date ? formatDateObject(date, "HH:mm:ss") : ""}
+                value={
+                    date
+                        ? formatDateObject(date, dateConstants.TIME_FORMAT)
+                        : ""
+                }
                 onChange={onTimeChange(date, field.name, setFieldValue)}
                 {...field}
                 {...custom}
