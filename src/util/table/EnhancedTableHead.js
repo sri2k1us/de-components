@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 
 import build from "../DebugIDUtil";
 import DECheckbox from "./DECheckbox";
-import messages from "./messages";
-import withI18N, { getMessage } from "../I18NWrapper";
 
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
@@ -38,6 +36,8 @@ class EnhancedTableHead extends React.Component {
             selectable,
             padding,
             rowsInPage,
+            selectAllLabel,
+            sortLabel,
         } = this.props;
 
         let isInDeterminate = numSelected > 0 && numSelected !== rowsInPage;
@@ -50,9 +50,7 @@ class EnhancedTableHead extends React.Component {
                                 indeterminate={isInDeterminate}
                                 checked={numSelected === rowsInPage}
                                 onChange={onSelectAllClick}
-                                inputProps={{
-                                    "aria-label": getMessage("selectAll"),
-                                }}
+                                inputProps={selectAllLabel}
                             />
                         </TableCell>
                     )}
@@ -70,7 +68,7 @@ class EnhancedTableHead extends React.Component {
                             >
                                 {column.enableSorting ? (
                                     <Tooltip
-                                        title={getMessage("sort")}
+                                        title={sortLabel}
                                         placement={
                                             column.numeric
                                                 ? "bottom-end"
@@ -122,10 +120,12 @@ EnhancedTableHead.propTypes = {
         })
     ),
     padding: PropTypes.string,
+    sortLabel: PropTypes.string,
+    selectAllLabel: PropTypes.string,
 };
 
 EnhancedTableHead.defaultProps = {
     selectable: false,
 };
 
-export default withI18N(EnhancedTableHead, messages);
+export default EnhancedTableHead;

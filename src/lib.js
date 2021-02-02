@@ -35,19 +35,11 @@ import {
 } from "./util/FormField";
 import getRegExp from "./util/getRegExp";
 import hasProps from "./util/hasProps";
-import {
-    getMessage,
-    formatMessage,
-    formatHTMLMessage,
-} from "./util/I18NWrapper";
-
-import withI18N from "./util/I18NWrapper";
 
 import DECheckbox from "./util/table/DECheckbox";
 import EmptyTable from "./util/table/EmptyTable";
 import EnhancedTableHead from "./util/table/EnhancedTableHead";
 
-import TablePaginationActions from "./util/table/TablePaginationActions";
 import { stableSort, getSorting } from "./util/table/TableSort";
 
 import getMuiTheme from "./util/CyVerseTheme";
@@ -77,12 +69,9 @@ export {
     FormSwitch,
     FormTextField,
     FormTimestampField,
-    formatMessage,
-    formatHTMLMessage,
     formatCurrentDate,
     formatDateObject,
     getFormError,
-    getMessage,
     getMuiTheme,
     getRegExp,
     getSorting,
@@ -91,7 +80,5 @@ export {
     Rate,
     SearchField,
     stableSort,
-    TablePaginationActions,
     TriggerField,
-    withI18N,
 };
