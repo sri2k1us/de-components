@@ -55,6 +55,8 @@ export const DETableHeader = () => {
                 baseId="exampleId"
                 columnData={headCells}
                 onRequestSort={() => logger("Sort")}
+                selectAllLabel="Select All"
+                sortLabel="Sort"
             />
             <TableBody>
                 {rows.map((row, index) => (
