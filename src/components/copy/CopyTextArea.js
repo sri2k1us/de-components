@@ -60,6 +60,7 @@ class CopyTextArea extends Component {
                         id={`${debugIdPrefix}.CopyTextArea.Button`}
                         onClick={this.onCopyText}
                         style={{ padding: 2 }}
+                        color="primary"
                     >
                         {this.state.btnText}
                     </Button>
