@@ -50,7 +50,7 @@ class EnhancedTableHead extends React.Component {
                                 indeterminate={isInDeterminate}
                                 checked={numSelected === rowsInPage}
                                 onChange={onSelectAllClick}
-                                inputProps={selectAllLabel}
+                                inputProps={{ "aria-label": selectAllLabel }}
                             />
                         </TableCell>
                     )}
